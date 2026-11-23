@@ -6,6 +6,7 @@ import { useSetting } from './db/settings';
 import { claimReward, markCelebrated } from './db/ops';
 import { Celebration } from './reward/Celebration';
 import { navigate, useRoute, type Route } from './router';
+import { dismissUpdate, reloadToUpdate, useUpdateAvailable } from './pwa';
 import { ActionsProvider, useActions } from './ui/actions';
 import { AiSettings } from './ui/AiSettings';
 import { DataSettings } from './ui/DataSettings';
@@ -49,6 +50,7 @@ function Shell() {
   const goals = useGoals();
   const summaries = useGoalSummaries();
   const { undo, redo, undoLabel, redoLabel, toast, dismiss } = useActions();
+  const updateAvailable = useUpdateAvailable();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const split = useMemo(() => (goals && summaries ? splitGoals(goals, summaries) : null), [goals, summaries]);
@@ -125,6 +127,17 @@ function Shell() {
       </main>
 
       <div className="toast-area" aria-live="polite">
+        {updateAvailable && (
+          <div className="toast update" role="status">
+            <span>새 버전이 있어요</span>
+            <button type="button" onClick={reloadToUpdate}>
+              새로고침
+            </button>
+            <button type="button" className="toast-close" aria-label="나중에" title="나중에" onClick={dismissUpdate}>
+              ×
+            </button>
+          </div>
+        )}
         {toast && (
           <div className={`toast ${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>
             <span>{toast.text}</span>

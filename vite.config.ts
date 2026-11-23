@@ -13,7 +13,8 @@ export default defineConfig({
     VitePWA({
       // 등록은 src/pwa.ts에서 직접 한다 (Android 앱 안에서는 등록하지 않기 위해)
       injectRegister: false,
-      registerType: 'autoUpdate',
+      // 새 버전은 안내를 띄우고 사용자가 누를 때 바꾼다 (src/pwa.ts)
+      registerType: 'prompt',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: '반걸음',

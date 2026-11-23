@@ -98,7 +98,8 @@ export type SettingKey =
   | 'lastBackupAt'
   | 'persistGranted'
   | 'pinnedGoalId'
-  | 'celebration';
+  | 'celebration'
+  | 'webllmModel';
 
 export interface Setting {
   key: SettingKey;

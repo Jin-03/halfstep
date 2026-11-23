@@ -50,6 +50,10 @@ export interface Engine {
   available(): Promise<Availability>;
   /** 모델 받기. 진행률은 0~1 */
   download?(onProgress: (ratio: number) => void, signal?: AbortSignal): Promise<void>;
+  /** 받아 둔 모델을 지워 저장 공간을 되찾는다 */
+  remove?(): Promise<void>;
+  /** 나누기 전에 모델을 메모리에 올린다. 시간 제한(AI_TIMEOUT_MS)에 들어가지 않는다 */
+  warmup?(signal?: AbortSignal): Promise<void>;
   decompose(req: DecomposeRequest, signal?: AbortSignal): Promise<StepDraft[]>;
 }
 

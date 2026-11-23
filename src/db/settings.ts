@@ -11,6 +11,8 @@ export interface SettingValues {
   pinnedGoalId: string | null;
   /** 완료 축하(진동, 토스트, 색종이, 축하 창, 체크 효과) 켜기 */
   celebration: boolean;
+  /** 받아 둔 WebLLM 모델 id. null이면 받지 않음 */
+  webllmModel: string | null;
 }
 
 const DEFAULTS: SettingValues = {
@@ -20,6 +22,7 @@ const DEFAULTS: SettingValues = {
   persistGranted: false,
   pinnedGoalId: null,
   celebration: true,
+  webllmModel: null,
 };
 
 export async function getSetting<K extends SettingKey>(key: K): Promise<SettingValues[K]> {

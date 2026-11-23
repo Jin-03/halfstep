@@ -1,6 +1,6 @@
 /**
  * 분해 엔진 선택과 실행.
- * - 웹(PWA): Chrome 내장 AI → 기본 규칙
+ * - 웹(PWA): Chrome 내장 AI → WebLLM(받아 둔 경우만) → 기본 규칙
  * - 앱(6단계): Gemini Nano → 기기 내 모델 → 기본 규칙  (ENGINES 앞에 추가)
  * AI가 실패하거나, 너무 오래 걸리거나, 읽을 수 없는 답을 내면 기본 규칙으로 넘어가고 그 이유를 알려 준다.
  */
@@ -9,13 +9,14 @@ import type { StepOrigin } from '../db/schema';
 import { getSetting } from '../db/settings';
 import { describeAnalysis } from './analyze';
 import { chromeEngine } from './chrome';
+import { webllmEngine } from './webllm';
 import { makeContext } from './context';
 import { refine } from './refine';
 import { rulesEngine, rulesPlan } from './rules';
 import { originOf, type DecomposeRequest, type Engine } from './types';
 import { josa } from '../ui/format';
 
-export const ENGINES: readonly Engine[] = [chromeEngine, rulesEngine];
+export const ENGINES: readonly Engine[] = [chromeEngine, webllmEngine, rulesEngine];
 
 export const AI_TIMEOUT_MS = 60_000;
 
@@ -93,6 +94,8 @@ export async function decompose(
   try {
     // 엔진을 고르는 사이에 이미 멈췄을 수 있다.
     if (signal?.aborted) throw new DOMException('멈췄어요', 'AbortError');
+    // 모델을 메모리에 올리는 시간(WebLLM은 몇 초)은 답을 기다리는 시간 제한에 넣지 않는다
+    await engine.warmup?.(ctrl.signal);
     const drafts = await withTimeout(engine.decompose(full, ctrl.signal), opts.timeoutMs ?? AI_TIMEOUT_MS, ctrl);
     if (drafts.length > 0) return { drafts: refine(drafts, full), origin: originOf(engine), engineLabel: engine.label, understood };
     return viaRules(`${engine.label}의 답을 단계로 읽지 못했어요.`);

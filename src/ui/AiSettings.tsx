@@ -45,6 +45,15 @@ export function AiSettings() {
     }
   };
 
+  const remove = async (e: Engine) => {
+    if (!e.remove) return;
+    try {
+      await run(`${e.label} 모델 지우기`, null, () => e.remove!(), { skipUndo: true });
+    } finally {
+      void refresh();
+    }
+  };
+
   const ready = ENGINES.filter((e) => status[e.id]?.status === 'ready');
   const autoEngine = ready[0];
 
@@ -100,6 +109,11 @@ export function AiSettings() {
                     모델 받기
                   </button>
                 )}
+                {!downloading && a?.status === 'ready' && e.remove && (
+                  <button type="button" className="text-btn small" onClick={(ev) => { ev.preventDefault(); void remove(e); }}>
+                    모델 지우기 (저장 공간 비우기)
+                  </button>
+                )}
               </span>
             </label>
           );
@@ -107,7 +121,7 @@ export function AiSettings() {
       </fieldset>
 
       <p className="hint small">
-        휴대폰 웹 버전에서는 기본 규칙으로 동작해요. Android 앱에서는 기기에 따라 Gemini Nano나 기기 내 모델을 쓸 수 있게 될 예정이에요.
+        모델은 받을 때만 인터넷을 써요. 목표와 단계 내용은 기기 밖으로 나가지 않아요. 휴대폰에서는 보통 기본 규칙으로 동작해요.
       </p>
     </article>
   );

@@ -387,6 +387,7 @@ span.step-title { overflow-wrap: anywhere; }
 .engine-status.s-ready { background: var(--done-soft); color: var(--done); }
 .engine-status.s-needs-download, .engine-status.s-downloading { background: var(--next-soft); color: var(--ink); }
 .engine-body .secondary.small { align-self: flex-start; margin-top: 8px; }
+.engine-body .text-btn.small { align-self: flex-start; margin-top: 4px; padding-left: 0; font-size: 13px; }
 .download { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
 .download-row { display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .button-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }

@@ -1,0 +1,11 @@
+node_modules
+dist
+android/app/build
+android/.gradle
+*.local
+*.tsbuildinfo
+.idea
+# 개인 데이터: 앱에서 내보낸 백업 파일은 공개 저장소에 올리지 않는다
+halfstep-backup-*.json
+# 어디에도 쓰이지 않는 이미지
+/img.png

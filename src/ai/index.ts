@@ -47,6 +47,16 @@ export async function pickEngine(engines: readonly Engine[] = ENGINES): Promise<
   return { engine: rulesEngine };
 }
 
+/**
+ * AI가 지금 무엇을 하는지 (화면의 기다림 안내용). 기본 규칙만 쓸 때는 알리지 않는다(바로 끝나므로).
+ * - preparing: 모델을 메모리에 올리는 중 (WebLLM. 시간 제한 밖)
+ * - thinking: 답을 기다리는 중 (AI_TIMEOUT_MS 안에 끝나거나 기본 규칙으로 넘어감)
+ */
+export interface AiPhase {
+  stage: 'preparing' | 'thinking';
+  engineLabel: string;
+}
+
 export class TimeoutError extends Error {}
 
 function withTimeout<T>(p: Promise<T>, ms: number, ctrl: AbortController): Promise<T> {
@@ -69,7 +79,7 @@ function withTimeout<T>(p: Promise<T>, ms: number, ctrl: AbortController): Promi
 export async function decompose(
   req: DecomposeRequest,
   signal?: AbortSignal,
-  opts: { engines?: readonly Engine[]; timeoutMs?: number } = {},
+  opts: { engines?: readonly Engine[]; timeoutMs?: number; onPhase?: (phase: AiPhase) => void } = {},
 ): Promise<DecomposeResult> {
   const { engine, reason } = await pickEngine(opts.engines);
   // 목표 분석·템플릿·맞춤 예시를 한 번 만들어 모든 엔진이 함께 쓴다.
@@ -95,7 +105,11 @@ export async function decompose(
     // 엔진을 고르는 사이에 이미 멈췄을 수 있다.
     if (signal?.aborted) throw new DOMException('멈췄어요', 'AbortError');
     // 모델을 메모리에 올리는 시간(WebLLM은 몇 초)은 답을 기다리는 시간 제한에 넣지 않는다
-    await engine.warmup?.(ctrl.signal);
+    if (engine.warmup) {
+      opts.onPhase?.({ stage: 'preparing', engineLabel: engine.label });
+      await engine.warmup(ctrl.signal);
+    }
+    opts.onPhase?.({ stage: 'thinking', engineLabel: engine.label });
     const drafts = await withTimeout(engine.decompose(full, ctrl.signal), opts.timeoutMs ?? AI_TIMEOUT_MS, ctrl);
     if (drafts.length > 0) return { drafts: refine(drafts, full), origin: originOf(engine), engineLabel: engine.label, understood };
     return viaRules(`${engine.label}의 답을 단계로 읽지 못했어요.`);

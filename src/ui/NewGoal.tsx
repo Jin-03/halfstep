@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { decompose as runDecompose, isAbort } from '../ai';
+import { decompose as runDecompose, isAbort, type AiPhase } from '../ai';
+import { AiWait } from './AiWait';
 import { createGoal, type StepDraft } from '../db/ops';
 import type { StepOrigin } from '../db/schema';
 import { parseOutline, toOutline } from '../model/outline';
@@ -44,6 +45,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
   const [method, setMethod] = useState<Method>('auto');
   const [auto, setAuto] = useState<{ forTitle: string; drafts: StepDraft[]; origin: StepOrigin; engine: string; fallbackReason?: string; basis?: string; understood: string } | null>(null);
   const [busy, setBusy] = useState(false);
+  const [phase, setPhase] = useState<AiPhase | null>(null);
   const [template, setTemplate] = useState<Pickable | null>(null);
   const userTemplates = useUserTemplates();
   const [outline, setOutline] = useState('');
@@ -69,7 +71,11 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
     abort.current = ctrl;
     setBusy(true);
     try {
-      const r = await runDecompose({ kind: 'goal', goal }, ctrl.signal);
+      const r = await runDecompose({ kind: 'goal', goal }, ctrl.signal, {
+        onPhase: (p) => {
+          if (abort.current === ctrl) setPhase(p);
+        },
+      });
       setAuto({ forTitle: goal, drafts: r.drafts, origin: r.origin, engine: r.engineLabel, fallbackReason: r.fallbackReason, basis: r.basis, understood: r.understood });
     } catch (err) {
       if (!isAbort(err)) throw err;
@@ -77,6 +83,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
       if (abort.current === ctrl) {
         abort.current = null;
         setBusy(false);
+        setPhase(null);
       }
     }
   };
@@ -171,6 +178,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
                 </button>
               )}
             </div>
+            {busy && <AiWait phase={phase} />}
             {auto && autoStale && <p className="hint">목표가 바뀌었어요. 다시 나눠 보세요.</p>}
             {auto && !autoStale && (
               <>

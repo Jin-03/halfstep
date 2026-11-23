@@ -311,6 +311,16 @@ describe('엔진 선택과 기본 규칙으로 넘어가기', () => {
     expect(r.fallbackReason).toBe('Chrome 내장 AI: 모델을 받아야 해요.');
   });
 
+  it('기다림 안내: AI는 준비(있으면) → 생각 순서로 알리고, 기본 규칙은 알리지 않는다', async () => {
+    const phases: string[] = [];
+    const onPhase = (p: { stage: string }) => phases.push(p.stage);
+    await decompose({ kind: 'goal', goal: 'x' }, undefined, { engines: [fake({ warmup: async () => {} }), rulesEngine], onPhase });
+    expect(phases).toEqual(['preparing', 'thinking']);
+    phases.length = 0;
+    await decompose({ kind: 'goal', goal: 'x' }, undefined, { engines: [rulesEngine], onPhase });
+    expect(phases).toEqual([]);
+  });
+
   it('기본 규칙을 고르면 AI가 있어도 규칙', async () => {
     await setSetting('enginePref', 'rules');
     const { engine } = await pickEngine([fake({}), rulesEngine]);

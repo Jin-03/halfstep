@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { decompose } from '../ai';
+import { decompose, type AiPhase } from '../ai';
+import { AiWait } from './AiWait';
 import { addStep, addSteps, deleteStep, indentStep, moveStep, outdentStep, toggleDone, updateStep } from '../db/ops';
 import { isDone, isLeaf, progress, type StepNode } from '../model/tree';
 import { useSetting } from '../db/settings';
@@ -17,6 +18,9 @@ interface TreeState {
   /** 더 쪼개는 중인 단계 */
   splittingId: string | null;
   setSplittingId: (id: string | null) => void;
+  /** 더 쪼개는 동안 AI가 하는 일 (기다림 안내) */
+  splitPhase: AiPhase | null;
+  setSplitPhase: (p: AiPhase | null) => void;
   nextId: string | null;
   /** 체크 효과를 보여 줄지 (설정의 축하 효과) */
   celebrate: boolean;
@@ -44,6 +48,7 @@ export function StepTree({
   const [openId, setOpenId] = useState<string | null>(null);
   const [addingId, setAddingId] = useState<string | null>(null);
   const [splittingId, setSplittingId] = useState<string | null>(null);
+  const [splitPhase, setSplitPhase] = useState<AiPhase | null>(null);
   const celebrate = useSetting('celebration') ?? true;
 
   // 편집을 끝내면 열린 메뉴와 하위 단계 입력란을 닫는다
@@ -54,7 +59,7 @@ export function StepTree({
     }
   }, [editing]);
 
-  const state: TreeState = { editing, goalId, goalTitle, nextId, celebrate, openId, setOpenId, addingId, setAddingId, splittingId, setSplittingId };
+  const state: TreeState = { editing, goalId, goalTitle, nextId, celebrate, openId, setOpenId, addingId, setAddingId, splittingId, setSplittingId, splitPhase, setSplitPhase };
   return (
     <ul className="tree" role="list">
       {nodes.map((n, i) => (
@@ -101,7 +106,10 @@ function StepItem({
       const result = await run(
         '더 쪼개기',
         goalId,
-        () => decompose({ kind: 'split', goal: state.goalTitle, step: node.title, minutes: node.minutes, path }),
+        () =>
+          decompose({ kind: 'split', goal: state.goalTitle, step: node.title, minutes: node.minutes, path }, undefined, {
+            onPhase: state.setSplitPhase,
+          }),
         { skipUndo: true },
       );
       if (!result) return;
@@ -114,6 +122,7 @@ function StepItem({
       });
     } finally {
       state.setSplittingId(null);
+      state.setSplitPhase(null);
     }
   };
 
@@ -210,6 +219,8 @@ function StepItem({
           </button>
         </div>
       )}
+
+      {splitting && <AiWait phase={state.splitPhase} />}
 
       {(!collapsed || adding) && (node.children.length > 0 || adding) && (
         <ul className="tree" role="list">

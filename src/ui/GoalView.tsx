@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { decompose } from '../ai';
+import { decompose, type AiPhase } from '../ai';
+import { AiWait } from './AiWait';
 import { addStep, addSteps, deleteGoal, setDone, updateGoal } from '../db/ops';
 import { useGoalTree } from '../db/hooks';
 import type { Goal } from '../db/schema';
@@ -20,6 +21,7 @@ export function GoalView({ goal }: { goal: Goal }) {
   const tree = useGoalTree(goal.id);
   const { run, notify } = useActions();
   const [suggesting, setSuggesting] = useState(false);
+  const [phase, setPhase] = useState<AiPhase | null>(null);
   const [editing, setEditing] = useState(false);
   const pinnedId = useSetting('pinnedGoalId');
   const isPinned = pinnedId === goal.id;
@@ -37,7 +39,10 @@ export function GoalView({ goal }: { goal: Goal }) {
       const result = await run(
         '단계 더 제안',
         goal.id,
-        () => decompose({ kind: 'more', goal: goal.title, existing: allTitles(tree), doneRatio: progress(tree).ratio }),
+        () =>
+          decompose({ kind: 'more', goal: goal.title, existing: allTitles(tree), doneRatio: progress(tree).ratio }, undefined, {
+            onPhase: setPhase,
+          }),
         { skipUndo: true },
       );
       if (!result) return;
@@ -50,6 +55,7 @@ export function GoalView({ goal }: { goal: Goal }) {
       });
     } finally {
       setSuggesting(false);
+      setPhase(null);
     }
   };
 
@@ -140,6 +146,7 @@ export function GoalView({ goal }: { goal: Goal }) {
         <button type="button" className="text-btn suggest-btn" disabled={suggesting} onClick={() => void suggestMore()}>
           {suggesting ? '제안하는 중…' : '단계 더 제안받기'}
         </button>
+        {suggesting && <AiWait phase={phase} />}
       </section>
 
       <footer className="goal-foot">

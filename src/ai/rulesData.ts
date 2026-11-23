@@ -32,8 +32,6 @@ export interface GoalTypeRule {
   words?: RegExp;
   /** 규칙 엔진이 쓰는 계획 뼈대 */
   plan: StepDraft[];
-  /** AI에게 예시로 보여 줄 목표 (plan을 이 목표로 채워 예시 답을 만든다) */
-  example: string;
 }
 
 export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
@@ -51,7 +49,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '{이번 주}', minutes: 60 },
       { title: '일주일 뒤 돌아보고 조정하기', minutes: 10 },
     ],
-    example: '매일 20분 책 읽기',
   },
   target: {
     label: '목표치 달성',
@@ -64,7 +61,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '가장 쉬운 방법 하나 오늘 해 보기', minutes: 20 },
       { title: '일주일 뒤 다시 확인하기', minutes: 10 },
     ],
-    example: '토익 800점 받기',
   },
   sell: {
     label: '팔기',
@@ -78,7 +74,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '문의에 답하고 거래 약속 잡기', minutes: 10 },
       { title: '거래하고 마무리하기', minutes: 30 },
     ],
-    example: '안 쓰는 자전거 팔기',
   },
   buy: {
     label: '사기·고르기',
@@ -91,7 +86,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '하나 골라 주문하기', minutes: 10 },
       { title: '받았는지 확인하기', minutes: 5 },
     ],
-    example: '새 운동화 사기',
   },
   admin: {
     label: '신청·처리',
@@ -103,7 +97,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '작성해서 제출하기', minutes: 20 },
       { title: '처리 결과 확인하기', minutes: 5 },
     ],
-    example: '여권 재발급 신청',
   },
   tidy: {
     label: '정리',
@@ -115,7 +108,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '남길 것 제자리에 두기', minutes: 20 },
       { title: '버릴 것 내놓기', minutes: 10 },
     ],
-    example: '신발장 정리하기',
   },
   learn: {
     label: '배우기',
@@ -128,7 +120,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '이번 주 연습 일정 정하기', minutes: 10 },
       { title: '작은 결과물 하나 만들어 보기', minutes: 45 },
     ],
-    example: '엑셀 함수 배우기',
   },
   make: {
     label: '만들기',
@@ -141,7 +132,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '다시 보고 고치기', minutes: 20 },
       { title: '마무리하고 공유하기', minutes: 10 },
     ],
-    example: '가족 여행 사진첩 만들기',
   },
   prepare: {
     label: '준비하기',
@@ -154,7 +144,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '준비물 챙기기', minutes: 20 },
       { title: '전날 최종 점검하기', minutes: 10 },
     ],
-    example: '친구 생일 파티 준비',
   },
   communicate: {
     label: '연락·대화',
@@ -165,7 +154,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '연락하기', minutes: 15 },
       { title: '이야기한 내용 메모하기', minutes: 5 },
     ],
-    example: '집주인에게 수리 요청하기',
   },
   general: {
     label: '일반',
@@ -185,7 +173,6 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
       { title: '다음에 할 일 정하기', minutes: 5 },
       { title: '일주일 뒤 진행 상황 점검하기', minutes: 10 },
     ],
-    example: '동네 봉사활동 시작하기',
   },
 };
 

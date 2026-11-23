@@ -5,8 +5,8 @@
 import type { StepDraft } from '../db/ops';
 import { listUserTemplates } from '../db/templates';
 import { TEMPLATES } from '../model/templates';
-import { analyzeGoal, fillPlan, templateFor, withNote, type GoalAnalysis } from './analyze';
-import { GOAL_TYPES } from './rulesData';
+import { analyzeGoal, templateFor, withNote, type GoalAnalysis } from './analyze';
+import { AI_EXAMPLES } from './examples';
 import type { DecomposeRequest, RuleTemplate } from './types';
 
 export interface Example {
@@ -46,15 +46,16 @@ export const DEFAULT_EXAMPLE: Example = {
 };
 
 /**
- * AI에게 보여 줄 예시: 맞는 템플릿(내 템플릿 우선) → 그 유형의 예시 목표를 뼈대로 채운 답 → 기본 예시.
- * 작은 모델은 규칙을 읽는 것보다 예시를 흉내 내는 걸 잘하므로, 목표와 가까운 예시가 효과가 크다.
+ * AI에게 보여 줄 예시: 맞는 내 템플릿 → 그 유형의 손으로 쓴 예시 답(`AI_EXAMPLES`).
+ * 작은 모델은 규칙을 읽는 것보다 예시를 흉내 내는 걸 잘한다. 그래서 기본 규칙의 계획(기본 템플릿, 유형 뼈대)은
+ * 예시로 쓰지 않는다. 베끼면 규칙과 같은 답이 되고 규칙 말투("후보 3개 찾기")까지 따라 하기 때문이다.
+ * 내 템플릿은 사용자가 원하는 방식이므로 그대로 보여 준다.
  */
 export function exampleFor(a: GoalAnalysis, templates: readonly RuleTemplate[]): Example {
-  const t = templateFor(a, templates);
+  const t = templateFor(a, templates.filter((x) => x.mine));
   if (t) return { goal: t.title, answer: toAnswer(t.steps) };
-  if (a.type === 'general') return DEFAULT_EXAMPLE;
-  const rule = GOAL_TYPES[a.type];
-  return { goal: rule.example, answer: toAnswer(fillPlan(rule.plan, analyzeGoal(rule.example))) };
+  const hand = AI_EXAMPLES[a.type];
+  return { goal: hand.goal, answer: toAnswer(hand.steps) };
 }
 
 export function contextFor(req: DecomposeRequest, templates: readonly RuleTemplate[] = BUILTIN): DecomposeContext {

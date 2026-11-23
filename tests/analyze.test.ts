@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { analyzeGoal, describeAnalysis, planFor, templateFor, templateScore } from '../src/ai/analyze';
 import { BUILTIN, contextFor, exampleFor } from '../src/ai/context';
+import { AI_EXAMPLES } from '../src/ai/examples';
 import { buildUserPrompt } from '../src/ai/prompt';
 import { refine } from '../src/ai/refine';
 import { splitByPattern } from '../src/ai/rules';
@@ -128,12 +129,27 @@ describe('AI 지시문 연결', () => {
     expect(buildUserPrompt(req)).not.toContain('종류:');
   });
 
-  it('예시: 맞는 템플릿 → 유형 예시 → 기본 예시', () => {
-    expect(exampleFor(analyzeGoal('블로그 글 쓰기'), BUILTIN).goal).toBe('글 한 편 쓰기');
+  it('예시: 맞는 내 템플릿 → 유형별 손으로 쓴 예시 (기본 규칙 계획은 쓰지 않음)', () => {
+    // 기본 템플릿이 맞아도 예시로 쓰지 않는다
+    expect(exampleFor(analyzeGoal('블로그 글 쓰기'), BUILTIN).goal).toBe(AI_EXAMPLES.make.goal);
     const buy = exampleFor(analyzeGoal('노트북 바꾸기'), BUILTIN);
-    expect(buy.goal).toBe('새 운동화 사기');
-    expect(buy.answer).toContain('새 운동화 후보 3개 찾기');
-    expect(exampleFor(analyzeGoal('동네 봉사활동 시작하기'), BUILTIN).goal).toBe('방 정리하기');
+    expect(buy.goal).toBe(AI_EXAMPLES.buy.goal);
+    expect(buy.answer).not.toContain('3개');
+    expect(exampleFor(analyzeGoal('동네 봉사활동 시작하기'), BUILTIN).goal).toBe(AI_EXAMPLES.general.goal);
+    // 내 템플릿은 그대로 보여 준다
+    const mine = { id: 'u1', title: '내 블로그 루틴', keywords: ['블로그'], steps: [{ title: '주제 메모 열기' }], mine: true };
+    expect(exampleFor(analyzeGoal('블로그 글 쓰기'), [mine, ...BUILTIN]).goal).toBe('내 블로그 루틴');
+  });
+
+  it('손으로 쓴 예시는 지시문 규칙을 지키고, 비교용 목표와 겹치지 않는다', () => {
+    const compareGoals = ['매일 20분 책 읽기', '신발장 정리', '엑셀 함수 배우기', '동네 봉사활동 시작하기', '집주인에게 보일러 수리 요청하기'];
+    for (const ex of Object.values(AI_EXAMPLES)) {
+      expect(compareGoals).not.toContain(ex.goal);
+      const titles = ex.steps.flatMap((d) => [d.title, ...(d.children ?? []).map((c) => c.title)]);
+      for (const t of titles) expect(t.length, t).toBeLessThanOrEqual(20);
+      expect(ex.steps.length).toBeGreaterThanOrEqual(3);
+      expect(ex.steps.length).toBeLessThanOrEqual(7);
+    }
   });
 
   it('더 제안: 많이 진행됐으면 마무리 우선 지시', () => {

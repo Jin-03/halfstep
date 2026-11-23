@@ -34,6 +34,36 @@ const GOALS = [
   '기타로 노래 한 곡 치기',
 ];
 
+/**
+ * 비교할 요청. 앞의 20개는 목표 나누기(점수 기준: 4B 31/40, Chrome 내장 AI 36/40).
+ * 2026-11-23 추가: 메모가 있는 목표(같은 목표를 메모 없이 나눈 결과와 견줘 메모가 도움이 되는지 본다),
+ * 더 쪼개기, 단계 더 제안.
+ */
+interface Case {
+  /** 표에 보이는 이름 (결과 JSON에서도 이 이름으로 찾는다) */
+  label: string;
+  req: DecomposeRequest;
+}
+const CASES: Case[] = [
+  ...GOALS.map((goal): Case => ({ label: goal, req: { kind: 'goal', goal } })),
+  ...[
+    ['이번 주말까지 중고 노트북 팔기', '사진은 이미 찍어 뒀어요. 당근에 올릴 거예요.'],
+    ['토익 900점 받기', '지금 750점이고 시험은 3월이에요. 평일 하루 1시간 공부할 수 있어요.'],
+    ['아침 6시에 일어나는 습관 만들기', '평일에만 하고 싶어요. 지금은 8시쯤 일어나요.'],
+    ['11월 20일까지 블로그 글 쓰기', '주제는 이미 정했어요. 여행 후기예요.'],
+  ].map(([goal, note]): Case => ({ label: `[메모] ${goal}`, req: { kind: 'goal', goal, note } })),
+  ...[
+    { goal: '토익 900점 받기', path: [], step: '기출문제 한 회 풀기', minutes: 120 },
+    { goal: '고양이 입양 준비하기', path: ['필요한 용품 사기'], step: '화장실과 모래 고르기', minutes: 30 },
+    { goal: '유튜브 첫 영상 올리기', path: [], step: '영상 편집하기', minutes: 90 },
+  ].map((r): Case => ({ label: `[쪼개기] ${r.goal} > ${r.step}`, req: { kind: 'split', ...r } })),
+  ...[
+    { goal: '여권 재발급 신청하기', existing: ['여권 사진 찍기', '구비 서류 확인하기'], doneRatio: 0.2 },
+    { goal: '친구 결혼식 축사 준비', existing: ['축사에 넣을 일화 적기', '초안 쓰기', '소리 내어 읽어 보기'], doneRatio: 0.7 },
+    { goal: '베란다 화분 분갈이하기', existing: ['새 화분 사기', '분갈이 흙 사기'], doneRatio: 0 },
+  ].map((r): Case => ({ label: `[더 제안] ${r.goal}`, req: { kind: 'more', ...r } })),
+];
+
 const CANDIDATES = [
   { id: 'Qwen3.5-0.8B-q4f16_1-MLC', checked: false },
   { id: 'Qwen3.5-2B-q4f16_1-MLC', checked: true },
@@ -80,15 +110,15 @@ async function storageMB(): Promise<number> {
   return (e.usage ?? 0) / 1024 / 1024;
 }
 
-async function requestFor(goal: string): Promise<DecomposeRequest> {
-  const req: DecomposeRequest = { kind: 'goal', goal };
-  return { ...req, context: await makeContext(req) };
+async function requestFor(c: Case): Promise<DecomposeRequest> {
+  return { ...c.req, context: await makeContext(c.req) };
 }
 
 async function runRules(): Promise<RunResult> {
   const run: RunResult = { id: '기본 규칙', goals: [] };
-  for (const goal of GOALS) {
-    const req = await requestFor(goal);
+  for (const c of CASES) {
+    const goal = c.label;
+    const req = await requestFor(c);
     const t = performance.now();
     const drafts = refine(rulesPlan(req, req.context!).drafts, req);
     run.goals.push({ goal, ms: Math.round(performance.now() - t), ok: drafts.length > 0, drafts });
@@ -103,9 +133,10 @@ async function runChrome(): Promise<RunResult> {
     run.error = `${a.status}: ${a.reason ?? ''}`;
     return run;
   }
-  for (const [i, goal] of GOALS.entries()) {
-    status(`Chrome 내장 AI: ${i + 1}/${GOALS.length} ${goal}`);
-    const req = await requestFor(goal);
+  for (const [i, c] of CASES.entries()) {
+    const goal = c.label;
+    status(`Chrome 내장 AI: ${i + 1}/${CASES.length} ${goal}`);
+    const req = await requestFor(c);
     const t = performance.now();
     try {
       const d = await chromeEngine.decompose(req);
@@ -127,9 +158,10 @@ async function runModel(id: string): Promise<RunResult> {
     const model = await loadModel(id, (p, text) => status(`${id}: ${Math.round(p * 100)}% ${text}`));
     run.loadMs = Math.round(performance.now() - t0);
     run.storageDeltaMB = Math.round((await storageMB()) - before);
-    for (const [i, goal] of GOALS.entries()) {
-      status(`${id}: ${i + 1}/${GOALS.length} ${goal}`);
-      const req = await requestFor(goal);
+    for (const [i, c] of CASES.entries()) {
+      const goal = c.label;
+      status(`${id}: ${i + 1}/${CASES.length} ${goal}`);
+      const req = await requestFor(c);
       const t = performance.now();
       try {
         const a = await askModel(model, req);
@@ -164,7 +196,7 @@ function render() {
       return `<th>${r.id}<div class="meta">읽힌 답 ${ok}/${r.goals.length} · 평균 ${avg}초${r.loadMs !== undefined ? ` · 불러오기 ${Math.round(r.loadMs / 1000)}초` : ''}${r.storageDeltaMB ? ` · +${r.storageDeltaMB}MB` : ''}</div>${r.error ? `<div class="fail">${r.error}</div>` : ''}</th>`;
     })
     .join('')}</tr>`;
-  const rows = GOALS.map((goal) => {
+  const rows = CASES.map(({ label: goal }) => {
     const cells = runs
       .map((r) => {
         const g = r.goals.find((x) => x.goal === goal);

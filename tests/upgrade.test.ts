@@ -16,10 +16,30 @@ it('DB 버전 1 → 2: 기존 목표·단계·설정이 그대로 남고 템플�
 
   const v2 = new HalfStepDB(name);
   await v2.open();
-  expect(v2.verno).toBe(2);
+  expect(v2.verno).toBe(3);
   expect(await v2.goals.get('g1')).toMatchObject({ title: '옛 목표' });
   expect(await v2.steps.where('doneAt').above(0).count()).toBe(1);
   expect(await v2.settings.get('enginePref')).toMatchObject({ value: 'rules' });
   expect(await v2.templates.count()).toBe(0);
   v2.close();
+});
+
+it('DB 버전 2 → 3: source "ai-chrome" 등이 source "ai" + engine으로 나뉜다', async () => {
+  const name = 'upgrade-test-v3';
+  const old = new Dexie(name);
+  old.version(1).stores({ goals: 'id, createdAt', steps: 'id, goalId, doneAt', settings: 'key' });
+  old.version(2).stores({ templates: 'id, updatedAt' });
+  const row = (id: string, source: string) => ({ id, goalId: 'g', parentId: null, order: 1000, title: id, doneAt: null, source, createdAt: 1 });
+  await old.table('steps').bulkAdd([row('a', 'ai-chrome'), row('b', 'ai-native'), row('c', 'rules'), row('d', 'ai-이상한값')]);
+  old.close();
+
+  const db = new HalfStepDB(name);
+  const byId = Object.fromEntries((await db.steps.toArray()).map((s) => [s.id, s]));
+  expect(byId.a).toMatchObject({ source: 'ai', engine: 'chrome' });
+  expect(byId.b).toMatchObject({ source: 'ai', engine: 'native' });
+  expect(byId.c.source).toBe('rules');
+  expect(byId.c.engine).toBeUndefined();
+  expect(byId.d.source).toBe('ai');
+  expect(byId.d.engine).toBeUndefined();
+  db.close();
 });

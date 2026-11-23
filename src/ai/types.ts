@@ -1,5 +1,5 @@
 import type { StepDraft } from '../db/ops';
-import type { StepSource } from '../db/schema';
+import type { AiEngineId, StepOrigin } from '../db/schema';
 
 /**
  * 분해 요청 3종
@@ -42,15 +42,18 @@ export interface Availability {
 }
 
 export interface Engine {
-  id: 'rules' | 'chrome' | 'gemini-nano' | 'native';
+  id: 'rules' | AiEngineId;
   /** 화면에 보여 줄 이름 */
   label: string;
   /** 설정 화면에 보여 줄 한 줄 설명 */
   description: string;
-  /** 단계에 기록할 생성 경로 */
-  source: StepSource;
   available(): Promise<Availability>;
   /** 모델 받기. 진행률은 0~1 */
   download?(onProgress: (ratio: number) => void, signal?: AbortSignal): Promise<void>;
   decompose(req: DecomposeRequest, signal?: AbortSignal): Promise<StepDraft[]>;
+}
+
+/** 이 엔진이 만든 단계에 기록할 출처 */
+export function originOf(engine: Engine): StepOrigin {
+  return engine.id === 'rules' ? { source: 'rules' } : { source: 'ai', engine: engine.id };
 }

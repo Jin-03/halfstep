@@ -36,7 +36,7 @@ async function sample() {
   return createGoal({
     title: '  5km 달리기  ',
     note: '',
-    source: 'template',
+    origin: { source: 'template' },
     steps: [
       { title: '준비', children: [{ title: '신발', minutes: 5 }, { title: '물', minutes: 2 }] },
       { title: '달리기', minutes: 30 },
@@ -111,7 +111,7 @@ describe('단계 추가', () => {
     const run = await byTitle(id, '달리기');
     await setDone(run.id, true);
     expect((await db.steps.get(run.id))!.doneAt).not.toBeNull();
-    await addSteps(id, run.id, [{ title: '1km', minutes: 6 }, { title: '2km', minutes: 6 }], 'rules');
+    await addSteps(id, run.id, [{ title: '1km', minutes: 6 }, { title: '2km', minutes: 6 }], { source: 'rules' });
     expect((await db.steps.get(run.id))!.doneAt).toBeNull();
     await expectInvariant1(id);
   });
@@ -119,7 +119,7 @@ describe('단계 추가', () => {
   it('쪼갠 단계의 minutes가 보존된다 (알려진 문제 해결)', async () => {
     const id = await sample();
     const run = await byTitle(id, '달리기');
-    await addSteps(id, run.id, [{ title: '1km', minutes: 6 }, { title: '나머지', minutes: 24 }], 'rules');
+    await addSteps(id, run.id, [{ title: '1km', minutes: 6 }, { title: '나머지', minutes: 24 }], { source: 'rules' });
     expect((await byTitle(id, '1km')).minutes).toBe(6);
     expect((await byTitle(id, '나머지')).minutes).toBe(24);
     expect((await byTitle(id, '나머지')).source).toBe('rules');

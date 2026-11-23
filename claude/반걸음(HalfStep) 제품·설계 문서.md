@@ -198,6 +198,8 @@ db.version(1).stores({
 db.version(2).stores({
   templates: 'id, updatedAt',
 });
+// 2026-11-23: 테이블 그대로, steps의 source 'ai-chrome' 등 → source 'ai' + engine 'chrome'
+db.version(3).stores({}).upgrade(...);
 ```
 
 인덱스가 아닌 필드는 버전을 올리지 않고 더한다. 데이터가 작아(수천 행 이하) 목표 단위 또는 전체를 읽어 메모리에서 트리를 만든다.
@@ -229,10 +231,11 @@ db.version(2).stores({
 | minutes | number? | 리프에서만 의미 있음. 양수만, 정수로 반올림 |
 | doneAt | number \| null | 완료 시각. 리프에만 값이 있음. 인덱스(null은 인덱스에서 빠지므로 “완료된 것만” 조회가 자연스러움, 예: 이번 주 완료 = `steps.where('doneAt').between(weekStart, now)`) |
 | collapsed | boolean? | 접힘 상태 |
-| source | 'ai-chrome' \| 'ai-gemini-nano' \| 'ai-native' \| 'rules' \| 'template' \| 'manual' \| 'legacy' | 만들어진 경로 (현재 코드) |
+| source | 'ai' \| 'rules' \| 'template' \| 'manual' \| 'legacy' | 만들어진 방법 |
+| engine | 'chrome' \| 'webllm' \| 'gemini-nano' \| 'native' ? | source가 'ai'일 때 만든 엔진 |
 | createdAt | number (ms) |  |
 
-**[결정]** `source`를 `'ai' | 'rules' | 'template' | 'manual' | 'legacy'`와 `engine`(‘chrome’, ‘webllm’, ‘native’ 등, AI일 때만)으로 나눈다. 엔진이 늘어도 타입을 바꾸지 않아도 된다. 아직 코드에는 적용하지 않았고, WebLLM 엔진을 넣을 때 함께 적용한다(Dexie 버전 올리기 + 기존 'ai-*' 값 변환, 백업 읽기에서도 같은 변환).
+**[결정·구현됨, 2026-11-23]** 예전에는 `source` 하나에 엔진까지 넣었다('ai-chrome' 등). 엔진이 늘 때마다 타입을 바꾸지 않도록 `source`('ai')와 `engine`으로 나눴다. 코드에서는 둘을 묶어 `StepOrigin { source, engine? }`으로 넘긴다(`createGoal({origin})`, `addSteps(..., origin)`, `DecomposeResult.origin`, `originOf(engine)`). 예전 값은 `readOrigin()`이 바꿔 읽는다(DB 버전 3 업그레이드, 백업 가져오기 모두). 모르는 'ai-…' 값은 DB에서는 엔진 없는 'ai', 백업에서는 manual로 둔다.
 
 ### settings
 
@@ -251,7 +254,7 @@ db.version(2).stores({
 
 템플릿 변경은 목표의 실행 취소와 별개다.
 
-### 이후 후보 (version 3)
+### 이후 후보 (version 4)
 
 - activity 로그 테이블(완료·취소·쪼개기 이력, 연속 기록 통계)
 - 목표 수동 보관(archivedAt, 완료 전에도 숨기기), 수동 정렬
@@ -308,7 +311,7 @@ db.version(2).stores({
 
 현재 코드(`src/ai/types.ts`):
 
-- `Engine { id: 'rules' | 'chrome' | 'gemini-nano' | 'native'; label; description; source; available() → {status: ready | needs-download | downloading | unsupported, reason}; download?(진행률, signal); decompose(req, signal) }`
+- `Engine { id: 'rules' | AiEngineId; label; description; available() → {status: ready | needs-download | downloading | unsupported, reason}; download?(진행률, signal); decompose(req, signal) }`
 - 요청 3종: `goal`(목표 나누기), `split`(단계 쪼개기: goal·step·minutes·path), `more`(더 제안: goal·existing·doneRatio).
 - `decompose()`는 컨텍스트를 한 번 만들어 모든 엔진에 넘기고, 결과를 `refine`으로 검사한 뒤 `basis`(규칙 근거), `understood`(읽어 낸 정보), `fallbackReason`을 함께 돌려준다.
 
@@ -539,7 +542,7 @@ npm run build      # 타입 검사 + 빌드
 
 1. **휴대폰에서 확인 (사용자)**: Android Chrome으로 위 주소 → “홈 화면에 추가” → 한 번 연 뒤 비행기 모드로 다시 열기. 되면 웹 v1 완료 기준 4번 충족.
 2. **실제 Chrome 내장 AI 결과 확인 (사용자 PC)**: M5의 시험용 목표 10개로 나눠 보고 결과 공유 → 지시문·예시 조정.
-3. **WebLLM 엔진 (선택해서 받기)**: 결정은 끝남(“AI 분해” 참고). 기본 모델 고르기부터. `source` → `'ai'` + `engine` 나누기도 이때 함께 적용.
+3. **WebLLM 엔진 (선택해서 받기)**: 결정은 끝남(“AI 분해” 참고). 기본 모델 고르기부터. (`source` → `'ai'` + `engine` 나누기는 먼저 끝냄)
 4. **새 버전 안내 확인**: 코드는 완료(“배포와 PWA” 참고). 배포 두 번(이번 것 + 다음 것) 뒤, 열어 둔 앱에 안내가 뜨고 “새로고침”으로 바뀌는지 확인.
 5. 나중에: 무료 글꼴(Pretendard), 더 나누기 개선, 리프 체크 효과 강도 조정.
 
@@ -587,7 +590,7 @@ npm run build      # 타입 검사 + 빌드
   - `src/ai/native.ts`: 앱에서만 쓰는 `native` 엔진. 앱에서는 서비스 워커를 등록하지 않는다.
   - 미확인: tasks-genai 0.10.24 버전, LlmInferenceSession API, 모델 URL 파일명. Android Studio가 없어 빌드해 보지 못했다.
   - MediaPipe는 JSON 제약 디코딩이 없어 관대한 파싱에 의존한다.
-- 이 폴더의 코드에는 `source`의 'ai-native', 'ai-gemini-nano'와 엔진 id 'gemini-nano', 'native' 자리만 있다.
+- 이 폴더의 코드에는 엔진 id 'gemini-nano', 'native' 자리만 있다(`AiEngineId`).
 - 앱(WebView)에서는 `<a download>` 저장이 안 되므로 Capacitor Filesystem/Share 플러그인으로 바꿔야 한다. 파일 고르기(input type=file)는 동작한다.
 
 ## 결정 필요
@@ -606,5 +609,5 @@ npm run build      # 타입 검사 + 빌드
 - [x] 더 쪼개기·단계 더 제안도 미리 보기를 거칠까? → **지금처럼 바로 저장.** 처음에는 실행 취소 전에 “정말 되돌리겠습니까?” 확인 창을 띄우기로 했으나, 같은 날 **확인 창 대신 다시 실행 기능**을 만들기로 바꿨다.
 - [x] 백업 권유 기준은? → **권유하지 않는다.**
 - [x] 설정에 축하 효과 끄기를 넣을까? → **넣는다.** 축하 효과는 목표 완료만 더 화려하게 바꾼다.
-- [x] 데이터 모델의 `source`를 `'ai'` + `engine`으로 나눌까? → **나눈다.** WebLLM 엔진을 넣을 때 함께 적용한다.
+- [x] 데이터 모델의 `source`를 `'ai'` + `engine`으로 나눌까? → **나눈다.** 구현됨(DB 버전 3).
 - [x] 새 버전 적용을 자동으로 둘까, “새로고침” 안내를 띄울까? → **안내를 띄운다.** 사용자가 누를 때 바꾼다.

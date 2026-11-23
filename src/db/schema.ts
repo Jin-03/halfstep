@@ -1,14 +1,43 @@
 import Dexie, { type EntityTable } from 'dexie';
 
-/** 단계가 만들어진 경로 */
+/** 단계가 만들어진 방법. AI면 어느 엔진인지는 engine에 따로 적는다 */
 export type StepSource =
-  | 'ai-native' // 앱: 기기 내 AI (MediaPipe)
-  | 'ai-chrome' // 웹: Chrome 내장 AI
-  | 'ai-gemini-nano' // 앱: Android 시스템의 Gemini Nano
+  | 'ai'
   | 'rules' // 기본 규칙 엔진
   | 'template'
   | 'manual'
   | 'legacy'; // localStorage에서 옮겨 온 데이터
+
+/** 단계를 만든 AI 엔진 */
+export type AiEngineId =
+  | 'chrome' // 웹: Chrome 내장 AI
+  | 'webllm' // 웹: WebLLM (선택해서 받기)
+  | 'gemini-nano' // 앱: Android 시스템의 Gemini Nano
+  | 'native'; // 앱: 기기 내 AI (MediaPipe)
+
+export const STEP_SOURCES: readonly StepSource[] = ['ai', 'rules', 'template', 'manual', 'legacy'];
+export const AI_ENGINES: readonly AiEngineId[] = ['chrome', 'webllm', 'gemini-nano', 'native'];
+
+/** 단계의 출처: 방법 + (AI면) 엔진 */
+export interface StepOrigin {
+  source: StepSource;
+  engine?: AiEngineId;
+}
+
+/**
+ * 저장된 값이나 백업 값을 지금 형식의 출처로 읽는다.
+ * DB 버전 2까지의 'ai-chrome'처럼 엔진이 붙은 값은 'ai' + engine으로 나눈다. 모르는 값이면 null.
+ */
+export function readOrigin(source: unknown, engine?: unknown): StepOrigin | null {
+  if (typeof source !== 'string') return null;
+  if (source.startsWith('ai-')) {
+    const e = source.slice(3) as AiEngineId;
+    return AI_ENGINES.includes(e) ? { source: 'ai', engine: e } : null;
+  }
+  if (!STEP_SOURCES.includes(source as StepSource)) return null;
+  if (source !== 'ai') return { source: source as StepSource };
+  return AI_ENGINES.includes(engine as AiEngineId) ? { source: 'ai', engine: engine as AiEngineId } : { source: 'ai' };
+}
 
 export interface Goal {
   id: string;
@@ -40,6 +69,8 @@ export interface StepRow {
   doneAt: number | null;
   collapsed?: boolean;
   source: StepSource;
+  /** source가 'ai'일 때 만든 엔진 */
+  engine?: AiEngineId;
   createdAt: number;
 }
 
@@ -91,6 +122,20 @@ export class HalfStepDB extends Dexie {
     this.version(2).stores({
       templates: 'id, updatedAt',
     });
+    // v3 (2026-11-23): source 'ai-chrome' 등 → source 'ai' + engine 'chrome'
+    this.version(3)
+      .stores({})
+      .upgrade((tx) =>
+        tx
+          .table('steps')
+          .toCollection()
+          .modify((s: { source: unknown; engine?: unknown }) => {
+            if (typeof s.source !== 'string' || !s.source.startsWith('ai-')) return;
+            const o = readOrigin(s.source) ?? { source: 'ai' };
+            s.source = o.source;
+            if (o.engine) s.engine = o.engine;
+          }),
+      );
   }
 }
 

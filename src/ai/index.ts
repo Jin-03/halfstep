@@ -5,14 +5,14 @@
  * AI가 실패하거나, 너무 오래 걸리거나, 읽을 수 없는 답을 내면 기본 규칙으로 넘어가고 그 이유를 알려 준다.
  */
 import type { StepDraft } from '../db/ops';
-import type { StepSource } from '../db/schema';
+import type { StepOrigin } from '../db/schema';
 import { getSetting } from '../db/settings';
 import { describeAnalysis } from './analyze';
 import { chromeEngine } from './chrome';
 import { makeContext } from './context';
 import { refine } from './refine';
 import { rulesEngine, rulesPlan } from './rules';
-import type { DecomposeRequest, Engine } from './types';
+import { originOf, type DecomposeRequest, type Engine } from './types';
 import { josa } from '../ui/format';
 
 export const ENGINES: readonly Engine[] = [chromeEngine, rulesEngine];
@@ -21,7 +21,7 @@ export const AI_TIMEOUT_MS = 60_000;
 
 export interface DecomposeResult {
   drafts: StepDraft[];
-  source: StepSource;
+  origin: StepOrigin;
   engineLabel: string;
   /** 고른 엔진 대신 기본 규칙을 썼다면 그 이유 */
   fallbackReason?: string;
@@ -78,7 +78,7 @@ export async function decompose(
     const plan = rulesPlan(full, full.context);
     return {
       drafts: refine(plan.drafts, full),
-      source: rulesEngine.source,
+      origin: originOf(rulesEngine),
       engineLabel: rulesEngine.label,
       basis: plan.basis,
       understood,
@@ -94,7 +94,7 @@ export async function decompose(
     // 엔진을 고르는 사이에 이미 멈췄을 수 있다.
     if (signal?.aborted) throw new DOMException('멈췄어요', 'AbortError');
     const drafts = await withTimeout(engine.decompose(full, ctrl.signal), opts.timeoutMs ?? AI_TIMEOUT_MS, ctrl);
-    if (drafts.length > 0) return { drafts: refine(drafts, full), source: engine.source, engineLabel: engine.label, understood };
+    if (drafts.length > 0) return { drafts: refine(drafts, full), origin: originOf(engine), engineLabel: engine.label, understood };
     return viaRules(`${engine.label}의 답을 단계로 읽지 못했어요.`);
   } catch (err) {
     if (signal?.aborted) throw new DOMException('멈췄어요', 'AbortError');

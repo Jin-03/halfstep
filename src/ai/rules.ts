@@ -132,7 +132,6 @@ export const rulesEngine: Engine = {
   id: 'rules',
   label: '기본 규칙',
   description: '정해진 패턴으로 나눠요. 어디서나 바로 동작해요.',
-  source: 'rules',
   available: async () => ({ status: 'ready' }),
   decompose: async (req) => rulesPlan(req, req.context ?? (await makeContext(req))).drafts,
 };

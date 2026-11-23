@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { decompose as runDecompose, isAbort } from '../ai';
 import { createGoal, type StepDraft } from '../db/ops';
-import type { StepSource } from '../db/schema';
+import type { StepOrigin } from '../db/schema';
 import { parseOutline, toOutline } from '../model/outline';
 import { TEMPLATES } from '../model/templates';
 import { useUserTemplates } from '../db/templates';
@@ -32,8 +32,8 @@ const OUTLINE_HINT = `주제 정하기
 올리기 10분`;
 
 /** 직접 적기로 옮겨 온 내용이 원래 어디서 왔는지. 고치지 않고 만들면 그 출처를 기록한다 */
-interface Origin {
-  source: StepSource;
+interface EditedFrom {
+  origin: StepOrigin;
   outline: string;
 }
 
@@ -42,12 +42,12 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
   const [title, setTitle] = useState('');
   const [reward, setReward] = useState('');
   const [method, setMethod] = useState<Method>('auto');
-  const [auto, setAuto] = useState<{ forTitle: string; drafts: StepDraft[]; source: StepSource; engine: string; fallbackReason?: string; basis?: string; understood: string } | null>(null);
+  const [auto, setAuto] = useState<{ forTitle: string; drafts: StepDraft[]; origin: StepOrigin; engine: string; fallbackReason?: string; basis?: string; understood: string } | null>(null);
   const [busy, setBusy] = useState(false);
   const [template, setTemplate] = useState<Pickable | null>(null);
   const userTemplates = useUserTemplates();
   const [outline, setOutline] = useState('');
-  const [origin, setOrigin] = useState<Origin | null>(null);
+  const [editedFrom, setEditedFrom] = useState<EditedFrom | null>(null);
   const abort = useRef<AbortController | null>(null);
   const templatePreview = useRef<HTMLDivElement>(null);
 
@@ -70,7 +70,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
     setBusy(true);
     try {
       const r = await runDecompose({ kind: 'goal', goal }, ctrl.signal);
-      setAuto({ forTitle: goal, drafts: r.drafts, source: r.source, engine: r.engineLabel, fallbackReason: r.fallbackReason, basis: r.basis, understood: r.understood });
+      setAuto({ forTitle: goal, drafts: r.drafts, origin: r.origin, engine: r.engineLabel, fallbackReason: r.fallbackReason, basis: r.basis, understood: r.understood });
     } catch (err) {
       if (!isAbort(err)) throw err;
     } finally {
@@ -90,27 +90,27 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
     if (!title.trim()) setTitle(t.title);
   };
 
-  const editAsText = (drafts: StepDraft[], source: StepSource) => {
+  const editAsText = (drafts: StepDraft[], from: StepOrigin) => {
     const text = toOutline(drafts);
     setOutline(text);
-    setOrigin({ source, outline: text });
+    setEditedFrom({ origin: from, outline: text });
     setMethod('direct');
   };
 
   // 지금 탭에서 만들 단계와 출처. 만들 수 없는 상태면 null
-  const plan: { drafts: StepDraft[]; source: StepSource } | null =
+  const plan: { drafts: StepDraft[]; origin: StepOrigin } | null =
     method === 'auto'
       ? auto && !autoStale
-        ? { drafts: auto.drafts, source: auto.source }
+        ? { drafts: auto.drafts, origin: auto.origin }
         : null
       : method === 'template'
-        ? template && { drafts: template.steps, source: 'template' }
-        : { drafts: directDrafts, source: origin && origin.outline === outline ? origin.source : 'manual' };
+        ? template && { drafts: template.steps, origin: { source: 'template' } }
+        : { drafts: directDrafts, origin: editedFrom && editedFrom.outline === outline ? editedFrom.origin : { source: 'manual' } };
 
   const create = async () => {
     if (!title.trim() || !plan) return;
     const id = await run('목표 만들기', null, () =>
-      createGoal({ title, reward, steps: plan.drafts, source: plan.source }),
+      createGoal({ title, reward, steps: plan.drafts, origin: plan.origin }),
     );
     if (id) onCreated(id);
   };
@@ -180,7 +180,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
                   {auto.basis && ` (${auto.basis})`}
                 </p>
                 {auto.understood && <p className="hint small">읽어 낸 정보: {auto.understood}</p>}
-                <button type="button" className="text-btn" onClick={() => editAsText(auto.drafts, auto.source)}>
+                <button type="button" className="text-btn" onClick={() => editAsText(auto.drafts, auto.origin)}>
                   고쳐서 쓰기
                 </button>
               </>
@@ -212,7 +212,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
             {template && (
               <div ref={templatePreview}>
                 <DraftPreview drafts={template.steps} />
-                <button type="button" className="text-btn" onClick={() => editAsText(template.steps, 'template')}>
+                <button type="button" className="text-btn" onClick={() => editAsText(template.steps, { source: 'template' })}>
                   고쳐서 쓰기
                 </button>
               </div>

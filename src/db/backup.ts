@@ -12,7 +12,7 @@
  * - 한 트랜잭션: 중간에 실패하면 아무것도 들어가지 않는다
  */
 import { HalfStepError } from './ops';
-import { db, newId, ORDER_GAP, type Goal, type StepRow, type StepSource, type TemplateStep, type UserTemplate } from './schema';
+import { db, newId, ORDER_GAP, type Goal, type StepRow, readOrigin, type TemplateStep, type UserTemplate } from './schema';
 import { getSetting, setSetting } from './settings';
 
 export const BACKUP_FORMAT = 'halfstep';
@@ -60,7 +60,6 @@ export interface ParsedBackup {
   warnings: string[];
 }
 
-const SOURCES: StepSource[] = ['ai-native', 'ai-gemini-nano', 'ai-chrome', 'rules', 'template', 'manual', 'legacy'];
 
 type Obj = Record<string, unknown>;
 const isObj = (v: unknown): v is Obj => !!v && typeof v === 'object' && !Array.isArray(v);
@@ -137,7 +136,7 @@ function parseV2(data: Obj, now: number): ParsedBackup {
       continue;
     }
     const minutes = pos(s.minutes);
-    const source = SOURCES.includes(s.source as StepSource) ? (s.source as StepSource) : 'manual';
+    const origin = readOrigin(s.source, s.engine) ?? { source: 'manual' as const };
     steps.push({
       id,
       goalId,
@@ -147,7 +146,7 @@ function parseV2(data: Obj, now: number): ParsedBackup {
       ...(minutes ? { minutes } : {}),
       doneAt: time(s.doneAt) ?? null,
       ...(s.collapsed === true ? { collapsed: true } : {}),
-      source,
+      ...origin,
       createdAt: time(s.createdAt) ?? now,
     });
   }

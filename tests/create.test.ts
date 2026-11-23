@@ -87,7 +87,7 @@ describe('템플릿', () => {
   it('템플릿으로 목표를 만들 수 있다', async () => {
     await db.steps.clear();
     for (const t of TEMPLATES) {
-      const id = await createGoal({ title: t.title, steps: t.steps, source: 'template' });
+      const id = await createGoal({ title: t.title, steps: t.steps, origin: { source: 'template' } });
       const rows = await db.steps.where('goalId').equals(id).toArray();
       expect(rows).toHaveLength(countDrafts(t.steps));
       expect(progress(buildTree(rows)).done).toBe(0);

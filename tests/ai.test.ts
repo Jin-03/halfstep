@@ -270,7 +270,6 @@ describe('엔진 선택과 기본 규칙으로 넘어가기', () => {
     id: 'chrome',
     label: 'Chrome 내장 AI',
     description: '',
-    source: 'ai-chrome',
     available: async () => ({ status: 'ready' }),
     decompose: async () => [{ title: 'AI 단계', minutes: 5 }],
     ...over,
@@ -278,7 +277,7 @@ describe('엔진 선택과 기본 규칙으로 넘어가기', () => {
 
   it('자동: 쓸 수 있는 첫 엔진', async () => {
     const r = await decompose({ kind: 'goal', goal: '시험 공부' }, undefined, { engines: [fake({}), rulesEngine] });
-    expect(r).toMatchObject({ source: 'ai-chrome', engineLabel: 'Chrome 내장 AI' });
+    expect(r).toMatchObject({ origin: { source: 'ai', engine: 'chrome' }, engineLabel: 'Chrome 내장 AI' });
     expect(r.fallbackReason).toBeUndefined();
   });
 
@@ -286,7 +285,7 @@ describe('엔진 선택과 기본 규칙으로 넘어가기', () => {
     const r = await decompose({ kind: 'goal', goal: '시험 공부' }, undefined, {
       engines: [fake({ available: async () => ({ status: 'unsupported', reason: '없음' }) }), rulesEngine],
     });
-    expect(r.source).toBe('rules');
+    expect(r.origin).toEqual({ source: 'rules' });
     expect(r.fallbackReason).toBeUndefined();
     expect(r.drafts[0].title).toBe('시험 범위 파악하기');
   });
@@ -296,7 +295,7 @@ describe('엔진 선택과 기본 규칙으로 넘어가기', () => {
     const r = await decompose({ kind: 'goal', goal: 'x' }, undefined, {
       engines: [fake({ available: async () => ({ status: 'needs-download', reason: '모델을 받아야 해요.' }) }), rulesEngine],
     });
-    expect(r.source).toBe('rules');
+    expect(r.origin).toEqual({ source: 'rules' });
     expect(r.fallbackReason).toBe('Chrome 내장 AI: 모델을 받아야 해요.');
   });
 
@@ -311,7 +310,7 @@ describe('엔진 선택과 기본 규칙으로 넘어가기', () => {
     const r = await decompose({ kind: 'goal', goal: 'x' }, undefined, {
       engines: [fake({ decompose: async () => { throw new Error('boom'); } }), rulesEngine],
     });
-    expect(r.source).toBe('rules');
+    expect(r.origin).toEqual({ source: 'rules' });
     expect(r.fallbackReason).toBe('Chrome 내장 AI 실행 중 문제가 생겼어요.');
     warn.mockRestore();
   });

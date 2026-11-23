@@ -45,7 +45,7 @@ export function GoalView({ goal }: { goal: Goal }) {
         notify('더 제안할 단계가 없어요.');
         return;
       }
-      await run('단계 더 제안', goal.id, () => addSteps(goal.id, null, result.drafts, result.source), {
+      await run('단계 더 제안', goal.id, () => addSteps(goal.id, null, result.drafts, result.origin), {
         notify: `단계 ${result.drafts.length}개를 더했어요${result.fallbackReason ? ' (기본 규칙 사용)' : ''}`,
       });
     } finally {

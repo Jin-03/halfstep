@@ -70,8 +70,8 @@ describe('망가진 백업 고치기', () => {
     const p = parseBackup(
       base({
         steps: [
-          { id: 'p', goalId: 'g', parentId: null, order: 1000, title: '부모', doneAt: 5, source: 'manual', createdAt: 1 },
-          { id: 'c', goalId: 'g', parentId: 'p', order: 1000, title: '자식', doneAt: 6, source: 'ai-webllm', createdAt: 1, minutes: -3 },
+          { id: 'p', goalId: 'g', parentId: null, order: 1000, title: '부모', doneAt: 5, source: 'ai-chrome', createdAt: 1 },
+          { id: 'c', goalId: 'g', parentId: 'p', order: 1000, title: '자식', doneAt: 6, source: 'ai-unknown', createdAt: 1, minutes: -3 },
           { id: 'o', goalId: 'g', parentId: 'nope', order: 'x', title: '고아', doneAt: null, createdAt: 1 },
           { id: 'x', goalId: 'other', parentId: null, order: 1, title: '다른 목표', doneAt: null },
           { id: 'y', goalId: 'g', parentId: null, order: 1, title: '   ', doneAt: null },
@@ -82,6 +82,7 @@ describe('망가진 백업 고치기', () => {
     expect(Object.keys(byId).sort()).toEqual(['c', 'o', 'p']);
     expect(byId.p.doneAt).toBeNull(); // 불변식 1
     expect(byId.c).toMatchObject({ doneAt: 6, source: 'manual' });
+    expect(byId.p).toMatchObject({ source: 'ai', engine: 'chrome' }); // 예전 백업의 'ai-chrome'
     expect(byId.c).not.toHaveProperty('minutes');
     expect(byId.o).toMatchObject({ parentId: null, order: 3000 });
     expect(p.warnings).toHaveLength(2);

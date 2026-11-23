@@ -109,7 +109,7 @@ function StepItem({
         notify('더 나눌 방법을 찾지 못했어요. 하위 단계를 직접 추가해 보세요.');
         return;
       }
-      await run('더 쪼개기', goalId, () => addSteps(goalId, node.id, result.drafts, result.source), {
+      await run('더 쪼개기', goalId, () => addSteps(goalId, node.id, result.drafts, result.origin), {
         notify: `단계 ${result.drafts.length}개로 나눴어요${result.fallbackReason ? ' (기본 규칙 사용)' : ''}`,
       });
     } finally {

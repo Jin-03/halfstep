@@ -2,8 +2,10 @@
  * 모든 쓰기는 이 파일의 함수로만 한다. 각 함수는 한 트랜잭션 안에서
  * db-design.md의 불변식 1~6을 지키고 goals.updatedAt을 갱신한다.
  */
-import { db, newId, ORDER_GAP, type Goal, type StepRow, type StepSource } from './schema';
+import { db, newId, ORDER_GAP, type Goal, type StepRow, type StepOrigin } from './schema';
 import { childrenMap, descendantIds, leafIds } from '../model/tree';
+
+const MANUAL: StepOrigin = { source: 'manual' };
 
 /** 새로 만들 단계(하위 단계 포함 가능) */
 export interface StepDraft {
@@ -60,7 +62,7 @@ function flatten(
   goalId: string,
   parentId: string | null,
   drafts: readonly StepDraft[],
-  source: StepSource,
+  origin: StepOrigin,
   firstOrder: number,
   t: number,
   out: StepRow[],
@@ -76,10 +78,11 @@ function flatten(
       title: cleanTitle(d.title),
       ...(minutes !== undefined ? { minutes } : {}),
       doneAt: null,
-      source,
+      source: origin.source,
+      ...(origin.engine ? { engine: origin.engine } : {}),
       createdAt: t,
     });
-    if (d.children?.length) flatten(goalId, id, d.children, source, ORDER_GAP, t, out);
+    if (d.children?.length) flatten(goalId, id, d.children, origin, ORDER_GAP, t, out);
     return id;
   });
 }
@@ -91,7 +94,7 @@ export function createGoal(input: {
   note?: string;
   reward?: string;
   steps?: StepDraft[];
-  source?: StepSource;
+  origin?: StepOrigin;
 }): Promise<string> {
   return rw(async () => {
     const t = clock();
@@ -107,7 +110,7 @@ export function createGoal(input: {
       updatedAt: t,
     });
     const rows: StepRow[] = [];
-    flatten(id, null, input.steps ?? [], input.source ?? 'manual', ORDER_GAP, t, rows);
+    flatten(id, null, input.steps ?? [], input.origin ?? MANUAL, ORDER_GAP, t, rows);
     await db.steps.bulkAdd(rows);
     return id;
   });
@@ -166,7 +169,7 @@ export function addSteps(
   goalId: string,
   parentId: string | null,
   drafts: readonly StepDraft[],
-  source: StepSource = 'manual',
+  origin: StepOrigin = MANUAL,
 ): Promise<string[]> {
   return rw(async () => {
     await requireGoal(goalId);
@@ -180,7 +183,7 @@ export function addSteps(
     const siblings = (await goalRows(goalId)).filter((r) => r.parentId === parentId);
     const maxOrder = siblings.reduce((m, r) => Math.max(m, r.order), 0);
     const rows: StepRow[] = [];
-    const ids = flatten(goalId, parentId, drafts, source, maxOrder + ORDER_GAP, t, rows);
+    const ids = flatten(goalId, parentId, drafts, origin, maxOrder + ORDER_GAP, t, rows);
     await db.steps.bulkAdd(rows);
     await touch(goalId, t);
     return ids;
@@ -191,9 +194,9 @@ export async function addStep(
   goalId: string,
   parentId: string | null,
   draft: StepDraft,
-  source: StepSource = 'manual',
+  origin: StepOrigin = MANUAL,
 ): Promise<string> {
-  const [id] = await addSteps(goalId, parentId, [draft], source);
+  const [id] = await addSteps(goalId, parentId, [draft], origin);
   return id;
 }
 

@@ -38,7 +38,6 @@ export const chromeEngine: Engine = {
   id: 'chrome',
   label: 'Chrome 내장 AI',
   description: '데스크톱 Chrome에 들어 있는 AI예요. 인터넷 없이 기기 안에서 동작해요.',
-  source: 'ai-chrome',
 
   async available(): Promise<Availability> {
     const lm = api();

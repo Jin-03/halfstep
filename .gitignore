@@ -9,3 +9,6 @@ android/.gradle
 halfstep-backup-*.json
 # 어디에도 쓰이지 않는 이미지
 /img.png
+# 개인 개발 도구 설정: 이 PC의 PyCharm 연결(.mcp.json), Claude Code 개인 권한
+.mcp.json
+.claude/settings.local.json

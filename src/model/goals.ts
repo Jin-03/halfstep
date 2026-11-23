@@ -25,14 +25,28 @@ export function splitGoals(goals: readonly Goal[], summaries: ReadonlyMap<string
 }
 
 /**
- * 홈에 보여 줄 일: 고정한 일이 진행 중이면 그 일, 아니면 가장 최근에 손댄 진행 중인 일.
- * (고정한 일을 끝내거나 지우면 자연히 최근 일로 넘어가고, 다시 진행 중이 되면 돌아온다)
+ * 홈의 상태 [결정 2026-11-23]. 홈에 보이는 일은 다 끝내거나 사용자가 다른 일을 고를 때까지 바뀌지 않는다.
+ * - focus: 고정한 일(진행 중)의 다음 단계. 고정이 없으면 가장 최근에 손댄 일을 보여 주고 autoPin으로 고정하게 한다
+ * - finished: 고정한 일을 다 끝냄. 다음 일로 넘어가지 않고 축하 페이지에서 다음 일을 고른다
+ * - empty: 진행 중인 일이 없음
+ * 고정한 일이 지워졌으면 고정이 없는 것으로 본다.
  */
-export function currentGoal(
+export type HomeState =
+  | { kind: 'focus'; goal: Goal; autoPin: boolean }
+  | { kind: 'finished'; goal: Goal; next: Goal[] }
+  | { kind: 'empty' };
+
+export function homeState(
   goals: readonly Goal[],
   summaries: ReadonlyMap<string, GoalSummary>,
-  pinnedId: string | null = null,
-): Goal | null {
+  pinnedId: string | null,
+): HomeState {
   const { active } = splitGoals(goals, summaries);
-  return active.find((g) => g.id === pinnedId) ?? active[0] ?? null;
+  const pinned = pinnedId ? goals.find((g) => g.id === pinnedId) : undefined;
+  if (pinned) {
+    if (isCompleted(summaries.get(pinned.id))) return { kind: 'finished', goal: pinned, next: active };
+    return { kind: 'focus', goal: pinned, autoPin: false };
+  }
+  const first = active[0];
+  return first ? { kind: 'focus', goal: first, autoPin: true } : { kind: 'empty' };
 }

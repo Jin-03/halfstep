@@ -445,7 +445,7 @@ span.step-title { overflow-wrap: anywhere; }
 .focus-path { font-size: 14px; color: var(--muted); }
 .focus-step { font-size: clamp(28px, 8vw, 44px); font-weight: 800; line-height: 1.25; letter-spacing: -0.03em; text-wrap: balance; }
 .focus-meta { font-size: 15px; color: var(--muted); }
-.focus-done { min-width: 160px; min-height: 52px; font-size: 17px; }.focus-pin { margin: 0; font-size: 13px; color: var(--muted); }
+.focus-done { min-width: 160px; min-height: 52px; font-size: 17px; }
 .link-btn { border: 0; background: none; padding: 4px; color: inherit; text-decoration: underline; font-size: inherit; }
 .home-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .home-actions > a:not(.secondary) { color: var(--muted); }
@@ -546,3 +546,49 @@ a.primary, a.secondary { display: inline-flex; align-items: center; justify-cont
 /* ── 새 목표 메모 ── */
 .new-goal-note { margin-top: 12px; }
 .note-input { display: block; width: 100%; resize: vertical; min-height: 56px; padding: 8px 12px; line-height: 1.5; }
+
+/* ── 홈: 홈에 보이던 일을 다 끝냈을 때 ── */
+.finished {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 560px);
+  padding: 32px 24px 28px;
+  border-radius: 28px;
+  background: var(--done-soft);
+  color: var(--ink);
+  animation: step-in 0.35s ease;
+}
+.finished .half-mark { color: var(--done); }
+.finished-kicker { margin: 4px 0 0; font-size: 15px; font-weight: 700; color: var(--done); }
+.finished-title { margin: 0; font-size: clamp(24px, 6vw, 34px); font-weight: 800; line-height: 1.3; letter-spacing: -0.02em; text-wrap: balance; }
+.finished-stats { margin: 0; font-size: 15px; color: var(--muted); }
+.finished-reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 14px 20px;
+  border: 1.5px dashed var(--done);
+  border-radius: var(--radius-l);
+  background: var(--surface);
+}
+.finished-reward-label { font-size: 13px; color: var(--muted); }
+.finished-reward-text { font-size: 17px; font-weight: 700; }
+.finished-claimed { font-size: 13px; font-weight: 700; color: var(--done); }
+.finished-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; }
+.finished-next { list-style: none; margin: 4px 0 0; padding: 0; width: min(100%, 420px); display: flex; flex-direction: column; gap: 6px; }
+.finished-next-item {
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  text-align: left;
+}
+.finished-next-item:hover { border-color: var(--done); }
+.finished-link { margin-top: 6px; font-size: 14px; color: var(--muted); }
+.goal-pinned { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 14px; color: var(--muted); }

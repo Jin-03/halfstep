@@ -150,17 +150,21 @@ export function GoalView({ goal }: { goal: Goal }) {
       </section>
 
       <footer className="goal-foot">
-        <button
-          type="button"
-          className="text-btn"
-          aria-pressed={isPinned}
-          onClick={() => {
-            void setSetting('pinnedGoalId', isPinned ? null : goal.id);
-            notify(isPinned ? '홈 고정을 해제했어요.' : '홈에 이 일을 고정했어요.');
-          }}
-        >
-          {isPinned ? '홈 고정 해제' : '홈에 고정'}
-        </button>
+        {/* 홈에 보이는 일은 다 끝내거나 여기서 다른 일을 고를 때까지 바뀌지 않는다. 끝낸 일은 홈에 올리지 않는다 */}
+        {p.total > 0 && p.done === p.total ? null : isPinned ? (
+          <span className="goal-pinned">지금 홈에 보이는 일이에요</span>
+        ) : (
+          <button
+            type="button"
+            className="text-btn"
+            onClick={() => {
+              void setSetting('pinnedGoalId', goal.id);
+              notify('홈에 이 일을 띄웠어요.');
+            }}
+          >
+            홈에서 이 일 하기
+          </button>
+        )}
         {tree.length > 0 && (
           <button
             type="button"

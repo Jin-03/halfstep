@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGoalSummaries, useGoals } from './db/hooks';
 import type { Goal } from './db/schema';
-import { currentGoal, splitGoals } from './model/goals';
-import { useSetting } from './db/settings';
+import { homeState, splitGoals } from './model/goals';
+import { setSetting, useSetting } from './db/settings';
 import { claimReward, markCelebrated } from './db/ops';
 import { Celebration } from './reward/Celebration';
 import { navigate, useRoute, type Route } from './router';
@@ -234,16 +234,14 @@ function HomePage({
   summaries: Parameters<typeof Archive>[0]['summaries'];
 }) {
   const pinned = useSetting('pinnedGoalId');
-  if (pinned === undefined) return null;
-  const current = currentGoal(goals, summaries, pinned);
-  return (
-    <Home
-      current={current}
-      pinned={!!current && current.id === pinned}
-      activeCount={active.length}
-      completedCount={completed.length}
-    />
-  );
+  const state = useMemo(() => (pinned === undefined ? null : homeState(goals, summaries, pinned)), [goals, summaries, pinned]);
+  // 고정한 일이 없으면 지금 보여 주는 일을 고정한다. 그 뒤로는 다 끝내거나 다른 일을 고를 때까지 바뀌지 않는다.
+  const autoPinId = state?.kind === 'focus' && state.autoPin ? state.goal.id : null;
+  useEffect(() => {
+    if (autoPinId) void setSetting('pinnedGoalId', autoPinId);
+  }, [autoPinId]);
+  if (!state) return null;
+  return <Home state={state} activeCount={active.length} completedCount={completed.length} />;
 }
 
 /** 삭제된 목표의 주소로 들어왔을 때 */

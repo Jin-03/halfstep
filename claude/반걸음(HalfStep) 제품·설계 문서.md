@@ -298,7 +298,7 @@ db.version(3).stores({}).upgrade(...);
 ### 엔진 순서
 
 - **웹**: Chrome 내장 AI → WebLLM → 기본 규칙. 현재 코드는 `ENGINES = [chromeEngine, webllmEngine, rulesEngine]`이다(`src/ai/webllm.ts`). WebLLM은 받아 둔 경우에만 `ready`가 되므로 받기 전에는 자동 모드에서 건너뛴다. 받았는지는 설정 `webllmModel`로 알아서, 상태를 볼 때 WebLLM 코드를 불러오지 않는다. GPU가 shader-f16을 지원하면 q4f16, 아니면 q4f32 모델을 받는다. 모델을 메모리에 올리는 시간은 `warmup()`으로 60초 제한 밖에서 기다리고, 10분 동안 안 쓰면 GPU 메모리에서 내린다. WebLLM 코드(각 약 6MB)는 서비스 워커가 미리 받지 않고 처음 쓸 때 저장한다(`vite.config.ts`의 globIgnores·runtimeCaching).
-- **WebLLM 기본 모델 [결정, 2026-11-23]**: Qwen3.5-4B 하나. 모델 비교에서 기본 규칙보다 나았고(31 대 21/40), 2B·0.8B는 기본 규칙보다 못했다. 받는 크기 약 2.3GB, GPU 메모리 약 3.9GB라 사실상 PC용이다. 근거: [반걸음 WebLLM 모델 비교 결과](https://claude.ai/artifact/PGBAwVdtdKiRjTqG4Tq7EX) (저장소 사본: `claude/비교 결과.md`).
+- **WebLLM 기본 모델 [결정, 2026-11-23]**: Qwen3.5-4B 하나. 모델 비교에서 기본 규칙보다 나았고(31 대 21/40), 2B·0.8B는 기본 규칙보다 못했다. 받는 크기 약 2.3GB, GPU 메모리 약 3.9GB라 사실상 PC용이다. 근거: [반걸음 WebLLM 모델 비교 결과](https://claude.ai/artifact/PGBAwVdtdKiRjTqG4Tq7EX) (저장소 사본: `claude/WebLLM 모델 비교 결과.md`).
 - **WebLLM [결정, 2026-11-23]**: 모델을 기본으로 받지 않는 선택 사항이다. 사용자가 AI 설정에서 고르고 모델 받기를 누를 때만 받는다. 받기 전에는 자동 모드에서 건너뛴다. WebLLM 코드도 그때만 불러온다. 기본 모델은 다운로드 크기와 분해 품질로 고른다.
 - **앱 (2단계)**: Gemini Nano(ML Kit GenAI, 지원 기종) → 기기 내 모델(MediaPipe, Qwen2.5 1.5B) → 기본 규칙.
 
@@ -490,7 +490,7 @@ db.version(3).stores({}).upgrade(...);
 - [x] 엔진 인터페이스 통일, 실패 시 규칙으로 대체
 - [x] 새 목표 분해 결과 미리 보기
 - [x] 실제 Chrome 내장 AI 결과 확인 후 지시문·예시 조정 (2026-11-23, 모델 비교와 함께. 시험용 목표 20개는 `tools/compare.ts`)
-- [x] WebLLM 모델 비교 (2026-11-23, 결과: [반걸음 WebLLM 모델 비교 결과](https://claude.ai/artifact/PGBAwVdtdKiRjTqG4Tq7EX), 저장소 사본 `claude/비교 결과.md`, 원본 `tools/results/`)
+- [x] WebLLM 모델 비교 (2026-11-23, 결과: [반걸음 WebLLM 모델 비교 결과](https://claude.ai/artifact/PGBAwVdtdKiRjTqG4Tq7EX), 저장소 사본 `claude/WebLLM 모델 비교 결과.md`, 원본 `tools/results/`)
 - [x] 기본 규칙이 처음 보는 목표에서 말이 깨지는 문제 고치기 (2026-11-23)
 
 ### M6. 배포

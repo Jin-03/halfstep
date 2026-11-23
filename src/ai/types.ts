@@ -13,6 +13,8 @@ export type DecomposeRequest = (
   /** doneRatio: 지금 진행률(0~1). 많이 진행됐으면 마무리 단계부터 제안한다 */
   | { kind: 'more'; goal: string; existing: string[]; doneRatio?: number }
 ) & {
+  /** 목표의 메모 (예: "교재는 이미 샀어요"). AI 지시문에 넣고, 기본 규칙은 마감·횟수만 읽는다 */
+  note?: string;
   /** decompose()가 채워 넣는 공용 정보 (목표 분석, 템플릿, 맞춤 예시) */
   context?: import('./context').DecomposeContext;
 };

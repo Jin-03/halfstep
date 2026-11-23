@@ -42,8 +42,9 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
   const { run } = useActions();
   const [title, setTitle] = useState('');
   const [reward, setReward] = useState('');
+  const [note, setNote] = useState('');
   const [method, setMethod] = useState<Method>('auto');
-  const [auto, setAuto] = useState<{ forTitle: string; drafts: StepDraft[]; origin: StepOrigin; engine: string; fallbackReason?: string; basis?: string; understood: string } | null>(null);
+  const [auto, setAuto] = useState<{ forTitle: string; forNote: string; drafts: StepDraft[]; origin: StepOrigin; engine: string; fallbackReason?: string; basis?: string; understood: string } | null>(null);
   const [busy, setBusy] = useState(false);
   const [phase, setPhase] = useState<AiPhase | null>(null);
   const [template, setTemplate] = useState<Pickable | null>(null);
@@ -61,7 +62,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
   }, [template]);
 
   const directDrafts = useMemo(() => parseOutline(outline), [outline]);
-  const autoStale = auto !== null && auto.forTitle !== title.trim();
+  const autoStale = auto !== null && (auto.forTitle !== title.trim() || auto.forNote !== note.trim());
 
   const decompose = async () => {
     const goal = title.trim();
@@ -71,12 +72,13 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
     abort.current = ctrl;
     setBusy(true);
     try {
-      const r = await runDecompose({ kind: 'goal', goal }, ctrl.signal, {
+      const memo = note.trim();
+      const r = await runDecompose({ kind: 'goal', goal, note: memo }, ctrl.signal, {
         onPhase: (p) => {
           if (abort.current === ctrl) setPhase(p);
         },
       });
-      setAuto({ forTitle: goal, drafts: r.drafts, origin: r.origin, engine: r.engineLabel, fallbackReason: r.fallbackReason, basis: r.basis, understood: r.understood });
+      setAuto({ forTitle: goal, forNote: memo, drafts: r.drafts, origin: r.origin, engine: r.engineLabel, fallbackReason: r.fallbackReason, basis: r.basis, understood: r.understood });
     } catch (err) {
       if (!isAbort(err)) throw err;
     } finally {
@@ -117,7 +119,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
   const create = async () => {
     if (!title.trim() || !plan) return;
     const id = await run('목표 만들기', null, () =>
-      createGoal({ title, reward, steps: plan.drafts, origin: plan.origin }),
+      createGoal({ title, note, reward, steps: plan.drafts, origin: plan.origin }),
     );
     if (id) onCreated(id);
   };
@@ -140,6 +142,18 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
               void run('단계 나누기', null, decompose, { skipUndo: true });
             }
           }}
+        />
+      </label>
+
+      <label className="field new-goal-note">
+        <span>메모 (선택)</span>
+        <span className="field-hint">자동으로 나눌 때 참고해요. 이미 한 일, 마감, 쓸 수 있는 시간을 적어 보세요.</span>
+        <textarea
+          className="text-input note-input"
+          rows={2}
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          placeholder="예: 교재는 이미 샀어요. 주말에만 시간이 있어요."
         />
       </label>
 
@@ -179,7 +193,7 @@ export function NewGoal({ onCreated, onCancel }: { onCreated: (goalId: string) =
               )}
             </div>
             {busy && <AiWait phase={phase} />}
-            {auto && autoStale && <p className="hint">목표가 바뀌었어요. 다시 나눠 보세요.</p>}
+            {auto && autoStale && <p className="hint">목표나 메모가 바뀌었어요. 다시 나눠 보세요.</p>}
             {auto && !autoStale && (
               <>
                 <DraftPreview drafts={auto.drafts} />

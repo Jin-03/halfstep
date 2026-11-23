@@ -15,6 +15,8 @@ interface TreeState {
   editing: boolean;
   goalId: string;
   goalTitle: string;
+  /** 목표의 메모 (더 쪼갤 때 AI에게 함께 준다) */
+  goalNote?: string;
   /** 더 쪼개는 중인 단계 */
   splittingId: string | null;
   setSplittingId: (id: string | null) => void;
@@ -36,12 +38,14 @@ export function StepTree({
   nodes,
   goalId,
   goalTitle,
+  goalNote,
   nextId,
   editing,
 }: {
   nodes: StepNode[];
   goalId: string;
   goalTitle: string;
+  goalNote?: string;
   nextId: string | null;
   editing: boolean;
 }) {
@@ -59,7 +63,7 @@ export function StepTree({
     }
   }, [editing]);
 
-  const state: TreeState = { editing, goalId, goalTitle, nextId, celebrate, openId, setOpenId, addingId, setAddingId, splittingId, setSplittingId, splitPhase, setSplitPhase };
+  const state: TreeState = { editing, goalId, goalTitle, goalNote, nextId, celebrate, openId, setOpenId, addingId, setAddingId, splittingId, setSplittingId, splitPhase, setSplitPhase };
   return (
     <ul className="tree" role="list">
       {nodes.map((n, i) => (
@@ -107,7 +111,7 @@ function StepItem({
         '더 쪼개기',
         goalId,
         () =>
-          decompose({ kind: 'split', goal: state.goalTitle, step: node.title, minutes: node.minutes, path }, undefined, {
+          decompose({ kind: 'split', goal: state.goalTitle, note: state.goalNote, step: node.title, minutes: node.minutes, path }, undefined, {
             onPhase: state.setSplitPhase,
           }),
         { skipUndo: true },

@@ -5,7 +5,7 @@
 import type { StepDraft } from '../db/ops';
 import { listUserTemplates } from '../db/templates';
 import { TEMPLATES } from '../model/templates';
-import { analyzeGoal, fillPlan, templateFor, type GoalAnalysis } from './analyze';
+import { analyzeGoal, fillPlan, templateFor, withNote, type GoalAnalysis } from './analyze';
 import { GOAL_TYPES } from './rulesData';
 import type { DecomposeRequest, RuleTemplate } from './types';
 
@@ -58,7 +58,7 @@ export function exampleFor(a: GoalAnalysis, templates: readonly RuleTemplate[]):
 }
 
 export function contextFor(req: DecomposeRequest, templates: readonly RuleTemplate[] = BUILTIN): DecomposeContext {
-  const analysis = analyzeGoal(req.goal);
+  const analysis = withNote(analyzeGoal(req.goal), req.note);
   return { analysis, templates: [...templates], example: exampleFor(analysis, templates) };
 }
 

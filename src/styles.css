@@ -542,3 +542,7 @@ a.primary, a.secondary { display: inline-flex; align-items: center; justify-cont
 /* ── 화면 설정 ── */
 .toggle-row { display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; cursor: pointer; }
 .toggle-row input { width: 20px; height: 20px; accent-color: var(--done); }
+
+/* ── 새 목표 메모 ── */
+.new-goal-note { margin-top: 12px; }
+.note-input { display: block; width: 100%; resize: vertical; min-height: 56px; padding: 8px 12px; line-height: 1.5; }

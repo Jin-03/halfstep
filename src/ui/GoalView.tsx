@@ -40,7 +40,7 @@ export function GoalView({ goal }: { goal: Goal }) {
         '단계 더 제안',
         goal.id,
         () =>
-          decompose({ kind: 'more', goal: goal.title, existing: allTitles(tree), doneRatio: progress(tree).ratio }, undefined, {
+          decompose({ kind: 'more', goal: goal.title, note: goal.note, existing: allTitles(tree), doneRatio: progress(tree).ratio }, undefined, {
             onPhase: setPhase,
           }),
         { skipUndo: true },
@@ -141,7 +141,7 @@ export function GoalView({ goal }: { goal: Goal }) {
         {tree.length === 0 && (
           <p className="empty">첫 단계를 적어 보세요. 지금 바로 시작할 수 있을 만큼 작게요.</p>
         )}
-        <StepTree nodes={tree} goalId={goal.id} goalTitle={goal.title} nextId={next?.node.id ?? null} editing={editing} />
+        <StepTree nodes={tree} goalId={goal.id} goalTitle={goal.title} goalNote={goal.note} nextId={next?.node.id ?? null} editing={editing} />
         <AddStepInput placeholder="단계 추가" onAdd={add} autoFocus={tree.length === 0} />
         <button type="button" className="text-btn suggest-btn" disabled={suggesting} onClick={() => void suggestMore()}>
           {suggesting ? '제안하는 중…' : '단계 더 제안받기'}

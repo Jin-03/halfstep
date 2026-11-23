@@ -182,6 +182,24 @@ export function analyzeGoal(goal: string): GoalAnalysis {
   };
 }
 
+/**
+ * 메모에서 마감·횟수만 더한다 (목표 문장에 없을 때만). 유형은 목표 문장으로만 정한다.
+ * 예: 목표 "블로그 글 쓰기" + 메모 "금요일까지 올려야 함" → 마감 금요일
+ */
+export function withNote(a: GoalAnalysis, note?: string): GoalAnalysis {
+  const text = note?.trim();
+  if (!text) return a;
+  const n = analyzeGoal(text);
+  const out: GoalAnalysis = { ...a };
+  if (!out.deadline && n.deadline) out.deadline = n.deadline;
+  const vague = !a.frequency || a.frequency === '꾸준히';
+  if (a.type === 'habit' && vague && n.frequency && n.frequency !== '꾸준히') {
+    out.frequency = n.frequency;
+    if (n.sessionMinutes) out.sessionMinutes = n.sessionMinutes;
+  }
+  return out;
+}
+
 /** 화면에 보여 줄 "읽어 낸 정보" (없으면 빈 문자열) */
 export function describeAnalysis(a: GoalAnalysis): string {
   const parts: string[] = [];

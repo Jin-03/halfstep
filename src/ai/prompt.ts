@@ -57,23 +57,39 @@ function analysisLines(req: DecomposeRequest): string[] {
   return [`종류: ${a.typeLabel}${info ? ` · ${info}` : ''}`];
 }
 
+/** 메모가 길면 앞부분만 (작은 모델이 지시보다 메모에 끌려가지 않게) */
+const NOTE_MAX = 200;
+
+/** 사용자가 목표에 적은 메모와 그 메모를 따르라는 지시 (메모가 없으면 빈 배열) */
+function noteLines(req: DecomposeRequest): string[] {
+  const note = req.note?.replace(/\s+/g, ' ').trim();
+  if (!note) return [];
+  return [
+    `메모: ${note.length > NOTE_MAX ? `${note.slice(0, NOTE_MAX)}…` : note}`,
+    '메모에 이미 했다고 적힌 일은 단계로 넣지 말고, 메모의 조건(시간, 상황)에 맞춰라.',
+  ];
+}
+
 export function buildUserPrompt(req: DecomposeRequest): string {
   switch (req.kind) {
     case 'goal':
       return [
         `목표: ${req.goal}`,
+        ...noteLines(req),
         ...analysisLines(req),
         '3~7개 단계로 나눠라. 큰 단계에만 substeps를 2~4개 붙여라.' + (req.context?.analysis.deadline ? ' 마감에 맞춰 일정을 정하는 단계를 넣어라.' : ''),
       ].join('\n');
     case 'split':
       return [
         `목표: ${req.goal}`,
+        ...noteLines(req),
         `나눌 단계: ${[...req.path, req.step].join(' > ')}`,
         '이 단계 하나를 3~5개의 더 작은 행동으로 나눠라. substeps는 쓰지 마라.',
       ].join('\n');
     case 'more':
       return [
         `목표: ${req.goal}`,
+        ...noteLines(req),
         ...analysisLines(req),
         ...((req.doneRatio ?? 0) >= 0.6 ? ['거의 끝나 가는 목표다. 마무리와 점검 단계를 우선 제안하라.'] : []),
         '이미 있는 단계:',
@@ -297,7 +313,7 @@ export function parseAnswer(text: string, req: DecomposeRequest): StepDraft[] {
 const squash = (s: string) => s.replace(/\s/g, '').replace(/하기$/, '');
 
 /** 지시문 문구가 단계로 새어 나온 것 */
-const INSTRUCTION_LEAK = /3~7개|2~4개|substeps|나눠라|제안하라|종류:/i;
+const INSTRUCTION_LEAK = /3~7개|2~4개|substeps|나눠라|제안하라|종류:|메모에 이미|메모의 조건/i;
 
 /**
  * 단계로 쓸 수 없는 것을 뺀다 (하위 단계도):

@@ -140,3 +140,18 @@ describe('AI 지시문 연결', () => {
     expect(buildUserPrompt({ kind: 'more', goal: 'x', existing: ['a'], doneRatio: 0.7 })).toContain('마무리와 점검');
   });
 });
+
+describe('목표 메모 (2026-11-23)', () => {
+  it('AI 지시문에 메모가 들어가고, 기본 규칙은 메모에서 마감만 더 읽는다', () => {
+    const req = { kind: 'goal' as const, goal: '블로그 글 쓰기', note: '금요일까지 올려야 해요. 주제는 이미 정했어요.' };
+    const ctx = contextFor(req);
+    expect(ctx.analysis).toMatchObject({ type: 'make', deadline: '금요일' });
+    const prompt = buildUserPrompt({ ...req, context: ctx });
+    expect(prompt).toContain('메모: 금요일까지 올려야 해요. 주제는 이미 정했어요.');
+    expect(prompt).toContain('마감에 맞춰 일정을 정하는 단계');
+    // 메모가 없으면 지시문도 그대로
+    expect(buildUserPrompt({ kind: 'goal', goal: '블로그 글 쓰기' })).not.toContain('메모');
+    // 메모로 유형이 바뀌지는 않는다
+    expect(contextFor({ kind: 'goal', goal: '블로그 글 쓰기', note: '매일 조금씩' }).analysis.type).toBe('make');
+  });
+});

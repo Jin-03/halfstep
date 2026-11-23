@@ -23,8 +23,19 @@ describe('목표 분석', () => {
     ['노트북 바꾸기', { type: 'buy', object: '노트북' }],
     ['금요일까지 보고서 작성', { type: 'make', object: '보고서', deadline: '금요일' }],
     ['글로벌 마케팅 방법 조사', { type: 'general', object: '글로벌 마케팅 방법' }],
+    // 2026-11-23: 규칙이 본 적 없는 목표에서 나온 문제
+    ['이번 주말까지 중고 노트북 팔기', { type: 'sell', object: '중고 노트북', deadline: '이번 주말' }],
+    ['일주일 식비 5만 원으로 줄이기', { type: 'target', object: '일주일 식비', target: '5만원' }],
+    ['유튜브 첫 영상 올리기', { type: 'general' }],
+    ['아침 6시에 일어나는 습관 만들기', { type: 'habit', activity: '아침 6시에 일어나기' }],
+    ['이력서 고쳐서 회사 3곳 지원하기', { type: 'admin', object: '' }],
   ])('%s', (goal, expected) => {
     expect(analyzeGoal(goal)).toMatchObject(expected);
+  });
+
+  it('"연말정산"의 연말은 마감이 아니다', () => {
+    expect(analyzeGoal('연말정산 서류 챙기기').deadline).toBeUndefined();
+    expect(analyzeGoal('연말까지 보고서 작성').deadline).toBe('연말');
   });
 
   it('읽어 낸 정보 문장', () => {
@@ -50,8 +61,13 @@ describe('계획 만들기', () => {
 
   it('습관: 활동·횟수·1회 분량', () => {
     const t = plan('매일 20분 책 읽기').drafts;
-    expect(t.find((d) => d.title === '첫 1회 책 읽기 해 보기')?.minutes).toBe(20);
-    expect(t.some((d) => d.title === '이번 주 매일 지키기')).toBe(true);
+    expect(t.find((d) => d.title === '첫 1회 해 보기')?.minutes).toBe(20);
+    expect(t.some((d) => d.title === '이번 주 매일 해 보기')).toBe(true);
+    // 횟수마다 이번 주 문장이 자연스럽게
+    const week = (g: string) => plan(g).drafts.find((d) => d.title.startsWith('이번 주'))?.title;
+    expect(week('주 3회 화분에 물 주기')).toBe('이번 주 3번 해 보기');
+    expect(week('매주 토요일 부모님께 전화하기')).toBe('이번 주 토요일에 해 보기');
+    expect(week('아침 6시에 일어나는 습관 만들기')).toBe('이번 주 3번 해 보기');
   });
 
   it('템플릿은 유형이 맞거나 키워드가 충분할 때만', () => {

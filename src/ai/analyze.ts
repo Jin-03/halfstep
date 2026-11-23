@@ -11,6 +11,7 @@ import {
   HABIT_WORDS,
   NOUN_VERBS,
   SYNONYMS,
+  TARGET_NEEDS_NUMBER,
   TEMPLATE_MIN_SCORE,
   TEMPLATE_TYPES,
   TYPE_ORDER,
@@ -50,10 +51,14 @@ type Finder = [RegExp, (m: RegExpMatchArray) => Omit<Found, 'match'>];
 const DEADLINES: Finder[] = [
   [/(\d{1,2})\s*월\s*(\d{1,2})\s*일\s*(?:전까지|까지|전에|전)?/, (m) => ({ label: `${m[1]}월 ${m[2]}일` })],
   [/([월화수목금토일])요일\s*(?:까지|전까지|전에)/, (m) => ({ label: `${m[1]}요일` })],
-  [/(이번|다음)\s*(주|달)\s*(말)?\s*(?:까지|안에|중에|중|내에|내)?/, (m) => ({ label: `${m[1]} ${m[2]}${m[3] ? ' 말' : ''}` })],
+  [
+    /(이번|다음)\s*(주|달)\s*(말)?\s*(?:까지|안에|중에|중|내에|내)?/,
+    (m) => ({ label: `${m[1]} ${m[2]}${m[3] ? (m[2] === '주' ? '말' : ' 말') : ''}` }), // "이번 주말", "이번 달 말"
+  ],
   [/(\d{1,3})\s*(일|주|개월|달)\s*(?:안에|이내에|이내|내에|만에|동안|까지|안)/, (m) => ({ label: `${m[1]}${m[2] === '주' ? '주' : m[2]} 안` })],
   [/(오늘|내일|모레)\s*(?:까지|안에|중에|중)?/, (m) => ({ label: m[1] })],
-  [/(주말|월말|연말)\s*(?:까지|안에|전에|전)?/, (m) => ({ label: m[1] })],
+  // 뒤에 "까지" 등이 있어야 마감 ("연말정산"의 연말은 마감이 아니다)
+  [/(주말|월말|연말)\s*(?:까지|안에|전에|전)/, (m) => ({ label: m[1] })],
   [/올해\s*(?:안에|안|까지|중에|중)/, () => ({ label: '올해 안' })],
 ];
 
@@ -101,6 +106,24 @@ function isVerbLike(word: string): boolean {
 
 const clean = (s: string) => s.replace(/\s+/g, ' ').trim();
 
+/** 목표치를 지우고 남은 조사 낱말 ("5만 원으로" → "으로") */
+const LONE_PARTICLE = /^(?:으로|로|을|를|이|가|은|는|에|까지|만큼)$/;
+
+/** "고쳐서", "준비하고"처럼 앞뒤 두 동작을 잇는 낱말. 대상이 두 가지 일에 걸쳐 있다는 뜻이다 */
+const CONNECTIVE = /(?:해서|하고|아서|어서|여서|쳐서|워서|와서)$/;
+
+/** 습관을 만든다는 뜻의 말. 활동 이름에서는 지운다 */
+const HABIT_VERBS = /\s*(?:만들기|기르기|들이기|갖기|붙이기|유지하기|지키기)$/;
+
+/**
+ * 습관 목표의 활동 이름. "아침 6시에 일어나는 (습관) 만들기" → "아침 6시에 일어나기"
+ */
+function habitActivity(rest: string): string {
+  const s = clean(rest.replace(TARGET, ' ')).replace(HABIT_VERBS, '');
+  // 꾸미는 말("일어나는")로 끝나면 "-기"로 바꾼다
+  return s.replace(/(\S+)는$/, (_, stem: string) => `${stem}기`);
+}
+
 // ───────────── 분석 ─────────────
 
 export function analyzeGoal(goal: string): GoalAnalysis {
@@ -120,20 +143,28 @@ export function analyzeGoal(goal: string): GoalAnalysis {
   const words = rest.split(' ').filter(Boolean);
   const last = words.at(-1) ?? '';
   const verb = words.length > 1 && isVerbLike(last) ? last : words.length === 1 && isVerbLike(last) ? last : '';
-  let objectWords = verb ? words.slice(0, -1) : words;
+  // 대상은 목표치("5만 원")를 빼고 본다
+  const objectSource = targetMatch ? clean(rest.replace(targetMatch[0], ' ')) : rest;
+  const objectAll = objectSource.split(' ').filter((w) => w && !LONE_PARTICLE.test(w));
+  let objectWords = verb ? objectAll.slice(0, -1) : objectAll;
   if (targetMatch) objectWords = objectWords.filter((w) => !/\d/.test(w));
+  // "당근에 팔기"처럼 동사 바로 앞의 장소("~에", "~에서")는 대상이 아니다
+  if (objectWords.length > 1 && /(?:에서|에)$/.test(objectWords.at(-1)!) && !/(에게|한테|께)$/.test(objectWords.at(-1)!)) objectWords.pop();
   if (objectWords.length) objectWords[objectWords.length - 1] = stripParticle(objectWords.at(-1)!);
   let object = objectWords.join(' ');
   if (object.length > 14) object = objectWords.slice(-2).join(' ');
+  // "이력서 고쳐서 회사"처럼 두 가지 일이 섞인 대상은 단계 제목에 넣지 않는다
+  if (objectWords.some((w) => CONNECTIVE.test(w))) object = '';
   // 연락할 사람("집주인에게")이 있으면 그 사람을 대상으로
   const person = words.find((w) => /(에게|한테|께)$/.test(w));
 
-  // 유형
+  // 유형. "줄이기", "올리기" 같은 동사는 숫자가 있을 때만 목표치로 본다
+  const isTarget = (t: GoalType) => t !== 'target' || !TARGET_NEEDS_NUMBER.test(verb) || !!targetMatch;
   let type: GoalType = 'general';
   if (frequency || habitWord) type = 'habit';
-  else if (verb && GOAL_TYPES.target.verbs.test(verb)) type = 'target';
+  else if (verb && GOAL_TYPES.target.verbs.test(verb) && isTarget('target')) type = 'target';
   else {
-    const byVerb = verb ? TYPE_ORDER.find((t) => GOAL_TYPES[t].verbs.test(verb)) : undefined;
+    const byVerb = verb ? TYPE_ORDER.find((t) => GOAL_TYPES[t].verbs.test(verb) && isTarget(t)) : undefined;
     const byWords = [...TYPE_ORDER, 'habit' as const].find((t) => GOAL_TYPES[t].words?.test(text));
     type = byVerb ?? byWords ?? 'general';
   }
@@ -143,7 +174,7 @@ export function analyzeGoal(goal: string): GoalAnalysis {
     type,
     typeLabel: GOAL_TYPES[type].label,
     object: type === 'habit' ? '' : type === 'communicate' && person ? person : object,
-    activity: type === 'habit' ? clean(rest.replace(TARGET, ' ')) : '',
+    activity: type === 'habit' ? habitActivity(rest) : '',
     ...(deadline ? { deadline: deadline.label } : {}),
     ...(frequency ? { frequency: frequency.label } : habitWord ? { frequency: '꾸준히' } : {}),
     ...(frequency?.minutes ? { sessionMinutes: frequency.minutes } : {}),
@@ -207,6 +238,16 @@ export function matchTemplate<T extends Pick<RuleTemplate, 'keywords'>>(text: st
 
 // ───────────── 계획 채우기 ─────────────
 
+/** 습관의 횟수 → 이번 주에 해 볼 일. "이번 주 주 3회 지키기"처럼 겹치지 않게 횟수마다 문장을 맞춘다 */
+function thisWeek(frequency?: string): string {
+  if (frequency === '매일') return '이번 주 매일 해 보기';
+  const times = frequency?.match(/^주 (\d)회$/);
+  if (times) return `이번 주 ${times[1]}번 해 보기`;
+  const day = frequency?.match(/^매주 (.)요일$/);
+  if (day) return `이번 주 ${day[1]}요일에 해 보기`;
+  return '이번 주 3번 해 보기'; // 꾸준히, 매주
+}
+
 /** 뼈대의 자리표시를 분석값으로 채운다 */
 export function fillPlan(plan: readonly StepDraft[], a: GoalAnalysis): StepDraft[] {
   const fill = (title: string) =>
@@ -216,6 +257,7 @@ export function fillPlan(plan: readonly StepDraft[], a: GoalAnalysis): StepDraft
         .replace('{대상}', a.object)
         .replace('{활동}', a.activity || '이 일')
         .replace('{횟수}', a.frequency ?? '3번')
+        .replace('{이번 주}', thisWeek(a.frequency))
         .replace('{목표치}', a.target ?? '목표'),
     );
   return plan.map((d) => {

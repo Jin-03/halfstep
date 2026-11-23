@@ -110,12 +110,10 @@ describe('규칙 엔진', () => {
     expect(matchTemplate(goal)?.id).toBe(id);
   });
 
-  it('맞는 템플릿이 없으면 유형별 계획, 유형도 없으면 일반 계획 (대상을 채워서)', () => {
+  it('맞는 템플릿이 없으면 유형별 계획(대상을 채워서), 유형도 없으면 일반 계획(대상 없이)', () => {
     expect(matchTemplate('가족 사진 앨범 만들기')).toBeNull();
     expect(decomposeByRules({ kind: 'goal', goal: '가족 사진 앨범 만들기' })[0].title).toBe('가족 사진 앨범 완성된 모습 한 문장으로 적기');
-    const generic = decomposeByRules({ kind: 'goal', goal: '동네 봉사활동 시작하기' });
-    expect(generic[0].title).toBe('동네 봉사활동 끝냈을 때의 모습 한 문장으로 적기');
-    expect(generic.slice(1)).toEqual(GENERIC_PLAN.slice(1));
+    expect(decomposeByRules({ kind: 'goal', goal: '동네 봉사활동 시작하기' })).toEqual(GENERIC_PLAN);
   });
 
   it('결과는 복사본이라 고쳐도 템플릿이 바뀌지 않는다', () => {

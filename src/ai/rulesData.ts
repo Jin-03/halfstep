@@ -5,6 +5,7 @@
  *   {대상}  목표의 대상 (예: "부모님 생신 선물 사기" → "부모님 생신 선물"). 없으면 자리표시와 뒤 공백이 지워진다
  *   {활동}  습관 목표의 활동 (예: "매일 30분 달리기" → "달리기")
  *   {횟수}  습관 목표의 횟수 (예: "매일", "주 3회")
+ *   {이번 주} 습관 목표의 이번 주 할 일 (예: "이번 주 매일 해 보기", "이번 주 3번 해 보기", "이번 주 토요일에 해 보기")
  *   {목표치} 목표 수치 (예: "900점")
  * 자리표시 바로 뒤에는 조사를 붙이지 않는다 (받침에 따라 달라지므로).
  */
@@ -13,6 +14,7 @@ import type { StepDraft } from '../db/ops';
 export type GoalType =
   | 'habit'
   | 'target'
+  | 'sell'
   | 'buy'
   | 'admin'
   | 'tidy'
@@ -40,11 +42,13 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
     verbs: /^$/, // 횟수 표현("매일", "주 3회")이나 HABIT_WORDS로 판단
     words: /습관|꾸준히|루틴|매일|날마다|매주/,
     plan: [
-      { title: '{활동} 할 시간과 장소 정하기', minutes: 5 },
-      { title: '필요한 준비물 꺼내 두기', minutes: 5 },
-      { title: '첫 1회 {활동} 해 보기', minutes: 15 },
+      // 활동 이름("부모님께 전화하기", "아침 6시에 일어나기")을 넣으면 문장이 어색해지므로 넣지 않는다.
+      // 목표 문장이 바로 위에 보이므로 무엇을 하는지는 알 수 있다.
+      { title: '언제 어디서 할지 정하기', minutes: 5 },
+      { title: '필요한 것 미리 준비해 두기', minutes: 5 },
+      { title: '첫 1회 해 보기', minutes: 15 },
       { title: '끝나고 한 일 기록하기', minutes: 2 },
-      { title: '이번 주 {횟수} 지키기', minutes: 60 },
+      { title: '{이번 주}', minutes: 60 },
       { title: '일주일 뒤 돌아보고 조정하기', minutes: 10 },
     ],
     example: '매일 20분 책 읽기',
@@ -52,14 +56,29 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
   target: {
     label: '목표치 달성',
     verbs: /받기|달성|합격|통과|줄이기|늘리기|빼기|찌우기|모으기|올리기|넘기기/,
+    // 점수·체중·금액·저축처럼 종류가 다양하므로 "연습" 같은 특정 활동을 가정하지 않는다
     plan: [
       { title: '{대상} 지금 수준 확인하기', minutes: 15 },
-      { title: '{목표치}까지 부족한 부분 적기', minutes: 10 },
-      { title: '부족한 부분부터 연습 계획 세우기', minutes: 15 },
-      { title: '첫 연습 25분 하기', minutes: 25 },
-      { title: '일주일 뒤 중간 점검하기', minutes: 15 },
+      { title: '{목표치} 목표와 지금의 차이 적기', minutes: 5 },
+      { title: '차이를 줄일 방법 3가지 적기', minutes: 15 },
+      { title: '가장 쉬운 방법 하나 오늘 해 보기', minutes: 20 },
+      { title: '일주일 뒤 다시 확인하기', minutes: 10 },
     ],
     example: '토익 800점 받기',
+  },
+  sell: {
+    label: '팔기',
+    verbs: /팔기|판매|처분|내놓기|넘기기/,
+    words: /중고|매물/,
+    plan: [
+      { title: '{대상} 상태 확인하고 사진 찍기', minutes: 15 },
+      { title: '비슷한 매물 시세 찾아보기', minutes: 15 },
+      { title: '가격 정하기', minutes: 5 },
+      { title: '판매 글 올리기', minutes: 15 },
+      { title: '문의에 답하고 거래 약속 잡기', minutes: 10 },
+      { title: '거래하고 마무리하기', minutes: 30 },
+    ],
+    example: '안 쓰는 자전거 팔기',
   },
   buy: {
     label: '사기·고르기',
@@ -76,7 +95,7 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
   },
   admin: {
     label: '신청·처리',
-    verbs: /신청|제출|등록|발급|갱신|신고|접수|처리|납부|해지|가입|예약|청구|환불/,
+    verbs: /신청|제출|등록|발급|갱신|신고|접수|처리|납부|해지|가입|예약|청구|환불|지원|응시/,
     plan: [
       { title: '{대상} 필요한 서류와 정보 확인하기', minutes: 10 },
       { title: '신청 방법과 기한 알아보기', minutes: 10 },
@@ -100,7 +119,7 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
   },
   learn: {
     label: '배우기',
-    verbs: /배우기|익히기|공부|독학|연습|외우기|마스터|입문/,
+    verbs: /배우기|익히기|공부|독학|연습|외우기|마스터|입문|연주/,
     plan: [
       { title: '{대상} 배우려는 이유와 목표 적기', minutes: 10 },
       { title: '입문 자료 하나 고르기', minutes: 15 },
@@ -151,26 +170,33 @@ export const GOAL_TYPES: Record<GoalType, GoalTypeRule> = {
   general: {
     label: '일반',
     verbs: /^$/,
+    // 어떤 목표에도 문장이 어색하지 않도록 {대상}을 넣지 않는다
     plan: [
-      { title: '{대상} 끝냈을 때의 모습 한 문장으로 적기', minutes: 10 },
+      { title: '해야 할 일 떠오르는 대로 적기', minutes: 10 },
+      { title: '그중 가장 쉬운 일 하나 고르기', minutes: 5 },
       {
-        title: '필요한 것 정리하기',
+        title: '필요한 것 확인하기',
         children: [
           { title: '필요한 자료와 도구 적기', minutes: 10 },
           { title: '도움받을 사람이나 곳 찾기', minutes: 10 },
         ],
       },
-      { title: '처음 5분 동안 할 일 정하기', minutes: 5 },
-      { title: '첫 작업 25분 해 보기', minutes: 25 },
-      { title: '남은 일 목록 만들기', minutes: 15 },
-      { title: '진행 상황 점검하기', minutes: 10 },
+      { title: '고른 일 15분 해 보기', minutes: 15 },
+      { title: '다음에 할 일 정하기', minutes: 5 },
+      { title: '일주일 뒤 진행 상황 점검하기', minutes: 10 },
     ],
     example: '동네 봉사활동 시작하기',
   },
 };
 
 /** 유형을 고르는 순서 (앞쪽이 우선). habit은 횟수 표현이 있을 때 먼저 본다 */
-export const TYPE_ORDER: GoalType[] = ['target', 'buy', 'admin', 'tidy', 'learn', 'make', 'communicate', 'prepare'];
+export const TYPE_ORDER: GoalType[] = ['target', 'sell', 'buy', 'admin', 'tidy', 'learn', 'make', 'communicate', 'prepare'];
+
+/**
+ * 목표치 동사 중 숫자가 있어야 목표치로 보는 것.
+ * "식비 5만 원으로 줄이기"는 목표치, "유튜브 첫 영상 올리기"는 아니다.
+ */
+export const TARGET_NEEDS_NUMBER = /줄이기|늘리기|빼기|찌우기|모으기|올리기|넘기기/;
 
 /** 동사가 무엇이든 습관으로 보는 말. 활동 이름에서는 지운다 */
 export const HABIT_WORDS = /꾸준히|습관적으로|습관|루틴으로|루틴/;

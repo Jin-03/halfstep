@@ -5,7 +5,7 @@
  */
 import type { StepDraft } from '../db/ops';
 import { splitByPattern } from './rules';
-import { FIRST_STEP_MAX, VAGUE } from './rulesData';
+import { FIRST_STEP_MAX, SPLIT_PATTERNS, VAGUE } from './rulesData';
 import type { DecomposeRequest } from './types';
 
 function dropVague(list: StepDraft[]): StepDraft[] {
@@ -27,7 +27,9 @@ export function refine(drafts: StepDraft[], req: DecomposeRequest): StepDraft[] 
   const out = dropVague(structuredClone(drafts));
   if (req.kind === 'goal') {
     const leaf = firstLeaf(out);
-    if (leaf && (leaf.minutes ?? 0) > FIRST_STEP_MAX) {
+    // 단계 성격에 맞는 패턴이 있을 때만 쪼갠다. 맞는 게 없으면 "필요한 것 챙기기 / 앞부분부터 시작하기" 같은
+    // 뜻 없는 하위 단계가 붙으므로 그대로 둔다.
+    if (leaf && (leaf.minutes ?? 0) > FIRST_STEP_MAX && SPLIT_PATTERNS.some((p) => p.match.test(leaf.title))) {
       leaf.children = splitByPattern(leaf.title, leaf.minutes);
       delete leaf.minutes;
     }

@@ -17,6 +17,7 @@ import {
   withMinutes,
 } from '../src/ai/prompt';
 import { rulesEngine } from '../src/ai/rules';
+import { contextFor } from '../src/ai/context';
 import type { Engine } from '../src/ai/types';
 import { db } from '../src/db/schema';
 import { setSetting } from '../src/db/settings';
@@ -112,6 +113,17 @@ describe('지시문을 되돌려 준 답 거르기', () => {
     expect(parseAnswer(FEW_SHOT.assistant, { kind: 'goal', goal: '이사' })).toEqual([]);
     // 실제로 방 정리 목표라면 비슷한 답도 괜찮다
     expect(parseAnswer(FEW_SHOT.assistant, { kind: 'goal', goal: '방 정리' }).length).toBe(5);
+  });
+
+  it('지시문·분석 줄·목표를 그대로 옮긴 단계, 조금 바꿔 베낀 예시를 버린다 (2026-11-23 비교에서 나온 답)', () => {
+    const gift = { kind: 'goal' as const, goal: '다음 주까지 부모님 생신 선물 사기' };
+    const req = { ...gift, context: contextFor(gift) };
+    expect(parseAnswer('{"steps":[{"title":"사기·고르기·대상 부모님 생신 선물 사기"},{"title":"마감 다음 주 마감일 정하기"}]}', req)).toEqual([]);
+    const titles = parseAnswer('{"steps":[{"title":"다음 주까지 부모님 생신 선물 사기"},{"title":"예산 정하기","substeps":["목표치를 3~7개로 나누기","가격 비교하기"]}]}', req);
+    expect(titles).toEqual([{ title: '예산 정하기', children: [{ title: '가격 비교하기', minutes: 15 }] }]);
+    const volunteer = { kind: 'goal' as const, goal: '동네 봉사활동 시작하기' };
+    const copied = '{"steps":[{"title":"집 근처 쓰레기봉투 찾기"},{"title":"집 근처 눈에 보이는 쓰레기 버리기"},{"title":"집 근처 바닥 닦기"}]}';
+    expect(parseAnswer(copied, { ...volunteer, context: contextFor(volunteer) })).toEqual([]);
   });
 
   it('더 제안: 이미 있는 단계를 다시 내놓으면 뺀다 (모두 겹치면 빈 결과)', () => {

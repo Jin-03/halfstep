@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반걸음 모델 비교 (개발용)</title>
+    <style>
+      body { font: 14px/1.5 system-ui, sans-serif; margin: 16px; color: #1d2421; background: #f6f8f7; }
+      h1 { font-size: 18px; }
+      fieldset { border: 1px solid #c9d2cd; border-radius: 8px; margin: 8px 0; }
+      button { font: inherit; padding: 6px 12px; margin-right: 6px; }
+      #status { white-space: pre-wrap; background: #fff; border: 1px solid #c9d2cd; padding: 8px; border-radius: 8px; min-height: 2em; }
+      table { border-collapse: collapse; margin-top: 12px; background: #fff; }
+      th, td { border: 1px solid #c9d2cd; padding: 6px 8px; vertical-align: top; text-align: left; }
+      td ul { margin: 0; padding-left: 18px; }
+      .fail { color: #b3261e; }
+      .meta { color: #5a6661; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>반걸음 모델 비교 (개발용, 배포에 들어가지 않음)</h1>
+    <div id="env" class="meta"></div>
+    <fieldset id="models"><legend>후보 모델</legend></fieldset>
+    <button id="run">선택한 모델로 모든 목표 나누기</button>
+    <button id="base">기준선만 (규칙 · Chrome 내장 AI)</button>
+    <button id="save">결과 JSON 저장</button>
+    <p id="status">준비</p>
+    <div id="out"></div>
+    <script type="module" src="./compare.ts"></script>
+  </body>
+</html>

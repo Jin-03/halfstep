@@ -7,6 +7,7 @@
 import type { StepDraft } from '../db/ops';
 import { parseOutline, splitTitleMinutes } from '../model/outline';
 import { describeAnalysis } from './analyze';
+import { DEFAULT_EXAMPLE } from './context';
 import type { DecomposeRequest } from './types';
 
 export const LIMITS = {
@@ -23,8 +24,13 @@ export const LIMITS = {
 export const SYSTEM_PROMPT = `너는 큰 목표를 지금 바로 실행할 수 있는 작은 행동으로 나누는 도우미다.
 규칙:
 - 한국어로 답한다.
-- 각 단계는 "자료 3개 찾기"처럼 동사로 끝나는 짧은 행동이다. 20자 이내.
+- 각 단계는 "참고할 글 찾기"처럼 동사로 끝나는 짧은 행동이다. 20자 이내.
+- 첫 단계는 5~15분이면 끝나는, 지금 바로 시작할 수 있는 아주 작은 행동이다.
+- 목표를 이루려는 사람 본인이 할 행동만 적는다.
+- 목표 문장을 그대로 단계로 쓰지 않는다.
 - 추상적인 말("열심히 하기", "노력하기")은 쓰지 않는다.
+- "3개", "3줄" 같은 숫자는 꼭 필요할 때만 쓴다.
+- 예시는 형식만 참고한다. 단계는 이 목표에 맞게 새로 쓴다.
 - 순서대로 실행할 수 있게 적는다.
 - JSON만 출력한다. 설명, 머리말, 코드 블록 표시는 쓰지 않는다.
 형식: {"steps":[{"title":"단계","substeps":["하위 단계"]}]}`;
@@ -282,12 +288,55 @@ export function parseAnswer(text: string, req: DecomposeRequest): StepDraft[] {
     const have = new Set(req.existing.map((t) => t.replace(/\s/g, '')));
     drafts = drafts.filter((d) => !have.has(d.title.replace(/\s/g, '')));
   }
+  drafts = dropLeaks(drafts, req);
   if (drafts.length === 0 || drafts.every((d) => PLACEHOLDER_TITLES.has(d.title.toLowerCase()))) return [];
-  // 예시로 보여 준 단계를 그대로 베낀 답도 버린다 (방 정리 목표가 아닐 때)
-  const example = (JSON.parse(FEW_SHOT.assistant) as { steps: { title: string }[] }).steps.map((x) => x.title);
-  const copied = drafts.filter((d) => example.includes(d.title)).length;
-  if (copied >= 3 && !/정리|청소/.test(JSON.stringify(req))) return [];
+  if (copiesExample(drafts, req)) return [];
   return withMinutes(drafts, req);
+}
+
+const squash = (s: string) => s.replace(/\s/g, '').replace(/하기$/, '');
+
+/** 지시문 문구가 단계로 새어 나온 것 */
+const INSTRUCTION_LEAK = /3~7개|2~4개|substeps|나눠라|제안하라|종류:/i;
+
+/**
+ * 단계로 쓸 수 없는 것을 뺀다 (하위 단계도):
+ * 지시문·분석 줄을 그대로 옮긴 것("사기·고르기·대상 …", "마감 다음 주 …"), 목표를 그대로 다시 쓴 것.
+ */
+function dropLeaks(drafts: StepDraft[], req: DecomposeRequest): StepDraft[] {
+  const a = req.context?.analysis;
+  const pieces = a ? [a.typeLabel, ...describeAnalysis(a).split(' · ')].filter((p) => p.length >= 5) : [];
+  const goal = squash(req.goal);
+  const bad = (t: string) => INSTRUCTION_LEAK.test(t) || pieces.some((p) => t.includes(p)) || squash(t) === goal;
+  const walk = (list: StepDraft[]): StepDraft[] =>
+    list
+      .filter((d) => !bad(d.title))
+      .map((d) => {
+        if (!d.children) return d;
+        const children = walk(d.children);
+        return children.length ? { ...d, children } : { title: d.title };
+      });
+  return walk(drafts);
+}
+
+/**
+ * 예시 답을 베꼈는지: 최상위 단계 절반 이상이 예시 단계와 같거나 예시 단계를 품고 있다("집 근처 쓰레기 버리기").
+ * 예시가 이 목표와 같은 목표면 따지지 않는다.
+ */
+function copiesExample(drafts: StepDraft[], req: DecomposeRequest): boolean {
+  if (req.kind !== 'goal' || drafts.length < 2) return false;
+  const ex = req.context?.example ?? DEFAULT_EXAMPLE;
+  const goal = squash(req.goal);
+  const exGoal = squash(ex.goal);
+  if (goal.includes(exGoal) || exGoal.includes(goal)) return false;
+  const exTitles = [ex.answer, FEW_SHOT.assistant]
+    .flatMap((s) => (JSON.parse(s) as { steps: { title: string }[] }).steps.map((x) => squash(x.title)))
+    .filter((t) => t.length >= 4);
+  const hits = drafts.filter((d) => {
+    const t = squash(d.title);
+    return exTitles.some((e) => t === e || t.includes(e));
+  }).length;
+  return hits * 2 >= drafts.length;
 }
 
 // ───────────── 예상 시간 (규칙) ─────────────

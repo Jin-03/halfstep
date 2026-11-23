@@ -1,0 +1,4713 @@
+{
+ "env": {
+  "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+  "gpu": {
+   "ok": true,
+   "f16": true
+  },
+  "date": "2026-11-23T05:44:10.080Z",
+  "lastStatus": "끝"
+ },
+ "runs": [
+  {
+   "id": "기본 규칙",
+   "goals": [
+    {
+     "goal": "다음 주까지 부모님 생신 선물 사기",
+     "ms": 1,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "부모님 생신 선물 예산 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "다음 주까지 일정을 달력에 나눠 적기",
+       "minutes": 10
+      },
+      {
+       "title": "꼭 필요한 조건 3가지 적기",
+       "minutes": 10
+      },
+      {
+       "title": "부모님 생신 선물 후보 3개 찾기",
+       "minutes": 20
+      },
+      {
+       "title": "후기와 가격 비교하기",
+       "minutes": 20
+      },
+      {
+       "title": "하나 골라 주문하기",
+       "minutes": 10
+      },
+      {
+       "title": "받았는지 확인하기",
+       "minutes": 5
+      }
+     ]
+    },
+    {
+     "goal": "토익 900점 받기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "시험 범위 파악하기",
+       "children": [
+        {
+         "title": "시험 범위와 날짜 적어 두기",
+         "minutes": 10
+        },
+        {
+         "title": "교재·자료 한곳에 모으기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "공부 계획 세우기",
+       "children": [
+        {
+         "title": "범위를 하루 분량으로 나누기",
+         "minutes": 20
+        },
+        {
+         "title": "달력에 공부 시간 적기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "1회독",
+       "children": [
+        {
+         "title": "첫 단원 읽기",
+         "minutes": 40
+        },
+        {
+         "title": "모르는 부분 표시하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "기출·예상 문제 풀기",
+       "minutes": 60
+      },
+      {
+       "title": "틀린 문제 다시 보기",
+       "minutes": 30
+      },
+      {
+       "title": "시험 전날 요약본 훑어보기",
+       "minutes": 30
+      }
+     ]
+    },
+    {
+     "goal": "매일 20분 책 읽기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "책 읽기 할 시간과 장소 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "필요한 준비물 꺼내 두기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 1회 책 읽기 해 보기",
+       "minutes": 20
+      },
+      {
+       "title": "끝나고 한 일 기록하기",
+       "minutes": 2
+      },
+      {
+       "title": "이번 주 매일 지키기",
+       "minutes": 60
+      },
+      {
+       "title": "일주일 뒤 돌아보고 조정하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "여권 재발급 신청하기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "여권 재발급 필요한 서류와 정보 확인하기",
+       "minutes": 10
+      },
+      {
+       "title": "신청 방법과 기한 알아보기",
+       "minutes": 10
+      },
+      {
+       "title": "서류 준비하기",
+       "minutes": 20
+      },
+      {
+       "title": "작성해서 제출하기",
+       "minutes": 20
+      },
+      {
+       "title": "처리 결과 확인하기",
+       "minutes": 5
+      }
+     ]
+    },
+    {
+     "goal": "신발장 정리",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "쓰레기봉투 하나 준비하기",
+       "minutes": 2
+      },
+      {
+       "title": "눈에 보이는 쓰레기 버리기",
+       "minutes": 10
+      },
+      {
+       "title": "구역별로 정리하기",
+       "children": [
+        {
+         "title": "책상 위 정리",
+         "minutes": 15
+        },
+        {
+         "title": "옷 정리",
+         "minutes": 20
+        },
+        {
+         "title": "바닥 물건 제자리에",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "안 쓰는 물건 따로 모으기",
+       "minutes": 15
+      },
+      {
+       "title": "바닥 청소하기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "11월 20일까지 블로그 글 쓰기",
+     "ms": 1,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "주제를 한 문장으로 적기",
+       "minutes": 10
+      },
+      {
+       "title": "11월 20일까지 일정을 달력에 나눠 적기",
+       "minutes": 10
+      },
+      {
+       "title": "자료 모으기",
+       "children": [
+        {
+         "title": "참고할 글·자료 3개 찾기",
+         "minutes": 20
+        },
+        {
+         "title": "쓸 내용 메모하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "목차 짜기",
+       "minutes": 15
+      },
+      {
+       "title": "초안 쓰기",
+       "children": [
+        {
+         "title": "첫 문단만 쓰기",
+         "minutes": 15
+        },
+        {
+         "title": "본문 쓰기",
+         "minutes": 45
+        },
+        {
+         "title": "마무리 문단 쓰기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "소리 내어 읽으며 고치기",
+       "minutes": 20
+      },
+      {
+       "title": "올리거나 제출하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "엑셀 함수 배우기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "배우고 싶은 이유와 목표 적기",
+       "minutes": 10
+      },
+      {
+       "title": "입문 자료 하나 고르기",
+       "minutes": 20
+      },
+      {
+       "title": "첫 주 기초 익히기",
+       "children": [
+        {
+         "title": "첫 강의·첫 장 보기",
+         "minutes": 30
+        },
+        {
+         "title": "따라 해 보기",
+         "minutes": 30
+        }
+       ]
+      },
+      {
+       "title": "작은 결과물 하나 만들기",
+       "minutes": 60
+      },
+      {
+       "title": "막힌 점 정리해 질문하기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "집주인에게 보일러 수리 요청하기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "집주인에게 하고 싶은 말 세 줄로 적기",
+       "minutes": 10
+      },
+      {
+       "title": "연락할 시간 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "연락하기",
+       "minutes": 15
+      },
+      {
+       "title": "이야기한 내용 메모하기",
+       "minutes": 5
+      }
+     ]
+    },
+    {
+     "goal": "친구 결혼식 축사 준비",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "듣는 사람과 발표 시간 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "핵심 메시지 한 문장 정하기",
+       "minutes": 10
+      },
+      {
+       "title": "말할 순서 개요 짜기",
+       "minutes": 20
+      },
+      {
+       "title": "자료 만들기",
+       "children": [
+        {
+         "title": "슬라이드 뼈대 만들기",
+         "minutes": 30
+        },
+        {
+         "title": "그림·도표 넣기",
+         "minutes": 40
+        }
+       ]
+      },
+      {
+       "title": "소리 내어 한 번 연습하기",
+       "minutes": 20
+      },
+      {
+       "title": "시간 재며 다시 연습하기",
+       "minutes": 20
+      }
+     ]
+    },
+    {
+     "goal": "동네 봉사활동 시작하기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "동네 봉사활동 끝냈을 때의 모습 한 문장으로 적기",
+       "minutes": 10
+      },
+      {
+       "title": "필요한 것 정리하기",
+       "children": [
+        {
+         "title": "필요한 자료와 도구 적기",
+         "minutes": 10
+        },
+        {
+         "title": "도움받을 사람이나 곳 찾기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "처음 5분 동안 할 일 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 작업 25분 해 보기",
+       "minutes": 25
+      },
+      {
+       "title": "남은 일 목록 만들기",
+       "minutes": 15
+      },
+      {
+       "title": "진행 상황 점검하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "이번 주말까지 중고 노트북 팔기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "중고 노트북 끝냈을 때의 모습 한 문장으로 적기",
+       "minutes": 10
+      },
+      {
+       "title": "이번 주 말까지 일정을 달력에 나눠 적기",
+       "minutes": 10
+      },
+      {
+       "title": "필요한 것 정리하기",
+       "children": [
+        {
+         "title": "필요한 자료와 도구 적기",
+         "minutes": 10
+        },
+        {
+         "title": "도움받을 사람이나 곳 찾기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "처음 5분 동안 할 일 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 작업 25분 해 보기",
+       "minutes": 25
+      },
+      {
+       "title": "남은 일 목록 만들기",
+       "minutes": 15
+      },
+      {
+       "title": "진행 상황 점검하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "고양이 입양 준비하기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "고양이 입양 날짜와 예산 정하기",
+       "minutes": 10
+      },
+      {
+       "title": "해야 할 일 목록 만들기",
+       "minutes": 15
+      },
+      {
+       "title": "예약하거나 주문할 것 처리하기",
+       "minutes": 30
+      },
+      {
+       "title": "준비물 챙기기",
+       "minutes": 20
+      },
+      {
+       "title": "전날 최종 점검하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "운전면허 필기시험 합격하기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "시험 범위 파악하기",
+       "children": [
+        {
+         "title": "시험 범위와 날짜 적어 두기",
+         "minutes": 10
+        },
+        {
+         "title": "교재·자료 한곳에 모으기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "공부 계획 세우기",
+       "children": [
+        {
+         "title": "범위를 하루 분량으로 나누기",
+         "minutes": 20
+        },
+        {
+         "title": "달력에 공부 시간 적기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "1회독",
+       "children": [
+        {
+         "title": "첫 단원 읽기",
+         "minutes": 40
+        },
+        {
+         "title": "모르는 부분 표시하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "기출·예상 문제 풀기",
+       "minutes": 60
+      },
+      {
+       "title": "틀린 문제 다시 보기",
+       "minutes": 30
+      },
+      {
+       "title": "시험 전날 요약본 훑어보기",
+       "minutes": 30
+      }
+     ]
+    },
+    {
+     "goal": "이력서 고쳐서 회사 3곳 지원하기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "이력서 고쳐서 회사 3곳 끝냈을 때의 모습 한 문장으로 적기",
+       "minutes": 10
+      },
+      {
+       "title": "필요한 것 정리하기",
+       "children": [
+        {
+         "title": "필요한 자료와 도구 적기",
+         "minutes": 10
+        },
+        {
+         "title": "도움받을 사람이나 곳 찾기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "처음 5분 동안 할 일 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 작업 25분 해 보기",
+       "minutes": 25
+      },
+      {
+       "title": "남은 일 목록 만들기",
+       "minutes": 15
+      },
+      {
+       "title": "진행 상황 점검하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "일주일 식비 5만 원으로 줄이기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "일주일 식비 원 지금 수준 확인하기",
+       "minutes": 15
+      },
+      {
+       "title": "5만원까지 부족한 부분 적기",
+       "minutes": 10
+      },
+      {
+       "title": "부족한 부분부터 연습 계획 세우기",
+       "minutes": 15
+      },
+      {
+       "title": "첫 연습 25분 하기",
+       "minutes": 25
+      },
+      {
+       "title": "일주일 뒤 중간 점검하기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "아침 6시에 일어나는 습관 만들기",
+     "ms": 1,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "아침 6시에 일어나는 만들기 할 시간과 장소 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "필요한 준비물 꺼내 두기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 1회 아침 6시에 일어나는 만들기 해 보기",
+       "minutes": 15
+      },
+      {
+       "title": "끝나고 한 일 기록하기",
+       "minutes": 2
+      },
+      {
+       "title": "이번 주 꾸준히 지키기",
+       "minutes": 60
+      },
+      {
+       "title": "일주일 뒤 돌아보고 조정하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "연말정산 서류 챙기기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "정산 서류 끝냈을 때의 모습 한 문장으로 적기",
+       "minutes": 10
+      },
+      {
+       "title": "연말까지 일정을 달력에 나눠 적기",
+       "minutes": 10
+      },
+      {
+       "title": "필요한 것 정리하기",
+       "children": [
+        {
+         "title": "필요한 자료와 도구 적기",
+         "minutes": 10
+        },
+        {
+         "title": "도움받을 사람이나 곳 찾기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "처음 5분 동안 할 일 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 작업 25분 해 보기",
+       "minutes": 25
+      },
+      {
+       "title": "남은 일 목록 만들기",
+       "minutes": 15
+      },
+      {
+       "title": "진행 상황 점검하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "베란다 화분 분갈이하기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "베란다 화분 끝냈을 때의 모습 한 문장으로 적기",
+       "minutes": 10
+      },
+      {
+       "title": "필요한 것 정리하기",
+       "children": [
+        {
+         "title": "필요한 자료와 도구 적기",
+         "minutes": 10
+        },
+        {
+         "title": "도움받을 사람이나 곳 찾기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "처음 5분 동안 할 일 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 작업 25분 해 보기",
+       "minutes": 25
+      },
+      {
+       "title": "남은 일 목록 만들기",
+       "minutes": 15
+      },
+      {
+       "title": "진행 상황 점검하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "유튜브 첫 영상 올리기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "유튜브 첫 영상 지금 수준 확인하기",
+       "minutes": 15
+      },
+      {
+       "title": "목표까지 부족한 부분 적기",
+       "minutes": 10
+      },
+      {
+       "title": "부족한 부분부터 연습 계획 세우기",
+       "minutes": 15
+      },
+      {
+       "title": "첫 연습 25분 하기",
+       "minutes": 25
+      },
+      {
+       "title": "일주일 뒤 중간 점검하기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "기타로 노래 한 곡 치기",
+     "ms": 0,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "기타로 노래 한 곡 끝냈을 때의 모습 한 문장으로 적기",
+       "minutes": 10
+      },
+      {
+       "title": "필요한 것 정리하기",
+       "children": [
+        {
+         "title": "필요한 자료와 도구 적기",
+         "minutes": 10
+        },
+        {
+         "title": "도움받을 사람이나 곳 찾기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "처음 5분 동안 할 일 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 작업 25분 해 보기",
+       "minutes": 25
+      },
+      {
+       "title": "남은 일 목록 만들기",
+       "minutes": 15
+      },
+      {
+       "title": "진행 상황 점검하기",
+       "minutes": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Chrome 내장 AI",
+   "goals": [
+    {
+     "goal": "다음 주까지 부모님 생신 선물 사기",
+     "ms": 11560,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "예산 설정하기",
+       "minutes": 5
+      },
+      {
+       "title": "부모님께 필요한 선물 종류 3가지 적기",
+       "minutes": 10
+      },
+      {
+       "title": "선물 후보군 3개 조사하기",
+       "minutes": 30
+      },
+      {
+       "title": "상품 비교 & 장단점 분석하기",
+       "minutes": 15
+      },
+      {
+       "title": "구매할 선물 결정하기",
+       "minutes": 5
+      },
+      {
+       "title": "다음 주 금요일까지 주문하기",
+       "minutes": 15
+      },
+      {
+       "title": "선물 포장 & 준비하기",
+       "minutes": 10
+      }
+     ]
+    },
+    {
+     "goal": "토익 900점 받기",
+     "ms": 6259,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "현재 실력 진단하기",
+       "children": [
+        {
+         "title": "모의고사 1회 풀기",
+         "children": [
+          {
+           "title": "오늘 할 분량 정하기",
+           "minutes": 5
+          },
+          {
+           "title": "앞부분 25분 하기",
+           "minutes": 15
+          },
+          {
+           "title": "헷갈린 부분 표시하기",
+           "minutes": 10
+          }
+         ]
+        },
+        {
+         "title": "점수와 약점 분석하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "학습 목표 설정하기",
+       "children": [
+        {
+         "title": "단기 목표(월별) 세분화하기",
+         "minutes": 15
+        },
+        {
+         "title": "장기 목표(6개월) 설정하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "단어 암기 시작하기",
+       "children": [
+        {
+         "title": "하루 20개 단어 암기하기",
+         "minutes": 15
+        },
+        {
+         "title": "플래시 카드 활용하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "문법 학습 시작하기",
+       "children": [
+        {
+         "title": "주요 문법 3가지씩 학습하기",
+         "minutes": 15
+        },
+        {
+         "title": "연습 문제 풀기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "실전 모의고사 연습",
+       "children": [
+        {
+         "title": "월 1회 모의고사 풀기",
+         "minutes": 30
+        },
+        {
+         "title": "시간 엄수하며 풀기",
+         "minutes": 30
+        }
+       ]
+      },
+      {
+       "title": "오답 노트 정리",
+       "children": [
+        {
+         "title": "틀린 문제 분석 및 수정",
+         "minutes": 15
+        },
+        {
+         "title": "반복 학습하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "실제 시험처럼 연습하기",
+       "children": [
+        {
+         "title": "실전 환경 조성하여 풀기",
+         "minutes": 30
+        },
+        {
+         "title": "답안 작성 연습하기",
+         "minutes": 30
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goal": "매일 20분 책 읽기",
+     "ms": 2668,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "독서 시작 시간 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "독서 공간 마련하기",
+       "minutes": 15
+      },
+      {
+       "title": "독서 알람 설정하기",
+       "minutes": 5
+      },
+      {
+       "title": "책 선택 미리 하기",
+       "minutes": 15
+      },
+      {
+       "title": "하루 20분 타이머 켜기",
+       "minutes": 15
+      },
+      {
+       "title": "독서 후 감상 기록하기",
+       "minutes": 15
+      },
+      {
+       "title": "주간 독서 습관 점검하기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "여권 재발급 신청하기",
+     "ms": 2941,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "여권 재발급 대상 여권 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "재발급 필요 서류 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "온라인 접수 또는 방문 접수 결정하기",
+       "minutes": 5
+      },
+      {
+       "title": "온라인 접수 시 정보 입력 및 접수하기",
+       "minutes": 15
+      },
+      {
+       "title": "방문 접수 시 방문 예약 및 신청하기",
+       "minutes": 15
+      },
+      {
+       "title": "접수 완료 후 처리 결과 확인하기",
+       "minutes": 5
+      }
+     ]
+    },
+    {
+     "goal": "신발장 정리",
+     "ms": 3827,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "신발장 비우기",
+       "minutes": 15
+      },
+      {
+       "title": "분류하기",
+       "children": [
+        {
+         "title": "신발 종류별 분리",
+         "minutes": 15
+        },
+        {
+         "title": "유지/처분 구분",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "유지할 신발 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "구입할 정리함 찾기",
+       "children": [
+        {
+         "title": "신발 크기에 맞는 사이즈 확인",
+         "minutes": 5
+        },
+        {
+         "title": "수량 결정",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "정리함 배치하기",
+       "minutes": 20
+      },
+      {
+       "title": "바닥 청소하기",
+       "minutes": 20
+      }
+     ]
+    },
+    {
+     "goal": "11월 20일까지 블로그 글 쓰기",
+     "ms": 5883,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "아이디어 구상하기",
+       "children": [
+        {
+         "title": "원하는 주제 3가지 적기",
+         "minutes": 10
+        },
+        {
+         "title": "가장 관심 있는 주제 선택하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "자료 조사하기",
+       "children": [
+        {
+         "title": "키워드 5개 적기",
+         "minutes": 10
+        },
+        {
+         "title": "검색 엔진 활용하여 정보 찾기",
+         "minutes": 20
+        },
+        {
+         "title": "신뢰할 만한 출처 3개 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "목차 구성하기",
+       "children": [
+        {
+         "title": "글의 큰 틀 짜기",
+         "minutes": 15
+        },
+        {
+         "title": "각 섹션별 내용 메모하기",
+         "minutes": 10
+        },
+        {
+         "title": "가독성 고려하여 순서 정하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "초안 작성하기",
+       "children": [
+        {
+         "title": "서론, 본론, 결론 구성",
+         "minutes": 15
+        },
+        {
+         "title": "각 부분별 내용 채우기",
+         "minutes": 15
+        },
+        {
+         "title": "글의 흐름 점검하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "첨삭 및 수정",
+       "children": [
+        {
+         "title": "문장 다듬기",
+         "minutes": 20
+        },
+        {
+         "title": "오류 수정하기",
+         "minutes": 5
+        },
+        {
+         "title": "가독성 높이기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "게시 및 홍보",
+       "children": [
+        {
+         "title": "블로그에 글 올리기",
+         "minutes": 10
+        },
+        {
+         "title": "소셜 미디어 공유하기",
+         "minutes": 15
+        },
+        {
+         "title": "관련 커뮤니티에 알리기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "마감 일정 확인",
+       "children": [
+        {
+         "title": "11월 13일: 초안 완료",
+         "minutes": 15
+        },
+        {
+         "title": "11월 17일: 수정 완료",
+         "minutes": 15
+        },
+        {
+         "title": "11월 20일: 게시 완료",
+         "minutes": 15
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goal": "엑셀 함수 배우기",
+     "ms": 4053,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "엑셀 함수 종류 조사하기",
+       "children": [
+        {
+         "title": "검색어나 기준 정하기",
+         "minutes": 5
+        },
+        {
+         "title": "후보 모으기",
+         "minutes": 15
+        },
+        {
+         "title": "비교해서 고르기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "필요 함수 3개 골라보기",
+       "children": [
+        {
+         "title": "목표 설정 함수 선택",
+         "minutes": 15
+        },
+        {
+         "title": "실생활 적용 함수 선택",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "각 함수 기본 문법 익히기",
+       "children": [
+        {
+         "title": "함수 이름, 인자 순서 확인",
+         "minutes": 5
+        },
+        {
+         "title": "더하기, 곱하기 등의 연산 이해",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "온라인 튜토리얼 따라하기",
+       "children": [
+        {
+         "title": "유튜브 강의 시청",
+         "minutes": 15
+        },
+        {
+         "title": "온라인 문서 읽기",
+         "minutes": 30
+        }
+       ]
+      },
+      {
+       "title": "간단한 데이터 활용 연습하기",
+       "children": [
+        {
+         "title": "예시 데이터 생성",
+         "minutes": 15
+        },
+        {
+         "title": "함수 적용 및 결과 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "실제 데이터 분석 연습하기",
+       "children": [
+        {
+         "title": "집계 함수 활용",
+         "minutes": 15
+        },
+        {
+         "title": "조건부 함수 적용",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "자주 사용하는 함수 노트 정리하기",
+       "minutes": 20
+      }
+     ]
+    },
+    {
+     "goal": "집주인에게 보일러 수리 요청하기",
+     "ms": 1552,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "보일러 이상 증상 기록하기",
+       "minutes": 15
+      },
+      {
+       "title": "수리 요청할 방법 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "집주인에게 연락하기",
+       "minutes": 5
+      },
+      {
+       "title": "시간 약속 잡기",
+       "minutes": 15
+      },
+      {
+       "title": "수리 후 확인하기",
+       "minutes": 5
+      }
+     ]
+    },
+    {
+     "goal": "친구 결혼식 축사 준비",
+     "ms": 3736,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "참석 여부 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "결혼식 분위기 파악하기",
+       "children": [
+        {
+         "title": "신랑, 신부와의 대화",
+         "minutes": 15
+        },
+        {
+         "title": "결혼식 특징 알아보기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "궁금한 점 질문하기",
+       "children": [
+        {
+         "title": "신랑, 신부에게 스토리 질문하기",
+         "minutes": 15
+        },
+        {
+         "title": "결혼식 준비 과정 묻기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "예상 축사 분량 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "축사 내용 구성하기",
+       "children": [
+        {
+         "title": "감사 인사 작성",
+         "minutes": 30
+        },
+        {
+         "title": "축복 메시지 적기",
+         "minutes": 10
+        },
+        {
+         "title": "추억 이야기 준비",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "축사 초안 작성하기",
+       "children": [
+        {
+         "title": "핵심 내용 정리",
+         "minutes": 20
+        },
+        {
+         "title": "문장 다듬기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "소리 내어 연습하기",
+       "children": [
+        {
+         "title": "발음 연습",
+         "minutes": 20
+        },
+        {
+         "title": "표정 연습",
+         "minutes": 20
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goal": "동네 봉사활동 시작하기",
+     "ms": 2390,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "지역 봉사 단체 찾기",
+       "children": [
+        {
+         "title": "검색어나 기준 정하기",
+         "minutes": 5
+        },
+        {
+         "title": "후보 모으기",
+         "minutes": 10
+        },
+        {
+         "title": "비교해서 고르기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "단체 활동 정보 확인하기",
+       "children": [
+        {
+         "title": "봉사 유형 살펴보기",
+         "minutes": 20
+        },
+        {
+         "title": "활동 일정 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "관심 있는 봉사 활동 신청하기",
+       "minutes": 15
+      },
+      {
+       "title": "필요 물품 준비하기",
+       "children": [
+        {
+         "title": "의류, 비품 등 확인",
+         "minutes": 5
+        },
+        {
+         "title": "단체에서 요청한 물품 준비",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "봉사 활동 참여하기",
+       "minutes": 15
+      },
+      {
+       "title": "활동 후기 작성하기",
+       "minutes": 30
+      }
+     ]
+    },
+    {
+     "goal": "이번 주말까지 중고 노트북 팔기",
+     "ms": 3161,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "노트북 정보 정리하기",
+       "children": [
+        {
+         "title": "필요한 것 챙기기",
+         "minutes": 5
+        },
+        {
+         "title": "앞부분부터 시작하기",
+         "minutes": 10
+        },
+        {
+         "title": "나머지 끝내기",
+         "minutes": 5
+        },
+        {
+         "title": "확인하고 마무리하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "판매할 플랫폼 선택하기",
+       "minutes": 15
+      },
+      {
+       "title": "판매 글 작성하기",
+       "children": [
+        {
+         "title": "상세 정보, 사진 첨부",
+         "minutes": 15
+        },
+        {
+         "title": "가격 설정",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "구매 문의 응대하기",
+       "minutes": 15
+      },
+      {
+       "title": "거래 일정 조율하기",
+       "minutes": 15
+      },
+      {
+       "title": "배송 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "판매 완료 확인하기",
+       "minutes": 5
+      }
+     ]
+    },
+    {
+     "goal": "고양이 입양 준비하기",
+     "ms": 1748,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "고양이 종류 및 특징 조사",
+       "children": [
+        {
+         "title": "검색어나 기준 정하기",
+         "minutes": 5
+        },
+        {
+         "title": "후보 모으기",
+         "minutes": 15
+        },
+        {
+         "title": "비교해서 고르기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "입양 가능한 고양이 찾기",
+       "minutes": 20
+      },
+      {
+       "title": "입양 조건 확인 및 준비",
+       "minutes": 5
+      },
+      {
+       "title": "집사로서의 책임 이해",
+       "minutes": 15
+      },
+      {
+       "title": "필요 물품 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "건강 검진 예약하기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "운전면허 필기시험 합격하기",
+     "ms": 3970,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "시험 정보 확인하기",
+       "children": [
+        {
+         "title": "시험 일정 및 장소 알아보기",
+         "children": [
+          {
+           "title": "검색어나 기준 정하기",
+           "minutes": 5
+          },
+          {
+           "title": "후보 모으기",
+           "minutes": 10
+          },
+          {
+           "title": "비교해서 고르기",
+           "minutes": 5
+          }
+         ]
+        },
+        {
+         "title": "필요 서류 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "운전면허 시험 공부 시작하기",
+       "children": [
+        {
+         "title": "교재 구매 또는 대여하기",
+         "minutes": 15
+        },
+        {
+         "title": "온라인 강의 또는 자료 활용하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "기본 개념 학습하기",
+       "children": [
+        {
+         "title": "안전 수칙 꼼꼼히 읽기",
+         "minutes": 30
+        },
+        {
+         "title": "도로 규칙 이해하기",
+         "minutes": 15
+        },
+        {
+         "title": "신호등·표지판 종류 익히기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "연습 문제 풀기",
+       "children": [
+        {
+         "title": "기출문제 풀어보기",
+         "minutes": 20
+        },
+        {
+         "title": "온라인 모의고사 풀기",
+         "minutes": 30
+        },
+        {
+         "title": "오답 노트 작성하기",
+         "minutes": 30
+        }
+       ]
+      },
+      {
+       "title": "최종 점검하기",
+       "children": [
+        {
+         "title": "오답 노트 복습하기",
+         "minutes": 30
+        },
+        {
+         "title": "시험 전날 주요 내용 훑어보기",
+         "minutes": 20
+        },
+        {
+         "title": "충분한 휴식 취하기",
+         "minutes": 15
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goal": "이력서 고쳐서 회사 3곳 지원하기",
+     "ms": 4446,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "이력서 업데이트하기",
+       "children": [
+        {
+         "title": "경력 내용 추가",
+         "minutes": 15
+        },
+        {
+         "title": "기술 항목 보완",
+         "minutes": 15
+        },
+        {
+         "title": "자기소개서 수정",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "채용 공고 찾기",
+       "children": [
+        {
+         "title": "원하는 회사 찾기",
+         "minutes": 20
+        },
+        {
+         "title": "지원 자격 확인",
+         "minutes": 5
+        },
+        {
+         "title": "접수 마감일 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "지원서 작성하기",
+       "children": [
+        {
+         "title": "이력서 첨부",
+         "minutes": 15
+        },
+        {
+         "title": "자기소개서 작성",
+         "minutes": 30
+        },
+        {
+         "title": "추천서 준비",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "접수하기",
+       "children": [
+        {
+         "title": "온라인 지원 완료",
+         "minutes": 15
+        },
+        {
+         "title": "필요 서류 제출",
+         "minutes": 10
+        },
+        {
+         "title": "지원 결과 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "회사 분석하기",
+       "children": [
+        {
+         "title": "회사 정보 조사",
+         "minutes": 30
+        },
+        {
+         "title": "업계 동향 파악",
+         "minutes": 15
+        },
+        {
+         "title": "기업 문화 이해",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "피드백 요청하기",
+       "children": [
+        {
+         "title": "지인에게 검토 부탁",
+         "minutes": 20
+        },
+        {
+         "title": "전문가에게 조언 구하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "추가 지원 준비",
+       "children": [
+        {
+         "title": "이력서/자기소개서 보관",
+         "minutes": 15
+        },
+        {
+         "title": "참고 기업 목록 유지",
+         "minutes": 15
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goal": "일주일 식비 5만 원으로 줄이기",
+     "ms": 2246,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "오늘 냉장고 파먹기",
+       "minutes": 15
+      },
+      {
+       "title": "남은 식재료 리스트 작성",
+       "minutes": 30
+      },
+      {
+       "title": "저렴한 식단 3가지 찾기",
+       "minutes": 20
+      },
+      {
+       "title": "식단에 맞는 장보기 목록 작성",
+       "minutes": 15
+      },
+      {
+       "title": "장보기 전에 온라인 가격 비교하기",
+       "minutes": 20
+      },
+      {
+       "title": "앱테크 활용하여 식비 절약하기",
+       "minutes": 15
+      },
+      {
+       "title": "일주일 식비 기록 및 분석하기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "아침 6시에 일어나는 습관 만들기",
+     "ms": 2235,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "취침 시간 조절하기",
+       "minutes": 15
+      },
+      {
+       "title": "기상 알람 설정하기",
+       "minutes": 5
+      },
+      {
+       "title": "잠들기 전 스마트폰 멀리하기",
+       "minutes": 15
+      },
+      {
+       "title": "아침에 햇빛 쬐기",
+       "minutes": 15
+      },
+      {
+       "title": "일어난 후 물 한 잔 마시기",
+       "minutes": 15
+      },
+      {
+       "title": "기상 후 활동 계획 세우기",
+       "minutes": 20
+      },
+      {
+       "title": "일주일 후 변화 점검하기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "연말정산 서류 챙기기",
+     "ms": 5179,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "소득 증빙 서류 찾기",
+       "children": [
+        {
+         "title": "원천징수영수증 확인",
+         "minutes": 5
+        },
+        {
+         "title": "비과세 소득 관련 서류 찾기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "세액공제 관련 서류 찾기",
+       "children": [
+        {
+         "title": "신용카드/직불카드 사용 내역確認",
+         "minutes": 15
+        },
+        {
+         "title": "의료비 영수증 확인",
+         "minutes": 5
+        },
+        {
+         "title": "교육비 납입 영수증 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "연말정산 간소화 서비스 확인",
+       "children": [
+        {
+         "title": "간소화 서비스 접속",
+         "minutes": 15
+        },
+        {
+         "title": "수용액 확인 및 다운로드",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "미비한 서류 보충하기",
+       "children": [
+        {
+         "title": "연말정산 오류 확인",
+         "minutes": 5
+        },
+        {
+         "title": "세무사 상담 (필요시)",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "온라인 연말정산 신청 준비",
+       "children": [
+        {
+         "title": "전자신고 간소화 서비스 로그인",
+         "minutes": 15
+        },
+        {
+         "title": "소득/세액 계산 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "연말정산 신청 마감일 확인",
+       "children": [
+        {
+         "title": "2024년 연말정산 마감일 확인",
+         "minutes": 5
+        },
+        {
+         "title": "마감일 전 서류 제출",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "전자신고 완료 및 완료 확인",
+       "minutes": 5
+      }
+     ]
+    },
+    {
+     "goal": "베란다 화분 분갈이하기",
+     "ms": 4254,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "분갈이 화분 준비하기",
+       "children": [
+        {
+         "title": "분갈이 화분 선택",
+         "minutes": 15
+        },
+        {
+         "title": "배수 구멍 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "흙 준비하기",
+       "children": [
+        {
+         "title": "분갈이용 흙 구매",
+         "minutes": 15
+        },
+        {
+         "title": "검토 후 종류 선택",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "화분 흙 빠지기",
+       "children": [
+        {
+         "title": "화분 흙 다듬기",
+         "minutes": 20
+        },
+        {
+         "title": "기존 흙 제거",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "새 흙 채우기",
+       "children": [
+        {
+         "title": "화분 흙 높이 맞추기",
+         "minutes": 15
+        },
+        {
+         "title": "흙 골고루 담기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "화분 심기",
+       "children": [
+        {
+         "title": "식물 꺼내기",
+         "minutes": 5
+        },
+        {
+         "title": "새 흙에 위치 수정",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "물 주기",
+       "children": [
+        {
+         "title": "분갈이 후 물 주기",
+         "minutes": 15
+        },
+        {
+         "title": "배수 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "햇빛 보충하기",
+       "children": [
+        {
+         "title": "베란다 햇빛 잘 드는 곳에 옮기기",
+         "minutes": 15
+        },
+        {
+         "title": "과습 주의",
+         "minutes": 15
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "goal": "유튜브 첫 영상 올리기",
+     "ms": 1893,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "영상 주제 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "스크립트 간단하게 작성하기",
+       "minutes": 30
+      },
+      {
+       "title": "촬영 장비 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "짧은 클립 3개 촬영하기",
+       "minutes": 15
+      },
+      {
+       "title": "영상 편집 프로그램 실행하기",
+       "minutes": 15
+      },
+      {
+       "title": "편집 기초 배우기",
+       "minutes": 15
+      },
+      {
+       "title": "영상 업로드하고 제목 달기",
+       "minutes": 15
+      }
+     ]
+    },
+    {
+     "goal": "기타로 노래 한 곡 치기",
+     "ms": 2699,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "기타 꺼내기",
+       "minutes": 5
+      },
+      {
+       "title": "코드 연습하기",
+       "children": [
+        {
+         "title": "코드 익히기",
+         "minutes": 15
+        },
+        {
+         "title": "코드 전환 연습",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "반주 연습하기",
+       "children": [
+        {
+         "title": "반주 패턴 익히기",
+         "minutes": 15
+        },
+        {
+         "title": "다양한 반주 연습",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "가사 맞춰 연주하기",
+       "children": [
+        {
+         "title": "가사 보며 연습",
+         "minutes": 20
+        },
+        {
+         "title": "템포 조절 연습",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "전체 곡 연습하기",
+       "children": [
+        {
+         "title": "부분 연습",
+         "minutes": 20
+        },
+        {
+         "title": "전체 연습",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "녹음 또는 촬영하기",
+       "minutes": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Qwen3.5-2B-q4f16_1-MLC",
+   "goals": [
+    {
+     "goal": "다음 주까지 부모님 생신 선물 사기",
+     "ms": 2544,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "생신 선물 예산 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "주 3일 1개씩 고르기",
+       "minutes": 10
+      },
+      {
+       "title": "가장 좋은 1개 선택하기",
+       "minutes": 15
+      },
+      {
+       "title": "마감일 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "주문하기",
+       "minutes": 15
+      },
+      {
+       "title": "배송 확인하기",
+       "minutes": 5
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"생신 선물 예산 정하기\"},{\"title\":\"주 3일 1개씩 고르기\"},{\"title\":\"가장 좋은 1개 선택하기\"},{\"title\":\"마감일 확인하기\"},{\"title\":\"주문하기\"},{\"title\":\"배송 확인하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "토익 900점 받기",
+     "ms": 6054,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "토익 900점 목표 설정하기",
+       "children": [
+        {
+         "title": "현재 토익 점수 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "현재 수준에 맞는 목표치 정하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "성능 향상 전략 세우기",
+       "children": [
+        {
+         "title": "반복 학습 시간 확보하기",
+         "minutes": 15
+        },
+        {
+         "title": "실기·면기 균형 잡기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "일일 학습 습관 세우기",
+       "children": [
+        {
+         "title": "매일 최소 3시간 공부하기",
+         "minutes": 40
+        },
+        {
+         "title": "각 1시간마다 목표 달성 체크하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "토익 900점 달성 계획 수립하기",
+       "children": [
+        {
+         "title": "3~6개월 목표 기간 설정하기",
+         "minutes": 5
+        },
+        {
+         "title": "주 3~5회 반복 학습 계획 세우기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "실기·면기 문제 풀기",
+       "children": [
+        {
+         "title": "실기·면기 문제집 100개 구매하기",
+         "minutes": 15
+        },
+        {
+         "title": "각 문제집 3~5문제씩 풀기",
+         "minutes": 30
+        }
+       ]
+      },
+      {
+       "title": "토익 900점 달성 확인하기",
+       "children": [
+        {
+         "title": "모든 목표 달성 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "점수 향상 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "토익 900점 달성 후 유지하기",
+       "children": [
+        {
+         "title": "지속적인 학습 습관 세우기",
+         "minutes": 15
+        },
+        {
+         "title": "지속적인 점수 향상 유지하기",
+         "minutes": 15
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"토익 900점 목표 설정하기\",\"substeps\":[\"현재 토익 점수 확인하기\",\"현재 수준에 맞는 목표치 정하기\"]},{\"title\":\"성능 향상 전략 세우기\",\"substeps\":[\"반복 학습 시간 확보하기\",\"실기·면기 균형 잡기\"]},{\"title\":\"일일 학습 습관 세우기\",\"substeps\":[\"매일 최소 3시간 공부하기\",\"각 1시간마다 목표 달성 체크하기\"]},{\"title\":\"토익 900점 달성 계획 수립하기\",\"substeps\":[\"3~6개월 목표 기간 설정하기\",\"주 3~5회 반복 학습 계획 세우기\"]},{\"title\":\"실기·면기 문제 풀기\",\"substeps\":[\"실기·면기 문제집 100개 구매하기\",\"각 문제집 3~5문제씩 풀기\"]},{\"title\":\"토익 900점 달성 확인하기\",\"substeps\":[\"모든 목표 달성 확인하기\",\"점수 향상 확인하기\"]},{\"title\":\"토익 900점 달성 후 유지하기\",\"substeps\":[\"지속적인 학습 습관 세우기\",\"지속적인 점수 향상 유지하기\"]}]\n}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "매일 20분 책 읽기",
+     "ms": 12666,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "책 읽기 할 시간과 장소 정하기",
+       "children": [
+        {
+         "title": "오늘 하루 책 읽기할 시간을 15~20분으로 정하기",
+         "minutes": 5
+        },
+        {
+         "title": "오늘 하루 책 읽기할 장소(책상, 의자 등)를 정하기",
+         "minutes": 5
+        },
+        {
+         "title": "이후에 책 읽기할 시간을 지키지 않을 때 대체할 방법을 1 가지 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "필요한 준비물 꺼내 두기",
+       "children": [
+        {
+         "title": "필사본과 마우스를 책상 위에 두기",
+         "minutes": 15
+        },
+        {
+         "title": "책 제목과 페이지 번호를 미리 준비하기",
+         "minutes": 10
+        },
+        {
+         "title": "이후에 책 읽기할 때 손이 자유로워지도록 준비물만 두기",
+         "minutes": 30
+        }
+       ]
+      },
+      {
+       "title": "첫 1 회 책 읽기 해 보기",
+       "children": [
+        {
+         "title": "오늘 하루 첫 책 읽기 시간을 1 회만 지키기",
+         "minutes": 30
+        },
+        {
+         "title": "이후에 책 읽기할 때마다 1 회만 지키기",
+         "minutes": 30
+        },
+        {
+         "title": "이후에 책 읽기할 때마다 1 회만 지키지 않을 때 대체할 방법을 1 가지 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "끝나고 한 일 기록하기",
+       "children": [
+        {
+         "title": "오늘 하루 읽은 시간과 페이지 수를 기록하기",
+         "minutes": 15
+        },
+        {
+         "title": "이후에 읽은 시간과 페이지 수를 기록하기",
+         "minutes": 15
+        },
+        {
+         "title": "이후에 읽은 시간과 페이지 수를 기록하지 않을 때 대체할 방법을 1 가지 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "이번 주 매일 지키기",
+       "children": [
+        {
+         "title": "이번 주 하루에 책 읽기할 시간을 지키지 않을 때 대체할 방법을 1 가지 준비하기",
+         "minutes": 10
+        },
+        {
+         "title": "이후에 이번 주 하루에 책 읽기할 시간을 지키지 않을 때 대체할 방법을 1 가지 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "일주일 뒤 돌아보고 조정하기",
+       "children": [
+        {
+         "title": "이번 주 하루에 읽은 시간과 페이지 수를 기록하기",
+         "minutes": 15
+        },
+        {
+         "title": "이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하기",
+         "minutes": 15
+        },
+        {
+         "title": "이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하지 않을 때 대체할 방법을 1 가지 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하기",
+       "children": [
+        {
+         "title": "이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하기",
+         "minutes": 15
+        },
+        {
+         "title": "이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하지 않을 때 대체할 방법을 1 가지 준비하기",
+         "minutes": 10
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"책 읽기 할 시간과 장소 정하기\",\"substeps\":[\"오늘 하루 책 읽기할 시간을 15~20분으로 정하기\",\"오늘 하루 책 읽기할 장소(책상, 의자 등)를 정하기\",\"이후에 책 읽기할 시간을 지키지 않을 때 대체할 방법을 1 가지 준비하기\"]},{\"title\":\"필요한 준비물 꺼내 두기\",\"substeps\":[\"필사본과 마우스를 책상 위에 두기\",\"책 제목과 페이지 번호를 미리 준비하기\",\"이후에 책 읽기할 때 손이 자유로워지도록 준비물만 두기\"]},{\"title\":\"첫 1 회 책 읽기 해 보기\",\"substeps\":[\"오늘 하루 첫 책 읽기 시간을 1 회만 지키기\",\"이후에 책 읽기할 때마다 1 회만 지키기\",\"이후에 책 읽기할 때마다 1 회만 지키지 않을 때 대체할 방법을 1 가지 준비하기\"]},{\"title\":\"끝나고 한 일 기록하기\",\"substeps\":[\"오늘 하루 읽은 시간과 페이지 수를 기록하기\",\"이후에 읽은 시간과 페이지 수를 기록하기\",\"이후에 읽은 시간과 페이지 수를 기록하지 않을 때 대체할 방법을 1 가지 준비하기\"]},{\"title\":\"이번 주 매일 지키기\",\"substeps\":[\"이번 주 하루에 책 읽기할 시간을 지키지 않을 때 대체할 방법을 1 가지 준비하기\",\"이후에 이번 주 하루에 책 읽기할 시간을 지키지 않을 때 대체할 방법을 1 가지 준비하기\",\"이후에 이번 주 하루에 책 읽기할 시간을 지키지 않을 때 대체할 방법을 1 가지 준비하기\"]},{\"title\":\"일주일 뒤 돌아보고 조정하기\",\"substeps\":[\"이번 주 하루에 읽은 시간과 페이지 수를 기록하기\",\"이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하기\",\"이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하지 않을 때 대체할 방법을 1 가지 준비하기\"]},{\"title\":\"이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하기\",\"substeps\":[\"이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하기\",\"이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하기\",\"이후에 이번 주 하루에 읽은 시간과 페이지 수를 기록하지 않을 때 대체할 방법을 1 가지 준비하기\"]}]\n}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "여권 재발급 신청하기",
+     "ms": 1360,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "여권 재발급 필요 서류 및 정보 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "신청 방법과 기한 알아보기",
+       "minutes": 15
+      },
+      {
+       "title": "서류 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "작성해서 제출하기",
+       "minutes": 30
+      },
+      {
+       "title": "처리 결과 확인하기",
+       "minutes": 5
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"여권 재발급 필요 서류 및 정보 확인하기\"},{\"title\":\"신청 방법과 기한 알아보기\"},{\"title\":\"서류 준비하기\"},{\"title\":\"작성해서 제출하기\"},{\"title\":\"처리 결과 확인하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "신발장 정리",
+     "ms": 2054,
+     "ok": false,
+     "drafts": [],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"신발장 정리하기\"},{\"title\":\"신발장 정리하기\",\"substeps\":[\"신발장 정리하기\",\"신발장 정리하기\",\"신발장 정리하기\"]},{\"title\":\"신발장 정리하기\"},{\"title\":\"신발장 정리하기\"},{\"title\":\"신발장 정리하기\"},{\"title\":\"신발장 정리하기\"},{\"title\":\"신발장 정리하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "11월 20일까지 블로그 글 쓰기",
+     "ms": 5898,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "11월 20일 마감 날짜 확인",
+       "minutes": 5
+      },
+      {
+       "title": "목표 달성 일정 정하기",
+       "children": [
+        {
+         "title": "11월 20일까지 글 작성 완료 확인",
+         "minutes": 5
+        },
+        {
+         "title": "11월 15일까지 초안 작성 완료 확인",
+         "minutes": 5
+        },
+        {
+         "title": "11월 10일까지 자료 수집 완료 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "주제 선정 및 자료 수집하기",
+       "children": [
+        {
+         "title": "11월 15일까지 3~5개 참고할 글 찾기",
+         "minutes": 20
+        },
+        {
+         "title": "11월 18일까지 주제와 자료 정리하기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "글 초안 작성하기",
+       "children": [
+        {
+         "title": "11월 18일까지 목차 작성하기",
+         "minutes": 30
+        },
+        {
+         "title": "11월 20일까지 초안 완성하기",
+         "minutes": 15
+        },
+        {
+         "title": "11월 20일까지 글 완성하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "글 작성 완료 후 검토하기",
+       "children": [
+        {
+         "title": "11월 20일까지 글 검토하기",
+         "minutes": 20
+        },
+        {
+         "title": "11월 20일까지 수정하기",
+         "minutes": 5
+        },
+        {
+         "title": "11월 20일까지 최종 완성하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "11월 20일까지 블로그 게시하기",
+       "children": [
+        {
+         "title": "11월 20일까지 블로그 게시하기",
+         "minutes": 15
+        },
+        {
+         "title": "11월 20일까지 블로그 검색하기",
+         "minutes": 15
+        },
+        {
+         "title": "11월 20일까지 블로그 방문하기",
+         "minutes": 15
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"11월 20일 마감 날짜 확인\"},{\"title\":\"목표 달성 일정 정하기\",\"substeps\":[\"11월 20일까지 글 작성 완료 확인\",\"11월 15일까지 초안 작성 완료 확인\",\"11월 10일까지 자료 수집 완료 확인\"]},{\"title\":\"주제 선정 및 자료 수집하기\",\"substeps\":[\"11월 15일까지 3~5개 참고할 글 찾기\",\"11월 18일까지 주제와 자료 정리하기\"]},{\"title\":\"글 초안 작성하기\",\"substeps\":[\"11월 18일까지 목차 작성하기\",\"11월 20일까지 초안 완성하기\",\"11월 20일까지 글 완성하기\"]},{\"title\":\"글 작성 완료 후 검토하기\",\"substeps\":[\"11월 20일까지 글 검토하기\",\"11월 20일까지 수정하기\",\"11월 20일까지 최종 완성하기\"]},{\"title\":\"11월 20일까지 블로그 게시하기\",\"substeps\":[\"11월 20일까지 블로그 게시하기\",\"11월 20일까지 블로그 검색하기\",\"11월 20일까지 블로그 방문하기\"]}]\n}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "엑셀 함수 배우기",
+     "ms": 2176,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "엑셀에 대한 기본 이해하기",
+       "minutes": 15
+      },
+      {
+       "title": "가장 기초가 되는 합치기 함수 습득하기",
+       "minutes": 15
+      },
+      {
+       "title": "가장 기초가 되는 합치기 함수 활용하기",
+       "minutes": 15
+      },
+      {
+       "title": "이제 추가하기 함수를 익히기",
+       "minutes": 15
+      },
+      {
+       "title": "이제 합치기 함수를 활용하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"엑셀에 대한 기본 이해하기\"},{\"title\":\"가장 기초가 되는 합치기 함수 습득하기\"},{\"title\":\"가장 기초가 되는 합치기 함수 활용하기\"},{\"title\":\"이제 추가하기 함수를 익히기\"},{\"title\":\"이제 합치기 함수를 활용하기\"},{\"title\":\"이제 합치기 함수를 활용하기\"},{\"title\":\"이제 합치기 함수를 활용하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "집주인에게 보일러 수리 요청하기",
+     "ms": 1899,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "연락할 시간 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "연락하기",
+       "minutes": 5
+      },
+      {
+       "title": "이야기한 내용 메모하기",
+       "minutes": 10
+      },
+      {
+       "title": "보일러 수리 요청하기",
+       "minutes": 15
+      },
+      {
+       "title": "수리 요청하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"집주인에게 보일러 수리 요청하기\"},{\"title\":\"연락할 시간 정하기\"},{\"title\":\"연락하기\"},{\"title\":\"이야기한 내용 메모하기\"},{\"title\":\"보일러 수리 요청하기\"},{\"title\":\"수리 요청하기\"},{\"title\":\"수리 요청하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "친구 결혼식 축사 준비",
+     "ms": 1780,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "결혼식 날짜와 장소 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "신상과 관계식별 정리하기",
+       "minutes": 20
+      },
+      {
+       "title": "축사 주제 선정하기",
+       "minutes": 5
+      },
+      {
+       "title": "중요한 순간에 대한 메모 작성하기",
+       "minutes": 10
+      },
+      {
+       "title": "발표 시간과 장소에 대한 안내 작성하기",
+       "minutes": 30
+      },
+      {
+       "title": "발표 연습하기",
+       "minutes": 20
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"결혼식 날짜와 장소 확인하기\"},{\"title\":\"신상과 관계식별 정리하기\"},{\"title\":\"축사 주제 선정하기\"},{\"title\":\"중요한 순간에 대한 메모 작성하기\"},{\"title\":\"발표 시간과 장소에 대한 안내 작성하기\"},{\"title\":\"발표 연습하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "동네 봉사활동 시작하기",
+     "ms": 1504,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "봉사 활동 장소 찾기",
+       "children": [
+        {
+         "title": "검색어나 기준 정하기",
+         "minutes": 5
+        },
+        {
+         "title": "후보 모으기",
+         "minutes": 10
+        },
+        {
+         "title": "비교해서 고르기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "봉사 활동 신청하기",
+       "minutes": 15
+      },
+      {
+       "title": "봉사 활동 준비하기",
+       "children": [
+        {
+         "title": "장소 방문 확인",
+         "minutes": 5
+        },
+        {
+         "title": "의무 서류 제출",
+         "minutes": 10
+        },
+        {
+         "title": "의무 수료",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "봉사 활동 시작하기",
+       "minutes": 15
+      },
+      {
+       "title": "봉사 활동 종료하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"봉사 활동 장소 찾기\"},{\"title\":\"봉사 활동 신청하기\"},{\"title\":\"봉사 활동 준비하기\",\"substeps\":[\"장소 방문 확인\",\"의무 서류 제출\",\"의무 수료\"]},{\"title\":\"봉사 활동 시작하기\"},{\"title\":\"봉사 활동 종료하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "이번 주말까지 중고 노트북 팔기",
+     "ms": 1926,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "중고 노트북 구매하기",
+       "minutes": 15
+      },
+      {
+       "title": "중고 노트북 판매하기",
+       "minutes": 15
+      },
+      {
+       "title": "판매할 물건 정리하기",
+       "children": [
+        {
+         "title": "가격 설정하기",
+         "minutes": 5
+        },
+        {
+         "title": "판매처 찾기",
+         "minutes": 20
+        },
+        {
+         "title": "판매처 연락하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "판매일정 잡기",
+       "minutes": 15
+      },
+      {
+       "title": "판매일정 지키기",
+       "minutes": 15
+      },
+      {
+       "title": "판매 완료 확인하기",
+       "minutes": 5
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"중고 노트북 구매하기\"},{\"title\":\"중고 노트북 판매하기\"},{\"title\":\"판매할 물건 정리하기\",\"substeps\":[\"가격 설정하기\",\"판매처 찾기\",\"판매처 연락하기\"]},{\"title\":\"판매일정 잡기\"},{\"title\":\"판매일정 지키기\"},{\"title\":\"판매 완료 확인하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "고양이 입양 준비하기",
+     "ms": 1727,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "고양이 입양을 위한 비용과 준비물 정리하기",
+       "children": [
+        {
+         "title": "필요한 것 챙기기",
+         "minutes": 5
+        },
+        {
+         "title": "앞부분부터 시작하기",
+         "minutes": 10
+        },
+        {
+         "title": "나머지 끝내기",
+         "minutes": 5
+        },
+        {
+         "title": "확인하고 마무리하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "입양을 위한 사진 촬영하기",
+       "minutes": 15
+      },
+      {
+       "title": "고양이 입양을 위한 서류 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "입양을 위한 입양 절차 진행하기",
+       "minutes": 15
+      },
+      {
+       "title": "입양을 위한 입양 후 관리 계획 수립하기",
+       "minutes": 20
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"고양이 입양을 위한 비용과 준비물 정리하기\"},{\"title\":\"입양을 위한 사진 촬영하기\"},{\"title\":\"고양이 입양을 위한 서류 준비하기\"},{\"title\":\"입양을 위한 입양 절차 진행하기\"},{\"title\":\"입양을 위한 입양 후 관리 계획 수립하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "운전면허 필기시험 합격하기",
+     "ms": 6068,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "운전면허 자격증 취득하기",
+       "children": [
+        {
+         "title": "자격증 신청서 작성 및 제출하기",
+         "minutes": 15
+        },
+        {
+         "title": "신청 수수료 납부하기",
+         "minutes": 15
+        },
+        {
+         "title": "면허청소소 방문 및 서류 심리",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "필기시험 준비하기",
+       "children": [
+        {
+         "title": "시험 일정 확인 및 준비물 정리하기",
+         "minutes": 5
+        },
+        {
+         "title": "시험장 방문하기",
+         "minutes": 15
+        },
+        {
+         "title": "시험 당일 준비물 정리",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "시험 응시하기",
+       "children": [
+        {
+         "title": "시험 장소 이동하기",
+         "minutes": 30
+        },
+        {
+         "title": "시험 응시하기",
+         "minutes": 15
+        },
+        {
+         "title": "응시 후 결과 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "자격증 발급 받기",
+       "children": [
+        {
+         "title": "발급일 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "발급일 확인 후 발급받기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "운전면허 자격증 유지하기",
+       "children": [
+        {
+         "title": "운전면허 유지 기간 준수하기",
+         "minutes": 15
+        },
+        {
+         "title": "운전면허 유지 기간 내 갱신하기",
+         "minutes": 15
+        },
+        {
+         "title": "갱신 후 유지 기간 내 운전하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "운전면허 자격증 갱신하기",
+       "children": [
+        {
+         "title": "갱신 기간 준수하기",
+         "minutes": 15
+        },
+        {
+         "title": "갱신 후 운전면허 유지하기",
+         "minutes": 15
+        },
+        {
+         "title": "갱신 후 갱신 주기 반복하기",
+         "minutes": 15
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"운전면허 자격증 취득하기\",\"substeps\":[\"자격증 신청서 작성 및 제출하기\",\"신청 수수료 납부하기\",\"면허청소소 방문 및 서류 심리\"]},{\"title\":\"필기시험 준비하기\",\"substeps\":[\"시험 일정 확인 및 준비물 정리하기\",\"시험장 방문하기\",\"시험 당일 준비물 정리\"]},{\"title\":\"시험 응시하기\",\"substeps\":[\"시험 장소 이동하기\",\"시험 응시하기\",\"응시 후 결과 확인\"]},{\"title\":\"자격증 발급 받기\",\"substeps\":[\"발급일 확인하기\",\"발급일 확인 후 발급받기\"]},{\"title\":\"운전면허 자격증 유지하기\",\"substeps\":[\"운전면허 유지 기간 준수하기\",\"운전면허 유지 기간 내 갱신하기\",\"갱신 후 유지 기간 내 운전하기\"]},{\"title\":\"운전면허 자격증 갱신하기\",\"substeps\":[\"갱신 기간 준수하기\",\"갱신 후 운전면허 유지하기\",\"갱신 후 갱신 주기 반복하기\"]},{\"title\":\"운전면허 자격증 유지하기\",\"substeps\":[\"운전면허 유지 기간 준수하기\",\"운전면허 유지 기간 내 운전하기\",\"운전면허 유지 기간 내 갱신 주기 반복하기\"]}]\n}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "이력서 고쳐서 회사 3곳 지원하기",
+     "ms": 1616,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "이력서 초안 작성하기",
+       "children": [
+        {
+         "title": "쓸 내용 세 줄로 개요 잡기",
+         "minutes": 5
+        },
+        {
+         "title": "초안 쓰기",
+         "minutes": 15
+        },
+        {
+         "title": "다시 읽고 고치기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "회사별 3곳에 맞춰 수정하기",
+       "minutes": 5
+      },
+      {
+       "title": "최종 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "지원하기",
+       "minutes": 15
+      },
+      {
+       "title": "이력서 보내기",
+       "minutes": 5
+      },
+      {
+       "title": "답변을 기다리기",
+       "minutes": 15
+      },
+      {
+       "title": "제시하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"이력서 초안 작성하기\"},{\"title\":\"회사별 3곳에 맞춰 수정하기\"},{\"title\":\"최종 확인하기\"},{\"title\":\"지원하기\"},{\"title\":\"이력서 보내기\"},{\"title\":\"답변을 기다리기\"},{\"title\":\"제시하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "일주일 식비 5만 원으로 줄이기",
+     "ms": 1915,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "식비 총액 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "50,000원 목표 대비 절감 가능 금액 계산하기",
+       "minutes": 15
+      },
+      {
+       "title": "주 7일 식비별 항목 분류하기",
+       "minutes": 15
+      },
+      {
+       "title": "절감 가능한 항목별 대용량 식기하기",
+       "minutes": 15
+      },
+      {
+       "title": "주 7일 식비 총액 다시 계산하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"식비 총액 확인하기\"},{\"title\":\"50,000원 목표 대비 절감 가능 금액 계산하기\"},{\"title\":\"주 7일 식비별 항목 분류하기\"},{\"title\":\"절감 가능한 항목별 대용량 식기하기\"},{\"title\":\"주 7일 식비 총액 다시 계산하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "아침 6시에 일어나는 습관 만들기",
+     "ms": 2285,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "아침 6 시에 일어나는 시간과 장소 정하기",
+       "minutes": 5
+      },
+      {
+       "title": "6 시 30 분까지 잠들기",
+       "minutes": 15
+      },
+      {
+       "title": "6 시 30 분에 일어나기",
+       "minutes": 15
+      },
+      {
+       "title": "6 시 30 분에 일어나서 30 분 운동하기",
+       "minutes": 30
+      },
+      {
+       "title": "6 시 30 분에 일어나서 30 분 책 읽기하기",
+       "minutes": 30
+      },
+      {
+       "title": "6 시 30 분에 일어나서 30 분 일기 쓰기",
+       "minutes": 30
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"아침 6 시에 일어나는 시간과 장소 정하기\"},{\"title\":\"6 시 30 분까지 잠들기\"},{\"title\":\"6 시 30 분에 일어나기\"},{\"title\":\"6 시 30 분에 일어나서 30 분 운동하기\"},{\"title\":\"6 시 30 분에 일어나서 30 분 책 읽기하기\"},{\"title\":\"6 시 30 분에 일어나서 30 분 일기 쓰기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "연말정산 서류 챙기기",
+     "ms": 2250,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "연말정산 서류 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "세부세금 계산서 확인하기",
+       "minutes": 5
+      },
+      {
+       "title": "세부세금 계산서 제출하기",
+       "minutes": 10
+      },
+      {
+       "title": "세부세금 계산서 제출 후 확인하기",
+       "minutes": 5
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"연말정산 서류 준비하기\"},{\"title\":\"세부세금 계산서 확인하기\"},{\"title\":\"세부세금 계산서 제출하기\"},{\"title\":\"세부세금 계산서 제출 후 확인하기\"},{\"title\":\"세부세금 계산서 제출 후 확인하기\"},{\"title\":\"세부세금 계산서 제출 후 확인하기\"},{\"title\":\"세부세금 계산서 제출 후 확인하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "베란다 화분 분갈이하기",
+     "ms": 1752,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "화분 바닥에 손가락으로 깊이 파기",
+       "minutes": 15
+      },
+      {
+       "title": "화분 벽을 살짝 당기기",
+       "minutes": 15
+      },
+      {
+       "title": "분갈이한 물기 제거하기",
+       "minutes": 15
+      },
+      {
+       "title": "새 화분 입구 세척하기",
+       "minutes": 15
+      },
+      {
+       "title": "새 화분 바닥에 흙을 뿌리기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"화분 바닥에 손가락으로 깊이 파기\"},{\"title\":\"화분 벽을 살짝 당기기\"},{\"title\":\"분갈이한 물기 제거하기\"},{\"title\":\"새 화분 입구 세척하기\"},{\"title\":\"새 화분 바닥에 흙을 뿌리기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "유튜브 첫 영상 올리기",
+     "ms": 1354,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "유튜브 채널 설정하기",
+       "minutes": 5
+      },
+      {
+       "title": "프로필 수정하기",
+       "minutes": 5
+      },
+      {
+       "title": "첫 번째 영상 제목 작성하기",
+       "minutes": 30
+      },
+      {
+       "title": "영상 촬영 및 편집하기",
+       "minutes": 15
+      },
+      {
+       "title": "유튜브에 업로드하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"유튜브 채널 설정하기\"},{\"title\":\"프로필 수정하기\"},{\"title\":\"첫 번째 영상 제목 작성하기\"},{\"title\":\"영상 촬영 및 편집하기\"},{\"title\":\"유튜브에 업로드하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "기타로 노래 한 곡 치기",
+     "ms": 1557,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "기타 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "노래를 먼저 배우기",
+       "minutes": 15
+      },
+      {
+       "title": "보컬을 연습하기",
+       "minutes": 20
+      },
+      {
+       "title": "미디엄 키를 조절하기",
+       "minutes": 15
+      },
+      {
+       "title": "마스터링하기",
+       "minutes": 15
+      },
+      {
+       "title": "녹음하기",
+       "minutes": 15
+      },
+      {
+       "title": "보내기",
+       "minutes": 5
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"기타 준비하기\"},{\"title\":\"노래를 먼저 배우기\"},{\"title\":\"보컬을 연습하기\"},{\"title\":\"미디엄 키를 조절하기\"},{\"title\":\"마스터링하기\"},{\"title\":\"녹음하기\"},{\"title\":\"보내기\"}]}",
+     "finishReason": "stop"
+    }
+   ],
+   "cachedBefore": true,
+   "loadMs": 3248,
+   "storageDeltaMB": 0
+  },
+  {
+   "id": "Qwen3.5-4B-q4f16_1-MLC",
+   "goals": [
+    {
+     "goal": "다음 주까지 부모님 생신 선물 사기",
+     "ms": 7119,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "부모님 생신 날짜 확인하기",
+       "children": [
+        {
+         "title": "다음 주 일정 보기",
+         "children": [
+          {
+           "title": "필요한 것 챙기기",
+           "minutes": 5
+          },
+          {
+           "title": "앞부분부터 시작하기",
+           "minutes": 10
+          },
+          {
+           "title": "나머지 끝내기",
+           "minutes": 5
+          },
+          {
+           "title": "확인하고 마무리하기",
+           "minutes": 5
+          }
+         ]
+        },
+        {
+         "title": "생신 날짜 기록하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "예산 범위 정하기",
+       "children": [
+        {
+         "title": "가용 자금 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "예산 금액 기록하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "선물 아이디어 3개 적기",
+       "children": [
+        {
+         "title": "부모님 취향 생각하기",
+         "minutes": 15
+        },
+        {
+         "title": "3개 아이디어 적기",
+         "minutes": 10
+        },
+        {
+         "title": "선물 종류 정하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "선물 후보 3개 검색하기",
+       "children": [
+        {
+         "title": "온라인 검색하기",
+         "minutes": 15
+        },
+        {
+         "title": "가격 비교하기",
+         "minutes": 15
+        },
+        {
+         "title": "후기 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "최종 선택 및 구매하기",
+       "children": [
+        {
+         "title": "선물 확정하기",
+         "minutes": 5
+        },
+        {
+         "title": "주문하기",
+         "minutes": 15
+        },
+        {
+         "title": "결제 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "배송 추적하기",
+       "children": [
+        {
+         "title": "배송 상태 보기",
+         "minutes": 20
+        },
+        {
+         "title": "수령 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "선물 수령 및 감사하기",
+       "children": [
+        {
+         "title": "선물 수령하기",
+         "minutes": 15
+        },
+        {
+         "title": "감사 인사 보내기",
+         "minutes": 5
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"부모님 생신 날짜 확인하기\",\"substeps\":[\"다음 주 일정 보기\",\"생신 날짜 기록하기\"]},{\"title\":\"예산 범위 정하기\",\"substeps\":[\"가용 자금 확인하기\",\"예산 금액 기록하기\"]},{\"title\":\"선물 아이디어 3개 적기\",\"substeps\":[\"부모님 취향 생각하기\",\"3개 아이디어 적기\",\"선물 종류 정하기\"]},{\"title\":\"선물 후보 3개 검색하기\",\"substeps\":[\"온라인 검색하기\",\"가격 비교하기\",\"후기 확인하기\"]},{\"title\":\"최종 선택 및 구매하기\",\"substeps\":[\"선물 확정하기\",\"주문하기\",\"결제 확인하기\"]},{\"title\":\"배송 추적하기\",\"substeps\":[\"배송 상태 보기\",\"수령 준비하기\"]},{\"title\":\"선물 수령 및 감사하기\",\"substeps\":[\"선물 수령하기\",\"감사 인사 보내기\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "토익 900점 받기",
+     "ms": 10643,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "기출문제 분석하기",
+       "children": [
+        {
+         "title": "과거 기출문제 3년 분량 다운로드하기",
+         "minutes": 15
+        },
+        {
+         "title": "정답과 오답노트 작성하기",
+         "minutes": 30
+        },
+        {
+         "title": "오답 노트 주제 분류하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "듣기 훈련하기",
+       "children": [
+        {
+         "title": "1회독: 전체 듣기 및 이해도 기록하기",
+         "minutes": 20
+        },
+        {
+         "title": "2회독: 오답 노트 주제별 집중 듣기",
+         "minutes": 20
+        },
+        {
+         "title": "3회독: 모의 시험 듣기 및 속도 조절하기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "말하기 훈련하기",
+       "children": [
+        {
+         "title": "1주: 주제별 3분 녹음하기",
+         "minutes": 15
+        },
+        {
+         "title": "2주: 녹음본 분석 및 수정하기",
+         "minutes": 5
+        },
+        {
+         "title": "3주: 모의 시험 말하기 연습하기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "문법·독해 강화하기",
+       "children": [
+        {
+         "title": "1주: 빈약한 문법 항목 5개 집중 학습하기",
+         "minutes": 15
+        },
+        {
+         "title": "2주: 독해 문제 200개 풀기",
+         "minutes": 30
+        },
+        {
+         "title": "3주: 오답 노트 문제 재풀이",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "모의 시험 연습하기",
+       "children": [
+        {
+         "title": "1주: 1회독 모의 시험 실시하기",
+         "minutes": 15
+        },
+        {
+         "title": "2주: 2회독 모의 시험 실시하기",
+         "minutes": 15
+        },
+        {
+         "title": "3주: 최종 모의 시험 실시하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "시험 당일 준비하기",
+       "children": [
+        {
+         "title": "시험 일정 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "필물 준비하기",
+         "minutes": 10
+        },
+        {
+         "title": "수면 시간 확보하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "성적 확인 및 보완하기",
+       "children": [
+        {
+         "title": "성적 내역 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "약점 항목 분석하기",
+         "minutes": 15
+        },
+        {
+         "title": "다음 단계 계획 세우기",
+         "minutes": 20
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"기출문제 분석하기\",\"substeps\":[\"과거 기출문제 3년 분량 다운로드하기\",\"정답과 오답노트 작성하기\",\"오답 노트 주제 분류하기\"]},{\"title\":\"듣기 훈련하기\",\"substeps\":[\"1회독: 전체 듣기 및 이해도 기록하기\",\"2회독: 오답 노트 주제별 집중 듣기\",\"3회독: 모의 시험 듣기 및 속도 조절하기\"]},{\"title\":\"말하기 훈련하기\",\"substeps\":[\"1주: 주제별 3분 녹음하기\",\"2주: 녹음본 분석 및 수정하기\",\"3주: 모의 시험 말하기 연습하기\"]},{\"title\":\"문법·독해 강화하기\",\"substeps\":[\"1주: 빈약한 문법 항목 5개 집중 학습하기\",\"2주: 독해 문제 200개 풀기\",\"3주: 오답 노트 문제 재풀이\"]},{\"title\":\"모의 시험 연습하기\",\"substeps\":[\"1주: 1회독 모의 시험 실시하기\",\"2주: 2회독 모의 시험 실시하기\",\"3주: 최종 모의 시험 실시하기\"]},{\"title\":\"시험 당일 준비하기\",\"substeps\":[\"시험 일정 확인하기\",\"필물 준비하기\",\"수면 시간 확보하기\"]},{\"title\":\"성적 확인 및 보완하기\",\"substeps\":[\"성적 내역 확인하기\",\"약점 항목 분석하기\",\"다음 단계 계획 세우기\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "매일 20분 책 읽기",
+     "ms": 7564,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "책 읽기 할 시간과 장소 정하기",
+       "children": [
+        {
+         "title": "책 읽기 시간 20분 정하기",
+         "minutes": 5
+        },
+        {
+         "title": "책 읽기 장소 정하기",
+         "minutes": 5
+        },
+        {
+         "title": "책 읽기 시간 알림 설정하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "필요한 준비물 꺼내 두기",
+       "children": [
+        {
+         "title": "책 1권 꺼내기",
+         "minutes": 5
+        },
+        {
+         "title": "독서용 물기 준비하기",
+         "minutes": 10
+        },
+        {
+         "title": "독서용 의자 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "첫 1회 책 읽기 해 보기",
+       "children": [
+        {
+         "title": "책 열기",
+         "minutes": 15
+        },
+        {
+         "title": "20분 동안 읽기",
+         "minutes": 30
+        },
+        {
+         "title": "책 덮기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "끝나고 한 일 기록하기",
+       "children": [
+        {
+         "title": "독서 시간 기록하기",
+         "minutes": 15
+        },
+        {
+         "title": "독서 내용 메모하기",
+         "minutes": 10
+        },
+        {
+         "title": "다음 날 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "이번 주 매일 지키기",
+       "children": [
+        {
+         "title": "매일 독서 시간 지키기",
+         "minutes": 15
+        },
+        {
+         "title": "독서 시간 부족할 때 대처하기",
+         "minutes": 15
+        },
+        {
+         "title": "독서 시간 초과할 때 대처하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "일주일 뒤 돌아보고 조정하기",
+       "children": [
+        {
+         "title": "독서 기록 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "독서 시간 조정하기",
+         "minutes": 5
+        },
+        {
+         "title": "독서 장소 조정하기",
+         "minutes": 5
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"책 읽기 할 시간과 장소 정하기\",\"substeps\":[\"책 읽기 시간 20분 정하기\",\"책 읽기 장소 정하기\",\"책 읽기 시간 알림 설정하기\"]},{\"title\":\"필요한 준비물 꺼내 두기\",\"substeps\":[\"책 1권 꺼내기\",\"독서용 물기 준비하기\",\"독서용 의자 준비하기\"]},{\"title\":\"첫 1회 책 읽기 해 보기\",\"substeps\":[\"책 열기\",\"20분 동안 읽기\",\"책 덮기\"]},{\"title\":\"끝나고 한 일 기록하기\",\"substeps\":[\"독서 시간 기록하기\",\"독서 내용 메모하기\",\"다음 날 준비하기\"]},{\"title\":\"이번 주 매일 지키기\",\"substeps\":[\"매일 독서 시간 지키기\",\"독서 시간 부족할 때 대처하기\",\"독서 시간 초과할 때 대처하기\"]},{\"title\":\"일주일 뒤 돌아보고 조정하기\",\"substeps\":[\"독서 기록 확인하기\",\"독서 시간 조정하기\",\"독서 장소 조정하기\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "여권 재발급 신청하기",
+     "ms": 7285,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "여권 재발급 필요성 확인하기",
+       "children": [
+        {
+         "title": "여권 만료일 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "여권 손상 상태 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "재발급 사유 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "신청 방법과 기한 알아보기",
+       "children": [
+        {
+         "title": "공식 홈페이지 접속하기",
+         "minutes": 15
+        },
+        {
+         "title": "신청 기간 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "신청 방법 비교하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "필요 서류 준비하기",
+       "children": [
+        {
+         "title": "신분증 준비하기",
+         "minutes": 10
+        },
+        {
+         "title": "원본 여권 준비하기",
+         "minutes": 10
+        },
+        {
+         "title": "사진 촬영하기",
+         "minutes": 15
+        },
+        {
+         "title": "신청서 작성하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "신청서 제출하기",
+       "children": [
+        {
+         "title": "온라인 제출하기",
+         "minutes": 10
+        },
+        {
+         "title": "신분증 인증하기",
+         "minutes": 15
+        },
+        {
+         "title": "신청 완료 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "여권 수령 준비하기",
+       "children": [
+        {
+         "title": "수령 방법 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "수령 장소 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "수령 시간 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "여권 수령하기",
+       "children": [
+        {
+         "title": "신분증 제시하기",
+         "minutes": 15
+        },
+        {
+         "title": "여권 수령하기",
+         "minutes": 15
+        },
+        {
+         "title": "여권 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "여권 사용 준비하기",
+       "children": [
+        {
+         "title": "여권 보관하기",
+         "minutes": 15
+        },
+        {
+         "title": "여권 사용 계획 세우기",
+         "minutes": 20
+        },
+        {
+         "title": "추가 정보 확인하기",
+         "minutes": 5
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"여권 재발급 필요성 확인하기\",\"substeps\":[\"여권 만료일 확인하기\",\"여권 손상 상태 확인하기\",\"재발급 사유 확인하기\"]},{\"title\":\"신청 방법과 기한 알아보기\",\"substeps\":[\"공식 홈페이지 접속하기\",\"신청 기간 확인하기\",\"신청 방법 비교하기\"]},{\"title\":\"필요 서류 준비하기\",\"substeps\":[\"신분증 준비하기\",\"원본 여권 준비하기\",\"사진 촬영하기\",\"신청서 작성하기\"]},{\"title\":\"신청서 제출하기\",\"substeps\":[\"온라인 제출하기\",\"신분증 인증하기\",\"신청 완료 확인하기\"]},{\"title\":\"여권 수령 준비하기\",\"substeps\":[\"수령 방법 확인하기\",\"수령 장소 확인하기\",\"수령 시간 확인하기\"]},{\"title\":\"여권 수령하기\",\"substeps\":[\"신분증 제시하기\",\"여권 수령하기\",\"여권 확인하기\"]},{\"title\":\"여권 사용 준비하기\",\"substeps\":[\"여권 보관하기\",\"여권 사용 계획 세우기\",\"추가 정보 확인하기\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "신발장 정리",
+     "ms": 3252,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "신발장 밖 신발 모아서 정리하기",
+       "children": [
+        {
+         "title": "필요한 것 챙기기",
+         "minutes": 5
+        },
+        {
+         "title": "앞부분부터 시작하기",
+         "minutes": 10
+        },
+        {
+         "title": "나머지 끝내기",
+         "minutes": 5
+        },
+        {
+         "title": "확인하고 마무리하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "신발 종류에 따라 분류하기",
+       "children": [
+        {
+         "title": "운동신발 정리",
+         "minutes": 20
+        },
+        {
+         "title": "Casual 신발 정리",
+         "minutes": 20
+        },
+        {
+         "title": "Formal 신발 정리",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "신발 바닥 닦기",
+       "minutes": 15
+      },
+      {
+       "title": "신발장 내부 정리하기",
+       "minutes": 20
+      },
+      {
+       "title": "신발장 밖 신발 정리하기",
+       "minutes": 20
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"신발장 밖 신발 모아서 정리하기\"},{\"title\":\"신발 종류에 따라 분류하기\",\"substeps\":[\"운동신발 정리\",\" Casual 신발 정리\",\" Formal 신발 정리\"]},{\"title\":\"신발 바닥 닦기\"},{\"title\":\"신발장 내부 정리하기\"},{\"title\":\"신발장 밖 신발 정리하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "11월 20일까지 블로그 글 쓰기",
+     "ms": 4633,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "11월 15일 기준 일정을 세우기",
+       "children": [
+        {
+         "title": "11월 15일 15:00까지 주제 확정하기",
+         "minutes": 5
+        },
+        {
+         "title": "11월 16일 10:00까지 초안 작성하기",
+         "minutes": 30
+        },
+        {
+         "title": "11월 18일 14:00까지 수정하기",
+         "minutes": 5
+        },
+        {
+         "title": "11월 20일 12:00까지 올리기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "블로그 글 초안 작성하기",
+       "minutes": 30
+      },
+      {
+       "title": "블로그 글 수정하기",
+       "minutes": 5
+      },
+      {
+       "title": "블로그 글 올리기",
+       "minutes": 10
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"11월 15일 기준 일정을 세우기\",\"substeps\":[\"11월 15일 15:00까지 주제 확정하기\",\"11월 16일 10:00까지 초안 작성하기\",\"11월 18일 14:00까지 수정하기\",\"11월 20일 12:00까지 올리기\"]},{\"title\":\"블로그 글 초안 작성하기\"},{\"title\":\"블로그 글 수정하기\"},{\"title\":\"블로그 글 올리기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "엑셀 함수 배우기",
+     "ms": 4704,
+     "ok": false,
+     "drafts": [],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"배우고 싶은 함수 적기\",\"substeps\":[\"엑셀 설치 확인\",\"목표 함수 검색\"]},{\"title\":\"입문 자료 하나 고르기\",\"substeps\":[\"공식 예시 보기\",\"단순 예시 1개 보기\"]},{\"title\":\"첫 주 기초 익히기\",\"substeps\":[\"첫 강의·첫 장 보기\",\"따라 해 보기\"]},{\"title\":\"작은 결과물 하나 만들기\",\"substeps\":[\"단순 함수 적용하기\",\"결과물 저장하기\"]},{\"title\":\"막힌 점 정리해 질문하기\",\"substeps\":[\"오류 메시지 읽기\",\"질문하기\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "집주인에게 보일러 수리 요청하기",
+     "ms": 7429,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "수리 필요성 정리하기",
+       "children": [
+        {
+         "title": "문제 증상 구체화하기",
+         "minutes": 15
+        },
+        {
+         "title": "발생 시간 기록하기",
+         "minutes": 15
+        },
+        {
+         "title": "영향 범위 파악하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "연락할 시간 정하기",
+       "children": [
+        {
+         "title": "집주인 일정 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "가장 적절한 시간 선택하기",
+         "minutes": 15
+        },
+        {
+         "title": "연락 수단 결정하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "집주인 연락하기",
+       "children": [
+        {
+         "title": "전화 또는 메신저 보내기",
+         "minutes": 5
+        },
+        {
+         "title": "말씀드리고 싶은 내용 요약하기",
+         "minutes": 15
+        },
+        {
+         "title": "수리 일정 제안하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "답변 확인하기",
+       "children": [
+        {
+         "title": "수리 일정 확정하기",
+         "minutes": 5
+        },
+        {
+         "title": "추가 정보 요청하기",
+         "minutes": 15
+        },
+        {
+         "title": "반응 지연 시 재연락하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "수리 일정 확정하기",
+       "children": [
+        {
+         "title": "시간표 공유하기",
+         "minutes": 15
+        },
+        {
+         "title": "장비 준비 요청하기",
+         "minutes": 15
+        },
+        {
+         "title": "접근 경로 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "수리 완료 확인하기",
+       "children": [
+        {
+         "title": "작동 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "문제 해결 여부 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "다음 조치 논의하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "후속 조치 정리하기",
+       "children": [
+        {
+         "title": "수리 비용 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "보수 계획 수립하기",
+         "minutes": 20
+        },
+        {
+         "title": "의미 있는 대화 기록하기",
+         "minutes": 15
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"수리 필요성 정리하기\",\"substeps\":[\"문제 증상 구체화하기\",\"발생 시간 기록하기\",\"영향 범위 파악하기\"]},{\"title\":\"연락할 시간 정하기\",\"substeps\":[\"집주인 일정 확인하기\",\"가장 적절한 시간 선택하기\",\"연락 수단 결정하기\"]},{\"title\":\"집주인 연락하기\",\"substeps\":[\"전화 또는 메신저 보내기\",\"말씀드리고 싶은 내용 요약하기\",\"수리 일정 제안하기\"]},{\"title\":\"답변 확인하기\",\"substeps\":[\"수리 일정 확정하기\",\"추가 정보 요청하기\",\"반응 지연 시 재연락하기\"]},{\"title\":\"수리 일정 확정하기\",\"substeps\":[\"시간표 공유하기\",\"장비 준비 요청하기\",\"접근 경로 확인하기\"]},{\"title\":\"수리 완료 확인하기\",\"substeps\":[\"작동 확인하기\",\"문제 해결 여부 확인하기\",\"다음 조치 논의하기\"]},{\"title\":\"후속 조치 정리하기\",\"substeps\":[\"수리 비용 확인하기\",\"보수 계획 수립하기\",\"의미 있는 대화 기록하기\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "친구 결혼식 축사 준비",
+     "ms": 3569,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "친구와 축사 내용 공유하기",
+       "minutes": 15
+      },
+      {
+       "title": "축사 초안 작성하기",
+       "children": [
+        {
+         "title": "감사 인사 쓰기",
+         "minutes": 30
+        },
+        {
+         "title": "친구 소개하기",
+         "minutes": 15
+        },
+        {
+         "title": "축하 말하기",
+         "minutes": 15
+        },
+        {
+         "title": "결혼 소망 말하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "말하기 연습하기",
+       "minutes": 20
+      },
+      {
+       "title": "친구에게 축사 초안 보여주기",
+       "minutes": 15
+      },
+      {
+       "title": "친구에게 피드백 받기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"친구와 축사 내용 공유하기\"},{\"title\":\"축사 초안 작성하기\",\"substeps\":[\"감사 인사 쓰기\",\"친구 소개하기\",\"축하 말하기\",\"결혼 소망 말하기\"]},{\"title\":\"친구와 축사 내용 공유하기\"},{\"title\":\"말하기 연습하기\"},{\"title\":\"친구에게 축사 초안 보여주기\"},{\"title\":\"친구에게 피드백 받기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "동네 봉사활동 시작하기",
+     "ms": 2676,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "봉사처 찾기",
+       "children": [
+        {
+         "title": "네이버 지도 검색하기",
+         "minutes": 15
+        },
+        {
+         "title": "지역사회센터 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "봉사 일정 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "준비물 챙기기",
+       "minutes": 15
+      },
+      {
+       "title": "봉사처 도착하기",
+       "minutes": 15
+      },
+      {
+       "title": "봉사 활동 시작하기",
+       "minutes": 15
+      },
+      {
+       "title": "활동 마무리하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"봉사처 찾기\",\"substeps\":[\"네이버 지도 검색하기\",\"지역사회센터 확인하기\",\"봉사 일정 확인하기\"]},{\"title\":\"준비물 챙기기\"},{\"title\":\"봉사처 도착하기\"},{\"title\":\"봉사 활동 시작하기\"},{\"title\":\"활동 마무리하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "이번 주말까지 중고 노트북 팔기",
+     "ms": 5531,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "중고 노트북 사진 찍기",
+       "children": [
+        {
+         "title": "화면 켜서 사진 찍기",
+         "minutes": 15
+        },
+        {
+         "title": "배터리 잔량 확인",
+         "minutes": 5
+        },
+        {
+         "title": "케이스 사진 찍기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "중고 노트북 가격 책정하기",
+       "children": [
+        {
+         "title": "동네 중고 장터 가격 확인",
+         "minutes": 5
+        },
+        {
+         "title": "구글 검색 가격 확인",
+         "minutes": 5
+        },
+        {
+         "title": "내 가격 책정",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "중고 노트북 판매하기",
+       "children": [
+        {
+         "title": "매출 플랫폼 등록",
+         "minutes": 15
+        },
+        {
+         "title": "판매 사진 업로드",
+         "minutes": 15
+        },
+        {
+         "title": "판매 문구 작성",
+         "minutes": 30
+        }
+       ]
+      },
+      {
+       "title": "판매 알림 확인하기",
+       "children": [
+        {
+         "title": "매출 알림 확인",
+         "minutes": 5
+        },
+        {
+         "title": "문의자 확인",
+         "minutes": 5
+        },
+        {
+         "title": "중고 거래 제안 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "중고 노트북 거래 완료하기",
+       "children": [
+        {
+         "title": "중고 거래 약속",
+         "minutes": 15
+        },
+        {
+         "title": "중고 돈 받기",
+         "minutes": 15
+        },
+        {
+         "title": "중고 물건 수거",
+         "minutes": 15
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"중고 노트북 사진 찍기\",\"substeps\":[\"화면 켜서 사진 찍기\",\"배터리 잔량 확인\",\"케이스 사진 찍기\"]},{\"title\":\"중고 노트북 가격 책정하기\",\"substeps\":[\"동네 중고 장터 가격 확인\",\"구글 검색 가격 확인\",\"내 가격 책정\"]},{\"title\":\"중고 노트북 판매하기\",\"substeps\":[\"매출 플랫폼 등록\",\"판매 사진 업로드\",\"판매 문구 작성\"]},{\"title\":\"판매 알림 확인하기\",\"substeps\":[\"매출 알림 확인\",\"문의자 확인\",\"중고 거래 제안 확인\"]},{\"title\":\"중고 노트북 거래 완료하기\",\"substeps\":[\"중고 거래 약속\",\"중고 돈 받기\",\"중고 물건 수거\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "고양이 입양 준비하기",
+     "ms": 6582,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "입양 가능한 고양이 찾기",
+       "children": [
+        {
+         "title": "동물원이나 보호소 방문",
+         "minutes": 15
+        },
+        {
+         "title": "인터넷 검색",
+         "minutes": 15
+        },
+        {
+         "title": "친구나 가족에게 물어보기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "고양이 건강 상태 확인",
+       "children": [
+        {
+         "title": "견종서 확인",
+         "minutes": 5
+        },
+        {
+         "title": "동물병원 방문",
+         "minutes": 15
+        },
+        {
+         "title": "전문가 상담",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "입양 비용 계산",
+       "children": [
+        {
+         "title": "입양료 계산",
+         "minutes": 15
+        },
+        {
+         "title": "필수용품 구매",
+         "minutes": 15
+        },
+        {
+         "title": "추가 비용 예상",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "입양 신청서 작성",
+       "children": [
+        {
+         "title": "필수 정보 입력",
+         "minutes": 15
+        },
+        {
+         "title": "필증 첨부",
+         "minutes": 15
+        },
+        {
+         "title": "신청서 제출",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "고양이 소개하기",
+       "children": [
+        {
+         "title": "집에 데려오기",
+         "minutes": 15
+        },
+        {
+         "title": "고양이 관찰",
+         "minutes": 15
+        },
+        {
+         "title": "필수용품 제공",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "고양이 적응시키기",
+       "children": [
+        {
+         "title": "환경 정리",
+         "minutes": 20
+        },
+        {
+         "title": "식물물 제공",
+         "minutes": 15
+        },
+        {
+         "title": "수면 시간 확보",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "고양이 건강 관리",
+       "children": [
+        {
+         "title": "정기 검사",
+         "minutes": 15
+        },
+        {
+         "title": "백신 접종",
+         "minutes": 15
+        },
+        {
+         "title": "영양 관리",
+         "minutes": 15
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"입양 가능한 고양이 찾기\",\"substeps\":[\"동물원이나 보호소 방문\",\"인터넷 검색\",\"친구나 가족에게 물어보기\"]},{\"title\":\"고양이 건강 상태 확인\",\"substeps\":[\"견종서 확인\",\"동물병원 방문\",\"전문가 상담\"]},{\"title\":\"입양 비용 계산\",\"substeps\":[\"입양료 계산\",\"필수용품 구매\",\"추가 비용 예상\"]},{\"title\":\"입양 신청서 작성\",\"substeps\":[\"필수 정보 입력\",\"필증 첨부\",\"신청서 제출\"]},{\"title\":\"고양이 소개하기\",\"substeps\":[\"집에 데려오기\",\"고양이 관찰\",\"필수용품 제공\"]},{\"title\":\"고양이 적응시키기\",\"substeps\":[\"환경 정리\",\"식물물 제공\",\"수면 시간 확보\"]},{\"title\":\"고양이 건강 관리\",\"substeps\":[\"정기 검사\",\"백신 접종\",\"영양 관리\"]}]\n}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "운전면허 필기시험 합격하기",
+     "ms": 6717,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "필기 시험 준비 시작하기",
+       "children": [
+        {
+         "title": "운전 교재와 지도 한곳에 모으기",
+         "minutes": 15
+        },
+        {
+         "title": "필기 시험 범위와 날짜 적어 두기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "기본 개념 익히기",
+       "children": [
+        {
+         "title": "교재 1회독 하기",
+         "minutes": 15
+        },
+        {
+         "title": "모르는 부분 마크 하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "기출 문제 풀기",
+       "children": [
+        {
+         "title": "과거 기출 문제 풀기",
+         "minutes": 30
+        },
+        {
+         "title": "틀린 문제 다시 보기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "실전 연습 하기",
+       "children": [
+        {
+         "title": "예상 문제 300점 풀기",
+         "minutes": 30
+        },
+        {
+         "title": "시간 제한으로 연습 하기",
+         "minutes": 20
+        }
+       ]
+      },
+      {
+       "title": "시험 당일 준비 하기",
+       "children": [
+        {
+         "title": "시험 시간과 장소 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "필수품 준비하기",
+         "minutes": 10
+        }
+       ]
+      },
+      {
+       "title": "시험 응시하기",
+       "children": [
+        {
+         "title": "필기 시험 응시하기",
+         "minutes": 15
+        },
+        {
+         "title": "결과 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "합격 후 처리하기",
+       "children": [
+        {
+         "title": "면허증 발급 대기하기",
+         "minutes": 15
+        },
+        {
+         "title": "운전 실기 준비 계획 세우기",
+         "minutes": 20
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"필기 시험 준비 시작하기\",\"substeps\":[\"운전 교재와 지도 한곳에 모으기\",\"필기 시험 범위와 날짜 적어 두기\"]},{\"title\":\"기본 개념 익히기\",\"substeps\":[\"교재 1회독 하기\",\"모르는 부분 마크 하기\"]},{\"title\":\"기출 문제 풀기\",\"substeps\":[\"과거 기출 문제 풀기\",\"틀린 문제 다시 보기\"]},{\"title\":\"실전 연습 하기\",\"substeps\":[\"예상 문제 300점 풀기\",\"시간 제한으로 연습 하기\"]},{\"title\":\"시험 당일 준비 하기\",\"substeps\":[\"시험 시간과 장소 확인하기\",\"필수품 준비하기\"]},{\"title\":\"시험 응시하기\",\"substeps\":[\"필기 시험 응시하기\",\"결과 확인하기\"]},{\"title\":\"합격 후 처리하기\",\"substeps\":[\"면허증 발급 대기하기\",\"운전 실기 준비 계획 세우기\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "이력서 고쳐서 회사 3곳 지원하기",
+     "ms": 2422,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "이력서 파일 저장하기",
+       "minutes": 15
+      },
+      {
+       "title": "이력서 수정하기",
+       "children": [
+        {
+         "title": "직무 경험 정리하기",
+         "minutes": 20
+        },
+        {
+         "title": "교육 과정 정리하기",
+         "minutes": 20
+        },
+        {
+         "title": "자기소개서 작성하기",
+         "minutes": 30
+        },
+        {
+         "title": "지원서 파일 저장하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "지원서 발송하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"이력서 파일 저장하기\"},{\"title\":\"이력서 수정하기\",\"substeps\":[\"직무 경험 정리하기\",\"교육 과정 정리하기\",\"자기소개서 작성하기\",\"지원서 파일 저장하기\"]},{\"title\":\"지원서 발송하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "일주일 식비 5만 원으로 줄이기",
+     "ms": 2852,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "지난 7일 식비 내역 정리하기",
+       "children": [
+        {
+         "title": "필요한 것 챙기기",
+         "minutes": 5
+        },
+        {
+         "title": "앞부분부터 시작하기",
+         "minutes": 10
+        },
+        {
+         "title": "나머지 끝내기",
+         "minutes": 5
+        },
+        {
+         "title": "확인하고 마무리하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "비싼 메뉴 3개 찾아보기",
+       "minutes": 20
+      },
+      {
+       "title": "대체 메뉴 3개 기록하기",
+       "minutes": 15
+      },
+      {
+       "title": "주말에 대체 메뉴 3개 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "매주 월요일 아침에 3분 확인하기",
+       "minutes": 5
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"지난 7일 식비 내역 정리하기\"},{\"title\":\"비싼 메뉴 3개 찾아보기\"},{\"title\":\"대체 메뉴 3개 기록하기\"},{\"title\":\"주말에 대체 메뉴 3개 준비하기\"},{\"title\":\"매주 월요일 아침에 3분 확인하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "아침 6시에 일어나는 습관 만들기",
+     "ms": 8802,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "일정 확인하기",
+       "children": [
+        {
+         "title": "알람 설정하기",
+         "minutes": 5
+        },
+        {
+         "title": "잠들기 시간 조절하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "잠들기 시간 조절하기",
+       "minutes": 15
+      },
+      {
+       "title": "아침 6 시 일찍 일어나기",
+       "minutes": 15
+      },
+      {
+       "title": "일주일 기록하기",
+       "minutes": 15
+      },
+      {
+       "title": "다음 주 계획 세우기",
+       "minutes": 20
+      },
+      {
+       "title": "습관 유지하기",
+       "minutes": 15
+      },
+      {
+       "title": "목표 달성하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"일정 확인하기\",\"substeps\":[\"알람 설정하기\",\"잠들기 시간 조절하기\",\"잠들기 시간 조절하기\",\"잠들기 시간 조절하기\"]},{\"title\":\"잠들기 시간 조절하기\",\"substeps\":[\"잠들기 시간 조절하기\",\"잠들기 시간 조절하기\",\"잠들기 시간 조절하기\",\"잠들기 시간 조절하기\"]},{\"title\":\"아침 6 시 일찍 일어나기\",\"substeps\":[\"잠들기 시간 조절하기\",\"잠들기 시간 조절하기\",\"잠들기 시간 조절하기\",\"잠들기 시간 조절하기\"]},{\"title\":\"일주일 기록하기\",\"substeps\":[\"일주일 기록하기\",\"일주일 기록하기\",\"일주일 기록하기\",\"일주일 기록하기\"]},{\"title\":\"다음 주 계획 세우기\",\"substeps\":[\"다음 주 계획 세우기\",\"다음 주 계획 세우기\",\"다음 주 계획 세우기\",\"다음 주 계획 세우기\"]},{\"title\":\"습관 유지하기\",\"substeps\":[\"습관 유지하기\",\"습관 유지하기\",\"습관 유지하기\",\"습관 유지하기\"]},{\"title\":\"목표 달성하기\",\"substeps\":[\"목표 달성하기\",\"목표 달성하기\",\"목표 달성하기\",\"목표 달성하기\"]}]\n}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "연말정산 서류 챙기기",
+     "ms": 2716,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "필요 서류 목록 만들기",
+       "children": [
+        {
+         "title": "세무서 홈페이지 접속",
+         "minutes": 15
+        },
+        {
+         "title": "내 정보 조회",
+         "minutes": 15
+        },
+        {
+         "title": "필요 서류 리스트 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "마감일 확인하기",
+       "children": [
+        {
+         "title": "세무서 홈페이지 접속",
+         "minutes": 15
+        },
+        {
+         "title": "마감일 조회",
+         "minutes": 15
+        },
+        {
+         "title": "필요 서류 확인",
+         "minutes": 5
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"필요 서류 목록 만들기\",\"substeps\":[\"세무서 홈페이지 접속\",\"내 정보 조회\",\"필요 서류 리스트 확인\"]},{\"title\":\"마감일 확인하기\",\"substeps\":[\"세무서 홈페이지 접속\",\"마감일 조회\",\"필요 서류 확인\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "베란다 화분 분갈이하기",
+     "ms": 4137,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "분갈 필요성 확인하기",
+       "children": [
+        {
+         "title": "화분 구멍 확인",
+         "minutes": 5
+        },
+        {
+         "title": "토양 상태 확인",
+         "minutes": 5
+        },
+        {
+         "title": "식물 상태 확인",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "새 화분 준비하기",
+       "minutes": 10
+      },
+      {
+       "title": "토양 교체하기",
+       "children": [
+        {
+         "title": "구운 토양 준비",
+         "minutes": 15
+        },
+        {
+         "title": "새 화분 준비",
+         "minutes": 15
+        },
+        {
+         "title": "토양 다져주기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "식물 이식하기",
+       "children": [
+        {
+         "title": "식물 꺼내기",
+         "minutes": 5
+        },
+        {
+         "title": "뿌리 정리하기",
+         "minutes": 20
+        },
+        {
+         "title": "새 화분 담기",
+         "minutes": 15
+        },
+        {
+         "title": "토양 채우기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "물 주기하기",
+       "minutes": 15
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"분갈 필요성 확인하기\",\"substeps\":[\"화분 구멍 확인\",\"토양 상태 확인\",\"식물 상태 확인\"]},{\"title\":\"새 화분 준비하기\"},{\"title\":\"토양 교체하기\",\"substeps\":[\"구운 토양 준비\",\"새 화분 준비\",\"토양 다져주기\"]},{\"title\":\"식물 이식하기\",\"substeps\":[\"식물 꺼내기\",\"뿌리 정리하기\",\"새 화분 담기\",\"토양 채우기\"]},{\"title\":\"물 주기하기\"}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "유튜브 첫 영상 올리기",
+     "ms": 4866,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "유튜브 채널 만들기",
+       "children": [
+        {
+         "title": "유튜브에 접속하기",
+         "minutes": 15
+        },
+        {
+         "title": "아이디 만들기",
+         "minutes": 30
+        },
+        {
+         "title": "채널 이름 정하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "첫 영상 기획하기",
+       "children": [
+        {
+         "title": "주제 선정하기",
+         "minutes": 5
+        },
+        {
+         "title": "내용 요약하기",
+         "minutes": 15
+        },
+        {
+         "title": "썸네일 예시 그리기",
+         "minutes": 30
+        }
+       ]
+      },
+      {
+       "title": "영상 촬영하기",
+       "children": [
+        {
+         "title": "카메라 준비하기",
+         "minutes": 10
+        },
+        {
+         "title": "배경 정리하기",
+         "minutes": 20
+        },
+        {
+         "title": "영상 촬영하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "영상 편집하기",
+       "children": [
+        {
+         "title": "편집 프로그램 설치하기",
+         "minutes": 15
+        },
+        {
+         "title": "컷 편집하기",
+         "minutes": 15
+        },
+        {
+         "title": "자막 추가하기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "영상 업로드하기",
+       "children": [
+        {
+         "title": "유튜브 영상 업로드하기",
+         "minutes": 15
+        },
+        {
+         "title": "제목과 태그 입력하기",
+         "minutes": 15
+        },
+        {
+         "title": "공개하기",
+         "minutes": 15
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"유튜브 채널 만들기\",\"substeps\":[\"유튜브에 접속하기\",\"아이디 만들기\",\"채널 이름 정하기\"]},{\"title\":\"첫 영상 기획하기\",\"substeps\":[\"주제 선정하기\",\"내용 요약하기\",\"썸네일 예시 그리기\"]},{\"title\":\"영상 촬영하기\",\"substeps\":[\"카메라 준비하기\",\"배경 정리하기\",\"영상 촬영하기\"]},{\"title\":\"영상 편집하기\",\"substeps\":[\"편집 프로그램 설치하기\",\"컷 편집하기\",\"자막 추가하기\"]},{\"title\":\"영상 업로드하기\",\"substeps\":[\"유튜브 영상 업로드하기\",\"제목과 태그 입력하기\",\"공개하기\"]}]}",
+     "finishReason": "stop"
+    },
+    {
+     "goal": "기타로 노래 한 곡 치기",
+     "ms": 7063,
+     "ok": true,
+     "drafts": [
+      {
+       "title": "노래 선택하기",
+       "children": [
+        {
+         "title": "노래 제목 검색하기",
+         "minutes": 15
+        },
+        {
+         "title": "악보 다운로드하기",
+         "minutes": 15
+        },
+        {
+         "title": "악보 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "기타 세팅하기",
+       "children": [
+        {
+         "title": "기타 잡기",
+         "minutes": 15
+        },
+        {
+         "title": "악보 펼치기",
+         "minutes": 15
+        },
+        {
+         "title": "악보 위치 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "손가락 위치 잡기",
+       "children": [
+        {
+         "title": "악보 보드 읽기",
+         "minutes": 30
+        },
+        {
+         "title": "손가락 배치하기",
+         "minutes": 15
+        },
+        {
+         "title": "손가락 위치 확인하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "첫 소절 치기",
+       "children": [
+        {
+         "title": "첫 소절 치기",
+         "minutes": 15
+        },
+        {
+         "title": "오류 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "손가락 위치 수정하기",
+         "minutes": 5
+        }
+       ]
+      },
+      {
+       "title": "노래 완성하기",
+       "children": [
+        {
+         "title": "다음 소절 치기",
+         "minutes": 15
+        },
+        {
+         "title": "오류 수정하기",
+         "minutes": 5
+        },
+        {
+         "title": "노래 끝내기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "반복 연습하기",
+       "children": [
+        {
+         "title": "오류 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "손가락 위치 수정하기",
+         "minutes": 5
+        },
+        {
+         "title": "다음 소절 치기",
+         "minutes": 15
+        }
+       ]
+      },
+      {
+       "title": "완성 확인하기",
+       "children": [
+        {
+         "title": "노래 끝내기",
+         "minutes": 15
+        },
+        {
+         "title": "오류 확인하기",
+         "minutes": 5
+        },
+        {
+         "title": "손가락 위치 확인하기",
+         "minutes": 5
+        }
+       ]
+      }
+     ],
+     "raw": "<think>\n\n</think>\n\n{\"steps\":[{\"title\":\"노래 선택하기\",\"substeps\":[\"노래 제목 검색하기\",\"악보 다운로드하기\",\"악보 확인하기\"]},{\"title\":\"기타 세팅하기\",\"substeps\":[\"기타 잡기\",\"악보 펼치기\",\"악보 위치 확인하기\"]},{\"title\":\"손가락 위치 잡기\",\"substeps\":[\"악보 보드 읽기\",\"손가락 배치하기\",\"손가락 위치 확인하기\"]},{\"title\":\"첫 소절 치기\",\"substeps\":[\"첫 소절 치기\",\"오류 확인하기\",\"손가락 위치 수정하기\"]},{\"title\":\"노래 완성하기\",\"substeps\":[\"다음 소절 치기\",\"오류 수정하기\",\"노래 끝내기\"]},{\"title\":\"반복 연습하기\",\"substeps\":[\"오류 확인하기\",\"손가락 위치 수정하기\",\"다음 소절 치기\"]},{\"title\":\"완성 확인하기\",\"substeps\":[\"노래 끝내기\",\"오류 확인하기\",\"손가락 위치 확인하기\"]}]}",
+     "finishReason": "stop"
+    }
+   ],
+   "cachedBefore": true,
+   "loadMs": 5379,
+   "storageDeltaMB": 0
+  }
+ ],
+ "done": true,
+ "busy": false
+}
